@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | Praise Graphics</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ===== PAGE HERO ===== */
+.about-hero{min-height:60vh;position:relative;display:flex;align-items:center;padding:130px 60px 80px;overflow:hidden}
+.ahbg{position:absolute;inset:0;background:
+  radial-gradient(ellipse 70% 80% at 80% 50%,rgba(245,166,35,.07) 0%,transparent 60%),
+  var(--bg)}
+.ah-grid{position:absolute;inset:0;opacity:.03;
+  background-image:linear-gradient(rgba(245,166,35,1) 1px,transparent 1px),linear-gradient(90deg,rgba(245,166,35,1) 1px,transparent 1px);
+  background-size:60px 60px}
+.ah-orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;width:450px;height:450px;background:rgba(245,166,35,.07);top:-80px;right:-60px}
+.about-hero-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.ah-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.25);padding:7px 16px;border-radius:30px;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;opacity:0;animation:fadeUp .7s ease forwards .2s}
+.ah-heading{font-family:'Syne',sans-serif;font-size:clamp(42px,5.5vw,70px);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:22px;opacity:0;animation:fadeUp .8s ease forwards .4s}
+.ah-heading .grad{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ah-sub{font-size:16px;color:var(--muted);line-height:1.8;font-weight:300;max-width:480px;opacity:0;animation:fadeUp .8s ease forwards .6s}
+.ah-actions{display:flex;gap:16px;flex-wrap:wrap;margin-top:36px;opacity:0;animation:fadeUp .8s ease forwards .8s}
+.ah-right{position:relative;z-index:1;opacity:0;animation:fadeIn 1s ease forwards .5s}
+.about-img-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:32px;position:relative;overflow:hidden}
+.about-img-card::before{content:'';position:absolute;top:-1px;left:20px;right:20px;height:2px;background:var(--grad)}
+.studio-visual{background:var(--bg3);border-radius:14px;aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;border:1px solid var(--border)}
+.sv-logo{font-family:'Syne',sans-serif;font-size:56px;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.sv-tag{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.sv-dots{display:flex;gap:10px;margin-top:8px}
+.sv-dot{width:10px;height:10px;border-radius:50%}
+.about-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.chip{background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.2);padding:6px 14px;border-radius:20px;font-size:12px;color:var(--accent);font-weight:500}
+
+/* ===== STATS STRIP ===== */
+.stats-strip{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stats-inner{max-width:1200px;margin:0 auto;padding:56px 60px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;text-align:center}
+.stat-item{padding:0 20px}
+.stat-item+.stat-item{border-left:1px solid var(--border)}
+.big-num{font-family:'Syne',sans-serif;font-size:52px;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:8px}
+.stat-lbl{font-size:14px;color:var(--muted);font-weight:300}
+
+/* ===== OUR STORY ===== */
+.story-sec{max-width:1200px;margin:0 auto;padding:100px 60px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.story-timeline{margin-top:48px;display:flex;flex-direction:column;gap:0;position:relative}
+.story-timeline::before{content:'';position:absolute;left:19px;top:0;bottom:0;width:1px;background:var(--border)}
+.tl-item{display:flex;gap:24px;align-items:flex-start;padding-bottom:32px;position:relative}
+.tl-item:last-child{padding-bottom:0}
+.tl-dot{min-width:38px;height:38px;border-radius:50%;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:12px;font-weight:800;color:var(--accent);position:relative;z-index:1;transition:background .3s,border-color .3s}
+.tl-item:hover .tl-dot{background:var(--accent);color:#000;border-color:var(--accent)}
+.tl-year{font-size:11px;color:var(--accent);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.tl-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;margin-bottom:6px}
+.tl-txt{font-size:13.5px;color:var(--muted);line-height:1.7;font-weight:300}
+.story-right{position:relative}
+.story-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:36px;position:relative;overflow:hidden}
+.story-card::before{content:'';position:absolute;inset:-1px;background:var(--grad);border-radius:20px;z-index:-1;opacity:.18}
+.story-ql{font-size:64px;color:var(--accent);font-family:'Syne',sans-serif;font-weight:800;line-height:1;margin-bottom:-10px;opacity:.4}
+.story-quote{font-size:18px;font-family:'Syne',sans-serif;font-weight:600;line-height:1.5;color:#fff;margin-bottom:24px}
+.story-author{display:flex;align-items:center;gap:14px;margin-top:28px}
+.story-av{width:48px;height:48px;background:var(--grad);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:#fff}
+.story-aname{font-weight:700;font-family:'Syne',sans-serif;font-size:15px}
+.story-arole{font-size:12px;color:var(--muted);margin-top:2px}
+.story-mission{margin-top:32px;background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:24px}
+.story-mission h4{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:10px;color:var(--accent)}
+.story-mission p{font-size:14px;color:var(--muted);line-height:1.75;font-weight:300}
+
+/* ===== TEAM ===== */
+.team-sec{padding:0 60px 100px;max-width:1300px;margin:0 auto}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:56px}
+.team-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color .3s,transform .3s}
+.team-card:hover{border-color:rgba(245,166,35,.35);transform:translateY(-4px)}
+.team-avatar{height:180px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:60px;font-weight:800}
+.ta-c1{background:linear-gradient(135deg,#1a1f2e,#2d3548);color:#6b8cff}
+.ta-c2{background:linear-gradient(135deg,#1f0d0d,#3d1515);color:#ff6b6b}
+.ta-c3{background:linear-gradient(135deg,#0d1f0d,#1a3d1a);color:#4aff7a}
+.ta-c4{background:linear-gradient(135deg,#1a0d1f,#2d1540);color:#c46aff}
+.team-info{padding:20px}
+.team-name{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;margin-bottom:4px}
+.team-role{font-size:12px;color:var(--accent);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.team-bio{font-size:13px;color:var(--muted);line-height:1.7;font-weight:300}
+
+/* ===== VALUES ===== */
+.vals-bg{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.vals-inner{max-width:1200px;margin:0 auto;padding:100px 60px}
+.vals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
+.val-card{background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:32px;transition:border-color .3s,transform .3s}
+.val-card:hover{border-color:rgba(245,166,35,.3);transform:translateY(-4px)}
+.val-ico{font-size:32px;margin-bottom:16px}
+.val-title{font-family:'Syne',sans-serif;font-size:19px;font-weight:700;margin-bottom:10px}
+.val-txt{font-size:14px;color:var(--muted);line-height:1.75;font-weight:300}
+
+/* ===== CTA ===== */
+.cta-bg{background:linear-gradient(135deg,#0f1508,#1a0a04,#080c10);border-top:1px solid var(--border);padding:100px 60px;text-align:center}
+.cta-inner{max-width:640px;margin:0 auto}
+.cta-title{font-family:'Syne',sans-serif;font-size:clamp(32px,4.5vw,52px);font-weight:800;line-height:1.1;margin-bottom:18px;letter-spacing:-.02em}
+.cta-sub{font-size:16px;color:var(--muted);margin-bottom:38px;line-height:1.7;font-weight:300}
+.cta-acts{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.cta-note{display:flex;align-items:center;gap:8px;margin-top:24px;justify-content:center;font-size:13px;color:var(--muted)}
+.cta-note a{color:var(--accent);text-decoration:none;font-weight:500}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+@media(max-width:1024px){
+  .about-hero,.story-sec{padding-left:28px;padding-right:28px}
+  .stats-inner{padding:48px 28px}
+  .team-sec,.vals-inner{padding-left:28px;padding-right:28px}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .cta-bg{padding:80px 28px}
+}
+@media(max-width:768px){
+  .about-hero{padding:90px 24px 60px}
+  .about-hero-inner,.story-sec{grid-template-columns:1fr;gap:48px}
+  .ah-right{order:-1}
+  .stats-inner{grid-template-columns:1fr 1fr;gap:28px}
+  .stat-item+.stat-item{border-left:none}
+  .vals-grid{grid-template-columns:1fr}
+  .team-sec,.vals-inner{padding:60px 24px}
+  .cta-bg{padding:70px 24px}
+}
+</style>
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="toggleMenu()">✕</button>
+  <a href="index.html" onclick="toggleMenu()">Home</a>
+  <a href="about.html" onclick="toggleMenu()">About</a>
+  <a href="services.html" onclick="toggleMenu()">Services</a>
+  <a href="index.html#portfolio" onclick="toggleMenu()">Portfolio</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<nav id="navbar">
+  <a href="index.html" class="logo"><div class="logo-icon">P</div>Praise<em>Graphics</em></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="index.html#portfolio">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-btn">Get a Quote →</a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="about-hero">
+  <div class="ahbg"></div>
+  <div class="ah-grid"></div>
+  <div class="ah-orb"></div>
+  <div class="about-hero-inner">
+    <div>
+      <div class="ah-badge">🇳🇬 Our Story</div>
+      <h1 class="ah-heading">We Are <span class="grad">Praise<br>Graphics</span></h1>
+      <p class="ah-sub">A passionate design studio born in Lagos, Nigeria — on a mission to help businesses of all sizes look world-class and compete with confidence in any market.</p>
+      <div class="ah-actions">
+        <a href="services.html" class="btn-main">Our Services →</a>
+        <a href="#contact" class="btn-outline">Work With Us</a>
+      </div>
+    </div>
+    <div class="ah-right">
+      <div class="about-img-card">
+        <div class="studio-visual">
+          <div class="sv-logo">PG</div>
+          <div class="sv-tag">Creative Design Studio</div>
+          <div class="sv-dots">
+            <div class="sv-dot" style="background:#f5a623"></div>
+            <div class="sv-dot" style="background:#e8520a"></div>
+            <div class="sv-dot" style="background:#4a9eff"></div>
+            <div class="sv-dot" style="background:#4aff7a"></div>
+          </div>
+        </div>
+        <div class="about-chips">
+          <span class="chip">Brand Identity</span>
+          <span class="chip">Social Media</span>
+          <span class="chip">Marketing</span>
+          <span class="chip">Digital Branding</span>
+          <span class="chip">Packaging</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item reveal"><div class="big-num">200+</div><div class="stat-lbl">Projects Completed</div></div>
+    <div class="stat-item reveal d1"><div class="big-num">95%</div><div class="stat-lbl">Client Satisfaction Rate</div></div>
+    <div class="stat-item reveal d2"><div class="big-num">5+</div><div class="stat-lbl">Years of Experience</div></div>
+    <div class="stat-item reveal d3"><div class="big-num">4.9★</div><div class="stat-lbl">Average Client Rating</div></div>
+  </div>
+</div>
+
+<!-- OUR STORY -->
+<div class="story-sec">
+  <div>
+    <div class="sec-tag reveal">Our Journey</div>
+    <h2 class="sec-title reveal d1">From Lagos to <span class="hl">The World</span></h2>
+    <p class="sec-sub reveal d2">Five years of building brands, learning markets, and delivering designs that truly make a difference for our clients.</p>
+    <div class="story-timeline">
+      <div class="tl-item reveal">
+        <div class="tl-dot">19</div>
+        <div><div class="tl-year">2019 · Founded</div><div class="tl-title">Humble Beginnings</div><div class="tl-txt">Started as a one-person studio in Lagos, offering logo design and flyer creation for local small businesses.</div></div>
+      </div>
+      <div class="tl-item reveal d1">
+        <div class="tl-dot">21</div>
+        <div><div class="tl-year">2021 · Growth</div><div class="tl-title">Team Expansion</div><div class="tl-txt">Grew to a team of 4 designers and expanded services to include full brand identity and social media design packages.</div></div>
+      </div>
+      <div class="tl-item reveal d2">
+        <div class="tl-dot">23</div>
+        <div><div class="tl-year">2023 · Milestone</div><div class="tl-title">100th Client Milestone</div><div class="tl-txt">Hit 100 completed projects — from startups and restaurants to real estate firms and tech companies across Nigeria.</div></div>
+      </div>
+      <div class="tl-item reveal d3">
+        <div class="tl-dot">25</div>
+        <div><div class="tl-year">2025 · Today</div><div class="tl-title">200+ Projects & Growing</div><div class="tl-txt">Now serving clients across Nigeria and the diaspora, with a reputation for quality, speed, and results-driven design.</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="reveal d1">
+    <div class="story-card">
+      <div class="story-ql">"</div>
+      <p class="story-quote">We started Praise Graphics because we believed Nigerian businesses deserved world-class design at fair prices. That belief still drives everything we do.</p>
+      <div class="story-author">
+        <div class="story-av">P</div>
+        <div>
+          <div class="story-aname">Praise Emeka</div>
+          <div class="story-arole">Founder & Creative Director, Praise Graphics</div>
+        </div>
+      </div>
+    </div>
+    <div class="story-mission">
+      <h4>Our Mission</h4>
+      <p>To empower every Nigerian business — big or small — with the visual identity it needs to compete confidently, grow consistently, and leave a lasting impression on its audience.</p>
+    </div>
+  </div>
+</div>
+
+<!-- TEAM -->
+<div class="team-sec">
+  <div class="sec-tag reveal">The People</div>
+  <h2 class="sec-title reveal d1">Meet Our <span class="hl">Creative Team</span></h2>
+  <div class="team-grid">
+    <div class="team-card reveal">
+      <div class="team-avatar ta-c1">PE</div>
+      <div class="team-info">
+        <div class="team-name">Praise Emeka</div>
+        <div class="team-role">Founder & Creative Director</div>
+        <p class="team-bio">5+ years crafting brand identities. Leads all creative strategy and ensures every project exceeds client expectations.</p>
+      </div>
+    </div>
+    <div class="team-card reveal d1">
+      <div class="team-avatar ta-c2">AO</div>
+      <div class="team-info">
+        <div class="team-name">Aisha Okafor</div>
+        <div class="team-role">Brand Identity Designer</div>
+        <p class="team-bio">Specializes in logo design and brand systems. Known for creating identities that are bold, timeless, and deeply intentional.</p>
+      </div>
+    </div>
+    <div class="team-card reveal d2">
+      <div class="team-avatar ta-c3">TN</div>
+      <div class="team-info">
+        <div class="team-name">Tunde Nwosu</div>
+        <div class="team-role">Social Media & Motion Designer</div>
+        <p class="team-bio">Creates content that gets attention. Expert in social media design, templates, and motion graphics for digital campaigns.</p>
+      </div>
+    </div>
+    <div class="team-card reveal d3">
+      <div class="team-avatar ta-c4">BK</div>
+      <div class="team-info">
+        <div class="team-name">Blessing Kalu</div>
+        <div class="team-role">Marketing & Print Designer</div>
+        <p class="team-bio">Brings marketing campaigns to life. From flyers to packaging — her work always communicates the right message powerfully.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VALUES -->
+<div class="vals-bg">
+  <div class="vals-inner">
+    <div class="sec-tag reveal">What We Stand For</div>
+    <h2 class="sec-title reveal d1">Our Core <span class="hl">Values</span></h2>
+    <p class="sec-sub reveal d2">These aren't just words on a wall — they guide every single project we take on.</p>
+    <div class="vals-grid">
+      <div class="val-card reveal"><div class="val-ico">🎯</div><h3 class="val-title">Purpose-Driven Design</h3><p class="val-txt">Every design decision serves a clear purpose. We don't make things look good for the sake of it — we design to achieve your specific business goals.</p></div>
+      <div class="val-card reveal d1"><div class="val-ico">💎</div><h3 class="val-title">Uncompromising Quality</h3><p class="val-txt">We hold ourselves to the highest standard on every project — whether it's a ₦30k logo or a ₦200k full brand system.</p></div>
+      <div class="val-card reveal d2"><div class="val-ico">🤝</div><h3 class="val-title">Client Partnership</h3><p class="val-txt">We treat every client's brand like it's our own. Your success is our success — that's not just a saying, it's how we operate.</p></div>
+      <div class="val-card reveal"><div class="val-ico">⚡</div><h3 class="val-title">Speed & Reliability</h3><p class="val-txt">We respect your time and your deadlines. Fast delivery without cutting corners — that's the Praise Graphics promise.</p></div>
+      <div class="val-card reveal d1"><div class="val-ico">🌱</div><h3 class="val-title">Continuous Growth</h3><p class="val-txt">We're always learning new trends, tools, and techniques to ensure your brand always looks fresh, relevant, and ahead of the curve.</p></div>
+      <div class="val-card reveal d2"><div class="val-ico">🇳🇬</div><h3 class="val-title">Proudly Nigerian</h3><p class="val-txt">We understand the Nigerian market, culture, and consumer like no one else — and we bring that unique insight to everything we create.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-bg" id="contact">
+  <div class="cta-inner">
+    <div class="sec-tag reveal" style="justify-content:center">Work With Us</div>
+    <h2 class="cta-title reveal d1">Let's Build<br>Something <span style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Great Together</span></h2>
+    <p class="cta-sub reveal d2">Got a project in mind? Let's talk. We'll respond within 24 hours with a custom plan for your brand.</p>
+    <div class="cta-acts reveal d3">
+      <a href="https://wa.me/2348000000000" class="btn-main" target="_blank">💬 Chat on WhatsApp</a>
+      <a href="services.html" class="btn-outline">View Services</a>
+    </div>
+    <div class="cta-note reveal"><span>Email us at</span><a href="mailto:hello@praisegraphics.com">hello@praisegraphics.com</a></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-about">
+        <a href="index.html" class="logo"><div class="logo-icon">P</div>Praise<em>Graphics</em></a>
+        <p>We help Nigerian businesses and global brands build powerful visual identities that connect with their audience and drive real growth.</p>
+        <div class="socials"><a href="#" class="soc">📷</a><a href="#" class="soc">💬</a><a href="#" class="soc">👤</a><a href="#" class="soc">✕</a><a href="#" class="soc">💼</a></div>
+      </div>
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="index.html#portfolio">Portfolio</a></li><li><a href="#contact">Contact</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul><li><a href="services.html">Brand Identity</a></li><li><a href="services.html">Social Media Design</a></li><li><a href="services.html">Marketing Creatives</a></li><li><a href="services.html">Digital Branding</a></li><li><a href="services.html">Packaging & Print</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul><li><a href="mailto:hello@praisegraphics.com">hello@praisegraphics.com</a></li><li><a href="tel:+2348000000000">+234 800 000 0000</a></li><li><a href="#">Lagos, Nigeria 🇳🇬</a></li><li><a href="#">Mon–Fri · 8am–6pm WAT</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Praise Graphics. All rights reserved.</span>
+      <span>Made with ❤️ in Lagos, Nigeria 🇳🇬</span>
+      <div class="flinks"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div>
+    </div>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

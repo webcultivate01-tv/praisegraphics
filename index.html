@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Praise Graphics - Professional Graphic Design Studio in Nigeria</title>
+<meta name="description" content="Transform your brand with professional graphic design services. Specializing in brand identity, social media graphics, and marketing materials for Nigerian businesses.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;background:#0a1128;color:#e8eaf6;line-height:1.6;overflow-x:hidden}
+
+/* Navigation */
+nav{position:fixed;top:0;width:100%;background:rgba(10,17,40,0.95);backdrop-filter:blur(10px);box-shadow:0 2px 20px rgba(0,0,0,0.3);border-bottom:1px solid rgba(255,165,0,0.1);z-index:1000;transition:all 0.3s}
+.nav-container{max-width:1200px;margin:0 auto;padding:18px 30px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:24px;font-weight:800;background:linear-gradient(135deg,#ffa500,#ff6b35);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none;letter-spacing:-0.5px}
+.nav-menu{display:flex;gap:35px;list-style:none;align-items:center}
+.nav-menu a{text-decoration:none;color:#b8c5d6;font-weight:500;font-size:15px;transition:color 0.3s}
+.nav-menu a:hover{color:#ffa500}
+.cta-nav{background:linear-gradient(135deg,#ffa500,#ff6b35);color:#fff!important;padding:10px 24px;border-radius:6px;font-weight:600;transition:transform 0.2s,box-shadow 0.2s}
+.cta-nav:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(255,165,0,0.4)}
+.menu-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:#e8eaf6}
+
+/* Hero Section */
+.hero{padding:140px 30px 80px;max-width:1200px;margin:0 auto;text-align:center;position:relative}
+.hero::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(255,165,0,0.15),transparent);border-radius:50%;z-index:-1}
+.hero-badge{display:inline-block;background:rgba(255,165,0,0.1);color:#ffa500;padding:8px 20px;border-radius:30px;font-size:13px;font-weight:600;margin-bottom:24px;border:1px solid rgba(255,165,0,0.3)}
+.hero h1{font-size:clamp(36px,5vw,58px);font-weight:800;line-height:1.1;margin-bottom:20px;color:#fff;letter-spacing:-1px}
+.hero h1 .highlight{background:linear-gradient(135deg,#ffa500,#ff6b35);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:clamp(16px,2vw,20px);color:#b8c5d6;max-width:680px;margin:0 auto 40px;line-height:1.7}
+.hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,#ffa500,#ff6b35);color:#fff;padding:16px 36px;border-radius:8px;text-decoration:none;font-weight:600;font-size:16px;display:inline-flex;align-items:center;gap:8px;transition:all 0.3s;box-shadow:0 4px 14px rgba(255,165,0,0.4)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,165,0,0.6)}
+.btn-secondary{background:transparent;color:#e8eaf6;padding:16px 36px;border-radius:8px;text-decoration:none;font-weight:600;font-size:16px;border:2px solid rgba(255,165,0,0.3);transition:all 0.3s}
+.btn-secondary:hover{border-color:#ffa500;color:#ffa500;background:rgba(255,165,0,0.05)}
+
+/* Stats Section */
+.stats{background:rgba(255,165,0,0.03);padding:60px 30px;margin:60px 0;border-top:1px solid rgba(255,165,0,0.1);border-bottom:1px solid rgba(255,165,0,0.1)}
+.stats-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;text-align:center}
+.stat-item h3{font-size:42px;font-weight:800;background:linear-gradient(135deg,#ffa500,#ff6b35);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+.stat-item p{color:#b8c5d6;font-size:15px;font-weight:500}
+
+/* Services Section */
+.services{padding:80px 30px;max-width:1200px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:60px}
+.section-tag{color:#ffa500;font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.section-title{font-size:clamp(32px,4vw,44px);font-weight:800;color:#fff;margin-bottom:16px;letter-spacing:-0.5px}
+.section-desc{color:#b8c5d6;font-size:17px;max-width:600px;margin:0 auto}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
+.service-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,165,0,0.15);border-radius:12px;padding:36px;transition:all 0.3s;cursor:pointer}
+.service-card:hover{border-color:#ffa500;box-shadow:0 8px 30px rgba(255,165,0,0.2);transform:translateY(-4px);background:rgba(255,165,0,0.05)}
+.service-icon{font-size:48px;margin-bottom:20px}
+.service-card h3{font-size:22px;font-weight:700;margin-bottom:12px;color:#fff}
+.service-card p{color:#b8c5d6;font-size:15px;line-height:1.7}
+.service-card .learn-more{color:#ffa500;font-weight:600;font-size:14px;margin-top:16px;display:inline-flex;align-items:center;gap:6px}
+
+/* Portfolio Section */
+.portfolio{padding:80px 30px;background:rgba(255,165,0,0.02)}
+.portfolio-inner{max-width:1200px;margin:0 auto}
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-top:50px}
+.portfolio-item{background:rgba(255,255,255,0.03);border:1px solid rgba(255,165,0,0.1);border-radius:12px;overflow:hidden;transition:all 0.3s;cursor:pointer}
+.portfolio-item:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(255,165,0,0.3);border-color:#ffa500}
+.portfolio-img{width:100%;height:280px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);position:relative;overflow:hidden}
+.portfolio-img::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.1)}
+.portfolio-item:nth-child(2) .portfolio-img{background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%)}
+.portfolio-item:nth-child(3) .portfolio-img{background:linear-gradient(135deg,#4facfe 0%,#00f2fe 100%)}
+.portfolio-item:nth-child(4) .portfolio-img{background:linear-gradient(135deg,#43e97b 0%,#38f9d7 100%)}
+.portfolio-item:nth-child(5) .portfolio-img{background:linear-gradient(135deg,#fa709a 0%,#fee140 100%)}
+.portfolio-item:nth-child(6) .portfolio-img{background:linear-gradient(135deg,#30cfd0 0%,#330867 100%)}
+.portfolio-content{padding:24px}
+.portfolio-category{color:#ffa500;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px}
+.portfolio-item h3{font-size:20px;font-weight:700;color:#fff;margin-bottom:8px}
+.portfolio-item p{color:#b8c5d6;font-size:14px;line-height:1.6}
+
+/* Testimonials */
+.testimonials{padding:80px 30px;max-width:1200px;margin:0 auto}
+.testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin-top:50px}
+.testimonial-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,165,0,0.15);border-radius:12px;padding:32px;position:relative}
+.quote-icon{font-size:48px;color:#ffa500;opacity:0.2;position:absolute;top:20px;right:24px}
+.testimonial-text{color:#e8eaf6;font-size:16px;line-height:1.8;margin-bottom:24px;font-style:italic}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.author-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#ffa500,#ff6b35);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px}
+.author-info h4{font-size:15px;font-weight:700;color:#fff;margin-bottom:2px}
+.author-info p{font-size:13px;color:#b8c5d6}
+
+/* CTA Section */
+.cta-section{background:linear-gradient(135deg,#ffa500,#ff6b35);padding:80px 30px;text-align:center;color:#fff;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.05)"/></svg>');opacity:0.3}
+.cta-section h2{font-size:clamp(32px,4vw,48px);font-weight:800;margin-bottom:20px;letter-spacing:-0.5px;position:relative}
+.cta-section p{font-size:18px;margin-bottom:36px;opacity:0.95;max-width:600px;margin-left:auto;margin-right:auto;position:relative}
+.btn-white{background:#fff;color:#0a1128;padding:16px 40px;border-radius:8px;text-decoration:none;font-weight:700;font-size:16px;display:inline-block;transition:all 0.3s;box-shadow:0 4px 14px rgba(0,0,0,0.2);position:relative}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.3)}
+
+/* Contact Section */
+.contact{padding:80px 30px;max-width:1000px;margin:0 auto}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;margin-top:50px}
+.contact-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,165,0,0.15);border-radius:12px;padding:32px;text-align:center;transition:all 0.3s}
+.contact-card:hover{background:rgba(255,165,0,0.05);box-shadow:0 4px 20px rgba(255,165,0,0.2);border-color:#ffa500}
+.contact-icon{font-size:36px;margin-bottom:16px}
+.contact-card h3{font-size:18px;font-weight:700;margin-bottom:12px;color:#fff}
+.contact-card a{color:#ffa500;text-decoration:none;font-weight:600;font-size:15px;transition:opacity 0.3s}
+.contact-card a:hover{opacity:0.8}
+.contact-card p{color:#b8c5d6;font-size:15px}
+
+/* Footer */
+footer{background:#050b1a;color:#fff;padding:60px 30px 30px;text-align:center;border-top:1px solid rgba(255,165,0,0.1)}
+.footer-content{max-width:1200px;margin:0 auto}
+.footer-logo{font-size:28px;font-weight:800;background:linear-gradient(135deg,#ffa500,#ff6b35);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px}
+.footer-desc{color:#8a96a8;font-size:15px;max-width:500px;margin:0 auto 32px;line-height:1.7}
+.social-links{display:flex;gap:16px;justify-content:center;margin-bottom:32px}
+.social-link{width:44px;height:44px;border-radius:50%;background:rgba(255,165,0,0.1);border:1px solid rgba(255,165,0,0.2);display:flex;align-items:center;justify-content:center;text-decoration:none;color:#ffa500;font-size:18px;transition:all 0.3s}
+.social-link:hover{background:linear-gradient(135deg,#ffa500,#ff6b35);color:#fff;transform:translateY(-3px);border-color:transparent}
+.footer-bottom{border-top:1px solid rgba(255,165,0,0.1);padding-top:24px;margin-top:32px;color:#6b7a8f;font-size:14px}
+
+/* Mobile Menu */
+.mobile-menu{position:fixed;top:0;right:-100%;width:100%;height:100vh;background:rgba(10,17,40,0.98);backdrop-filter:blur(10px);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;transition:right 0.3s}
+.mobile-menu.active{right:0}
+.mobile-menu a{font-size:24px;font-weight:600;color:#e8eaf6;text-decoration:none}
+.mobile-menu .cta-nav{font-size:20px}
+.close-menu{position:absolute;top:24px;right:30px;font-size:32px;background:none;border:none;cursor:pointer;color:#e8eaf6}
+
+/* Responsive */
+@media(max-width:768px){
+.nav-menu{display:none}
+.menu-toggle{display:block}
+.hero{padding:120px 20px 60px}
+.stats-grid{grid-template-columns:repeat(2,1fr);gap:30px}
+.services-grid,.portfolio-grid,.testimonial-grid,.contact-grid{grid-template-columns:1fr}
+.hero-cta{flex-direction:column;align-items:center}
+.btn-primary,.btn-secondary{width:100%;max-width:300px;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+<div class="nav-container">
+<a href="#" class="logo">Praise Graphics</a>
+<ul class="nav-menu">
+<li><a href="#services">Services</a></li>
+<li><a href="#portfolio">Portfolio</a></li>
+<li><a href="#testimonials">Testimonials</a></li>
+<li><a href="#contact" class="cta-nav">Get Started</a></li>
+</ul>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+</div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+<button class="close-menu" onclick="toggleMenu()">×</button>
+<a href="#services" onclick="toggleMenu()">Services</a>
+<a href="#portfolio" onclick="toggleMenu()">Portfolio</a>
+<a href="#testimonials" onclick="toggleMenu()">Testimonials</a>
+<a href="#contact" class="cta-nav" onclick="toggleMenu()">Get Started</a>
+</div>
+
+<!-- Hero Section -->
+<section class="hero">
+<div class="hero-badge">🇳🇬 Nigeria's Trusted Design Studio</div>
+<h1>Transform Your Brand with <span class="highlight">Professional Design</span></h1>
+<p>We help Nigerian businesses stand out with stunning brand identities, social media graphics, and marketing materials that drive real results.</p>
+<div class="hero-cta">
+<a href="#contact" class="btn-primary">Start Your Project →</a>
+<a href="#portfolio" class="btn-secondary">View Our Work</a>
+</div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats">
+<div class="stats-grid">
+<div class="stat-item">
+<h3>150+</h3>
+<p>Projects Completed</p>
+</div>
+<div class="stat-item">
+<h3>80+</h3>
+<p>Happy Clients</p>
+</div>
+<div class="stat-item">
+<h3>5 Years</h3>
+<p>Experience</p>
+</div>
+<div class="stat-item">
+<h3>24/7</h3>
+<p>Support Available</p>
+</div>
+</div>
+</section>
+
+<!-- Services Section -->
+<section class="services" id="services">
+<div class="section-header">
+<div class="section-tag">What We Do</div>
+<h2 class="section-title">Services That Grow Your Business</h2>
+<p class="section-desc">Professional design solutions tailored for Nigerian businesses looking to make an impact</p>
+</div>
+<div class="services-grid">
+<div class="service-card">
+<div class="service-icon">🎨</div>
+<h3>Brand Identity Design</h3>
+<p>Create a memorable brand with custom logos, color palettes, and complete brand guidelines that set you apart.</p>
+<span class="learn-more">Learn more →</span>
+</div>
+<div class="service-card">
+<div class="service-icon">📱</div>
+<h3>Social Media Graphics</h3>
+<p>Engage your audience with scroll-stopping graphics for Instagram, Facebook, Twitter, and LinkedIn.</p>
+<span class="learn-more">Learn more →</span>
+</div>
+<div class="service-card">
+<div class="service-icon">🚀</div>
+<h3>Marketing Materials</h3>
+<p>Flyers, banners, brochures, and ads that capture attention and convert viewers into customers.</p>
+<span class="learn-more">Learn more →</span>
+</div>
+<div class="service-card">
+<div class="service-icon">💼</div>
+<h3>Digital Branding</h3>
+<p>Complete online presence with web graphics, email templates, and digital brand assets.</p>
+<span class="learn-more">Learn more →</span>
+</div>
+</div>
+</section>
+
+<!-- Portfolio Section -->
+<section class="portfolio" id="portfolio">
+<div class="portfolio-inner">
+<div class="section-header">
+<div class="section-tag">Our Work</div>
+<h2 class="section-title">Projects We're Proud Of</h2>
+<p class="section-desc">Real results for real businesses across Nigeria</p>
+</div>
+<div class="portfolio-grid">
+<div class="portfolio-item">
+<div class="portfolio-img"></div>
+<div class="portfolio-content">
+<div class="portfolio-category">Brand Identity</div>
+<h3>TechStart Lagos</h3>
+<p>Complete brand identity for innovative tech startup including logo, colors, and brand guidelines.</p>
+</div>
+</div>
+<div class="portfolio-item">
+<div class="portfolio-img"></div>
+<div class="portfolio-content">
+<div class="portfolio-category">Social Media</div>
+<h3>Fashion Forward NG</h3>
+<p>30-day social media campaign that increased engagement by 250% and drove sales.</p>
+</div>
+</div>
+<div class="portfolio-item">
+<div class="portfolio-img"></div>
+<div class="portfolio-content">
+<div class="portfolio-category">Marketing</div>
+<h3>FoodHub Abuja</h3>
+<p>Print and digital marketing materials for restaurant chain expansion across 5 cities.</p>
+</div>
+</div>
+<div class="portfolio-item">
+<div class="portfolio-img"></div>
+<div class="portfolio-content">
+<div class="portfolio-category">Digital Branding</div>
+<h3>EduLearn Platform</h3>
+<p>Complete digital branding package including website graphics and course materials.</p>
+</div>
+</div>
+<div class="portfolio-item">
+<div class="portfolio-img"></div>
+<div class="portfolio-content">
+<div class="portfolio-category">Logo Design</div>
+<h3>GreenLife Organics</h3>
+<p>Modern, eco-friendly logo design for organic food delivery service.</p>
+</div>
+</div>
+<div class="portfolio-item">
+<div class="portfolio-img"></div>
+<div class="portfolio-content">
+<div class="portfolio-category">Event Graphics</div>
+<h3>Lagos Business Summit</h3>
+<p>Complete event branding including banners, badges, and promotional materials.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials" id="testimonials">
+<div class="section-header">
+<div class="section-tag">Client Success</div>
+<h2 class="section-title">What Our Clients Say</h2>
+<p class="section-desc">Don't just take our word for it - hear from businesses we've helped grow</p>
+</div>
+<div class="testimonial-grid">
+<div class="testimonial-card">
+<div class="quote-icon">"</div>
+<p class="testimonial-text">Praise Graphics transformed our brand completely. The new logo and social media designs have helped us attract premium clients. Highly professional!</p>
+<div class="testimonial-author">
+<div class="author-avatar">A</div>
+<div class="author-info">
+<h4>Adebayo Johnson</h4>
+<p>CEO, TechStart Lagos</p>
+</div>
+</div>
+</div>
+<div class="testimonial-card">
+<div class="quote-icon">"</div>
+<p class="testimonial-text">Working with Praise Graphics was seamless. They understood our vision and delivered designs that exceeded expectations. Our sales increased by 40%!</p>
+<div class="testimonial-author">
+<div class="author-avatar">C</div>
+<div class="author-info">
+<h4>Chioma Okafor</h4>
+<p>Founder, Fashion Forward NG</p>
+</div>
+</div>
+</div>
+<div class="testimonial-card">
+<div class="quote-icon">"</div>
+<p class="testimonial-text">Fast turnaround, creative designs, and excellent communication. Praise Graphics is now our go-to design partner for all marketing materials.</p>
+<div class="testimonial-author">
+<div class="author-avatar">E</div>
+<div class="author-info">
+<h4>Emmanuel Eze</h4>
+<p>Marketing Director, FoodHub</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+<h2>Ready to Elevate Your Brand?</h2>
+<p>Let's create something amazing together. Get in touch today and let's discuss how we can help your business stand out.</p>
+<a href="#contact" class="btn-white">Start Your Project Today</a>
+</section>
+
+<!-- Contact Section -->
+<section class="contact" id="contact">
+<div class="section-header">
+<div class="section-tag">Get In Touch</div>
+<h2 class="section-title">Let's Work Together</h2>
+<p class="section-desc">Choose your preferred way to reach us - we're here to help!</p>
+</div>
+<div class="contact-grid">
+<div class="contact-card">
+<div class="contact-icon">📧</div>
+<h3>Email Us</h3>
+<a href="mailto:hello@praisegraphics.ng">hello@praisegraphics.ng</a>
+</div>
+<div class="contact-card">
+<div class="contact-icon">📱</div>
+<h3>Call Us</h3>
+<a href="tel:+2348012345678">+234 801 234 5678</a>
+</div>
+<div class="contact-card">
+<div class="contact-icon">💬</div>
+<h3>WhatsApp</h3>
+<a href="https://wa.me/2348012345678" target="_blank">Chat with us</a>
+</div>
+<div class="contact-card">
+<div class="contact-icon">📍</div>
+<h3>Visit Us</h3>
+<p>Lagos, Nigeria</p>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer>
+<div class="footer-content">
+<div class="footer-logo">Praise Graphics</div>
+<p class="footer-desc">Professional graphic design studio helping Nigerian businesses create powerful brand identities and marketing materials that drive results.</p>
+<div class="social-links">
+<a href="#" class="social-link">📘</a>
+<a href="#" class="social-link">📷</a>
+<a href="#" class="social-link">🐦</a>
+<a href="#" class="social-link">💼</a>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2024 Praise Graphics. All rights reserved. Designed with ❤️ in Nigeria</p>
+</div>
+</div>
+</footer>
+
+<script>
+function toggleMenu(){
+const menu=document.getElementById('mobileMenu');
+menu.classList.toggle('active');
+document.body.style.overflow=menu.classList.contains('active')?'hidden':'';
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+a.addEventListener('click',e=>{
+const target=document.querySelector(a.getAttribute('href'));
+if(target){
+e.preventDefault();
+target.scrollIntoView({behavior:'smooth'});
+}
+});
+});
+</script>
+</body>
+</html>
