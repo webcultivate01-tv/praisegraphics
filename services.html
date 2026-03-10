@@ -31,8 +31,13 @@ nav{position:fixed;top:0;width:100%;background:rgba(2,0,50,0.95);backdrop-filter
 .hero p{font-size:18px;color:#e8eaf6;max-width:700px;margin:0 auto;animation:fadeInUp 0.8s ease 0.2s backwards}
 @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 .services{padding:80px 30px;max-width:1200px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:60px}
+.section-title{font-size:clamp(32px,4vw,44px);font-weight:800;color:#fff;margin-bottom:16px}
+.section-desc{color:#e8eaf6;font-size:17px;max-width:600px;margin:0 auto}
 .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
 .service-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,191,0,0.15);border-radius:12px;padding:40px;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden;opacity:0;transform:translateY(30px)}
+.service-card:nth-child(n+4){display:none}
+.service-card.show-all:nth-child(n+4){display:block}
 .service-card.visible{animation:fadeInUp 0.6s ease forwards}
 .service-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;opacity:0.18;z-index:0;background-size:cover;background-position:center}
 .service-card:nth-child(1)::before{background-image:url('https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600')}
@@ -47,6 +52,12 @@ nav{position:fixed;top:0;width:100%;background:rgba(2,0,50,0.95);backdrop-filter
 .service-card:hover .service-icon{transform:scale(1.15) rotate(5deg)}
 .service-card h3{font-size:24px;color:#fff;margin-bottom:16px;text-shadow:2px 2px 4px rgba(0,0,0,0.6)}
 .service-card p{color:#e8eaf6;line-height:1.8;margin-bottom:20px;text-shadow:1px 1px 3px rgba(0,0,0,0.5)}
+.view-btn{display:inline-block;margin-top:16px;padding:10px 24px;background:#FFBF00;color:#020032;border-radius:6px;text-decoration:none;font-weight:600;font-size:14px;transition:all 0.3s;box-shadow:0 4px 12px rgba(255,191,0,0.3);position:relative;z-index:1}
+.view-btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(255,191,0,0.5);background:#fff}
+.view-more-btn{text-align:center;margin-top:40px}
+.view-more-btn button{background:#FFBF00;color:#020032;padding:14px 32px;border:none;border-radius:8px;font-weight:700;font-size:16px;cursor:pointer;transition:all 0.3s;box-shadow:0 4px 14px rgba(255,191,0,0.4)}
+.view-more-btn button:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,191,0,0.6);background:#fff}
+.view-more-btn button.hidden{display:none}
 .service-card ul{list-style:none;padding:0}
 .service-card li{color:#b8c5d6;padding:8px 0;border-bottom:1px solid rgba(255,191,0,0.1);transition:all 0.3s}
 .service-card li:hover{color:#fff;padding-left:5px}
@@ -79,7 +90,7 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 .mobile-menu.active{right:0}
 .mobile-menu a{font-size:24px;font-weight:600;color:#e8eaf6;text-decoration:none}
 .close-menu{position:absolute;top:24px;right:30px;font-size:32px;background:none;border:none;cursor:pointer;color:#e8eaf6}
-@media(max-width:768px){.nav-menu{display:none}.menu-toggle{display:block}.logo-img{width:40px;height:40px}.logo-name{font-size:18px}.logo-tagline{font-size:9px}.hero{padding:100px 20px 60px}.services{padding:60px 20px}.services-grid{grid-template-columns:1fr}.cta-section{padding:60px 20px}.footer-top{grid-template-columns:1fr;gap:30px;text-align:center}.footer-col ul{text-align:center}.footer-logo-wrapper{justify-content:center}}
+@media(max-width:768px){.nav-menu{display:none}.menu-toggle{display:block}.logo-img{width:40px;height:40px}.logo-name{font-size:18px}.logo-tagline{font-size:9px}.hero{padding:100px 20px 60px}.services{padding:60px 20px}.services-grid{grid-template-columns:1fr}.service-card:nth-child(n+4){display:none!important}.service-card.show-all:nth-child(n+4){display:block!important}.cta-section{padding:60px 20px}.footer-top{grid-template-columns:1fr;gap:30px;text-align:center}.footer-col ul{text-align:center}.footer-logo-wrapper{justify-content:center}}
 </style>
 </head>
 <body>
@@ -115,6 +126,10 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 <p>Professional design solutions tailored for Nigerian businesses looking to make an impact and grow their brand.</p>
 </section>
 <section class="services">
+<div class="section-header">
+<h2 class="section-title">Our Services</h2>
+<p class="section-desc">Comprehensive design solutions for your business needs</p>
+</div>
 <div class="services-grid">
 <div class="service-card">
 <div class="service-icon">🎨</div>
@@ -127,6 +142,7 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 <li>Typography Selection</li>
 <li>Business Cards</li>
 </ul>
+<a href="#contact" class="view-btn">View Details →</a>
 </div>
 <div class="service-card">
 <div class="service-icon">📱</div>
@@ -139,6 +155,7 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 <li>LinkedIn Banners</li>
 <li>Story Templates</li>
 </ul>
+<a href="#contact" class="view-btn">View Details →</a>
 </div>
 <div class="service-card">
 <div class="service-icon">🚀</div>
@@ -151,6 +168,7 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 <li>Email Templates</li>
 <li>Ad Campaigns</li>
 </ul>
+<a href="#contact" class="view-btn">View Details →</a>
 </div>
 <div class="service-card">
 <div class="service-icon">💼</div>
@@ -163,6 +181,7 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 <li>Icon Design</li>
 <li>Infographics</li>
 </ul>
+<a href="#contact" class="view-btn">View Details →</a>
 </div>
 <div class="service-card">
 <div class="service-icon">📦</div>
@@ -175,6 +194,7 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 <li>Bottle Labels</li>
 <li>Sticker Design</li>
 </ul>
+<a href="#contact" class="view-btn">View Details →</a>
 </div>
 <div class="service-card">
 <div class="service-icon">🎯</div>
@@ -187,7 +207,11 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 <li>Calendars</li>
 <li>Magazines</li>
 </ul>
+<a href="#contact" class="view-btn">View Details →</a>
 </div>
+</div>
+<div class="view-more-btn">
+<button id="viewMoreBtn" onclick="showAllServices()">View More Services →</button>
 </div>
 </section>
 <section class="cta-section">
@@ -237,6 +261,7 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 </footer>
 <script>
 function toggleMenu(){const m=document.getElementById('mobileMenu');m.classList.toggle('active');document.body.style.overflow=m.classList.contains('active')?'hidden':'';}
+function showAllServices(){const cards=document.querySelectorAll('.service-card');cards.forEach(c=>c.classList.add('show-all'));document.getElementById('viewMoreBtn').classList.add('hidden');setTimeout(()=>{cards.forEach((c,i)=>{if(i>=3){c.classList.add('visible')}})},100);}
 const observer=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*100)}})},{threshold:0.1});
 document.querySelectorAll('.service-card').forEach(el=>observer.observe(el));
 </script>
