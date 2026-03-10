@@ -26,11 +26,12 @@ nav{position:fixed;top:0;width:100%;background:rgba(2,0,50,0.95);backdrop-filter
 .cta-nav{background:linear-gradient(135deg,#FFBF00,#ffd700);color:#020032!important;padding:10px 28px;border-radius:8px;font-weight:700;box-shadow:0 4px 15px rgba(255,191,0,0.3);transition:all 0.3s}
 .cta-nav:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,191,0,0.5)}
 .cta-nav::before{display:none}
-.menu-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:#FFBF00;padding:8px}
+.menu-toggle{display:none;background:none;border:none;font-size:28px;cursor:pointer;color:#FFBF00;padding:8px;z-index:1001;position:relative}
 
 /* Hero Section */
-.hero{padding:140px 30px 80px;max-width:1200px;margin:0 auto;text-align:center;position:relative}
-.hero::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(255,191,0,0.12),transparent);border-radius:50%;z-index:-1;animation:pulse 4s ease-in-out infinite}@keyframes pulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:0.5}50%{transform:translate(-50%,-50%) scale(1.1);opacity:0.3}}
+.hero{padding:180px 30px 100px;max-width:100%;margin:0;text-align:center;position:relative;background:linear-gradient(rgba(2,0,50,0.85),rgba(2,0,50,0.9)),url('gallery/1714665825236.png') center/cover;min-height:90vh;display:flex;align-items:center;justify-content:center}
+.hero::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(255,191,0,0.15),transparent);border-radius:50%;z-index:1;animation:pulse 4s ease-in-out infinite}@keyframes pulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:0.5}50%{transform:translate(-50%,-50%) scale(1.1);opacity:0.3}}
+.hero-content{position:relative;z-index:2;max-width:1200px;margin:0 auto}
 .hero-badge{display:inline-block;background:rgba(255,191,0,0.1);color:#FFBF00;padding:8px 20px;border-radius:30px;font-size:13px;font-weight:600;margin-bottom:24px;border:1px solid rgba(255,191,0,0.3);animation:fadeInDown 0.6s ease-out}@keyframes fadeInDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
 .hero h1{font-size:clamp(36px,5vw,58px);font-weight:800;line-height:1.1;margin-bottom:20px;color:#fff;letter-spacing:-1px;animation:fadeInUp 0.8s ease-out 0.2s backwards}@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 .hero h1 .highlight{color:#FFBF00}
@@ -44,22 +45,23 @@ nav{position:fixed;top:0;width:100%;background:rgba(2,0,50,0.95);backdrop-filter
 /* Stats Section */
 .stats{background:rgba(255,191,0,0.03);padding:60px 30px;margin:60px 0;border-top:1px solid rgba(255,191,0,0.1);border-bottom:1px solid rgba(255,191,0,0.1)}
 .stats-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;text-align:center}
-.stat-item{opacity:0;transform:translateY(20px);transition:all 0.6s}.stat-item.visible{opacity:1;transform:translateY(0)}.stat-item h3{font-size:42px;font-weight:800;color:#FFBF00;margin-bottom:8px}
+.stat-item{opacity:0;transform:translateY(20px);transition:all 0.6s}.stat-item.visible{opacity:1;transform:translateY(0)}.stat-item h3{font-size:42px;font-weight:800;color:#FFBF00;margin-bottom:8px}.stat-number{display:inline-block}
 .stat-item p{color:#b8c5d6;font-size:15px;font-weight:500}
 
 /* Services Section */
-.services{padding:80px 30px;max-width:1200px;margin:0 auto}
+.services{padding:80px 30px;max-width:1400px;margin:0 auto;background:linear-gradient(rgba(2,0,50,0.5),rgba(2,0,50,0.45)),url('https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=1600') center/cover;border-radius:20px}
 .section-header{text-align:center;margin-bottom:60px}
-.section-tag{color:#FFBF00;font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
-.section-title{font-size:clamp(32px,4vw,44px);font-weight:800;color:#fff;margin-bottom:16px;letter-spacing:-0.5px}
-.section-desc{color:#b8c5d6;font-size:17px;max-width:600px;margin:0 auto}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
-.service-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,191,0,0.15);border-radius:12px;padding:36px;transition:all 0.4s;cursor:pointer;opacity:0;transform:translateY(30px)}.service-card.visible{opacity:1;transform:translateY(0)}
-.service-card:hover{border-color:#FFBF00;box-shadow:0 8px 30px rgba(255,191,0,0.3);transform:translateY(-8px) scale(1.02);background:rgba(255,191,0,0.08)}
+.section-tag{color:#FFBF00;font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;text-shadow:2px 2px 4px rgba(0,0,0,0.6)}
+.section-title{font-size:clamp(32px,4vw,44px);font-weight:800;color:#fff;margin-bottom:16px;letter-spacing:-0.5px;text-shadow:3px 3px 6px rgba(0,0,0,0.8)}
+.section-desc{color:#e8eaf6;font-size:17px;max-width:600px;margin:0 auto;text-shadow:2px 2px 4px rgba(0,0,0,0.6)}
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1300px;margin:0 auto}
+.service-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,191,0,0.2);border-radius:12px;padding:30px;transition:all 0.4s;cursor:pointer;opacity:0;transform:translateY(30px);position:relative;backdrop-filter:blur(10px)}.service-card.visible{opacity:1;transform:translateY(0)}
+.service-card::before{display:none}
+.service-card:hover{border-color:#FFBF00;box-shadow:0 8px 30px rgba(255,191,0,0.3);transform:translateY(-8px) scale(1.02);background:rgba(255,191,0,0.1)}
 .service-icon{font-size:48px;margin-bottom:20px;display:inline-block;transition:transform 0.3s}.service-card:hover .service-icon{transform:scale(1.1) rotate(5deg)}
 .service-card h3{font-size:22px;font-weight:700;margin-bottom:12px;color:#fff}
 .service-card p{color:#b8c5d6;font-size:15px;line-height:1.7}
-.service-card .learn-more{color:#FFBF00;font-weight:600;font-size:14px;margin-top:16px;display:inline-flex;align-items:center;gap:6px}
+.service-card .learn-more{color:#020032;background:#FFBF00;font-weight:600;font-size:14px;margin-top:20px;display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:6px;transition:all 0.3s;box-shadow:0 4px 12px rgba(255,191,0,0.3)}.service-card .learn-more:hover{transform:translateX(5px);box-shadow:0 6px 16px rgba(255,191,0,0.5)}
 
 /* Portfolio Section */
 .portfolio{padding:80px 30px;background:rgba(255,191,0,0.02)}
@@ -67,7 +69,7 @@ nav{position:fixed;top:0;width:100%;background:rgba(2,0,50,0.95);backdrop-filter
 .portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-top:50px}
 .portfolio-item{background:rgba(255,255,255,0.03);border:1px solid rgba(255,191,0,0.1);border-radius:12px;overflow:hidden;transition:all 0.4s;cursor:pointer;opacity:0;transform:scale(0.95)}.portfolio-item.visible{opacity:1;transform:scale(1)}
 .portfolio-item:hover{transform:translateY(-10px) scale(1.03);box-shadow:0 15px 50px rgba(255,191,0,0.4);border-color:#FFBF00}
-.portfolio-img{width:100%;height:280px;background:#1a1a3e;position:relative;overflow:hidden;transition:transform 0.4s;display:flex;align-items:center;justify-content:center}.portfolio-img img{width:100%;height:100%;object-fit:cover}.portfolio-item:hover .portfolio-img{transform:scale(1.05)}
+.portfolio-img{width:100%;height:280px;background:#1a1a3e;position:relative;overflow:hidden;transition:transform 0.4s;display:flex;align-items:center;justify-content:center}.portfolio-img img{width:100%;height:100%;object-fit:cover}.portfolio-item:hover .portfolio-img img{transform:scale(1.1)}
 .portfolio-img::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.1)}
 .portfolio-item:nth-child(2) .portfolio-img{background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%)}
 .portfolio-item:nth-child(3) .portfolio-img{background:linear-gradient(135deg,#4facfe 0%,#00f2fe 100%)}
@@ -80,27 +82,31 @@ nav{position:fixed;top:0;width:100%;background:rgba(2,0,50,0.95);backdrop-filter
 .portfolio-item p{color:#b8c5d6;font-size:14px;line-height:1.6}
 
 /* Testimonials */
-.testimonials{padding:80px 30px;max-width:1200px;margin:0 auto}
-.testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin-top:50px}
-.testimonial-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,191,0,0.15);border-radius:12px;padding:32px;position:relative;transition:all 0.3s;opacity:0;transform:translateY(20px)}.testimonial-card.visible{opacity:1;transform:translateY(0)}.testimonial-card:hover{transform:translateY(-5px);box-shadow:0 8px 25px rgba(255,191,0,0.2);border-color:rgba(255,191,0,0.3)}
-.quote-icon{font-size:48px;color:#FFBF00;opacity:0.2;position:absolute;top:20px;right:24px}
-.testimonial-text{color:#e8eaf6;font-size:16px;line-height:1.8;margin-bottom:24px;font-style:italic}
+.testimonials{padding:80px 30px;max-width:1200px;margin:0 auto;overflow:hidden}
+.testimonial-carousel{position:relative;min-height:350px;overflow:visible}
+.testimonial-wrapper{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.testimonial-slide{min-width:auto}
+.testimonial-card{background:rgba(255,255,255,0.05);border:2px solid rgba(255,191,0,0.3);border-radius:15px;padding:30px;height:100%;box-shadow:0 8px 30px rgba(255,191,0,0.2);transition:all 0.3s}
+.testimonial-card:hover{transform:translateY(-5px);border-color:#FFBF00;box-shadow:0 12px 40px rgba(255,191,0,0.4)}
+.quote-icon{font-size:2.5rem;color:#FFBF00;margin-bottom:10px;line-height:1}
+.testimonial-text{color:#e8eaf6;font-size:15px;line-height:1.7;margin-bottom:20px;font-style:italic;min-height:120px}
 .testimonial-author{display:flex;align-items:center;gap:12px}
-.author-avatar{width:48px;height:48px;border-radius:50%;background:#FFBF00;display:flex;align-items:center;justify-content:center;color:#020032;font-weight:700;font-size:18px}
-.author-info h4{font-size:15px;font-weight:700;color:#fff;margin-bottom:2px}
+.author-avatar{width:45px;height:45px;border-radius:50%;background:#FFBF00;display:flex;align-items:center;justify-content:center;color:#020032;font-weight:700;font-size:18px;flex-shrink:0}
+.author-info h4{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px}
 .author-info p{font-size:13px;color:#b8c5d6}
+.carousel-btn{display:none}
 
 /* CTA Section */
-.cta-section{background:#FFBF00;padding:80px 30px;text-align:center;color:#020032;position:relative;overflow:hidden}
-.cta-section::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.05)"/></svg>');opacity:0.3}
-.cta-section h2{font-size:clamp(32px,4vw,48px);font-weight:800;margin-bottom:20px;letter-spacing:-0.5px;position:relative}
-.cta-section p{font-size:18px;margin-bottom:36px;opacity:0.95;max-width:600px;margin-left:auto;margin-right:auto;position:relative}
-.btn-white{background:#020032;color:#FFBF00;padding:16px 40px;border-radius:8px;text-decoration:none;font-weight:700;font-size:16px;display:inline-block;transition:all 0.3s;box-shadow:0 4px 14px rgba(0,0,0,0.3);position:relative;border:2px solid #020032}
-.btn-white:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.4);background:#fff;color:#020032}
+.cta-section{background:linear-gradient(rgba(2,0,50,0.35),rgba(2,0,50,0.3)),url('https://images.unsplash.com/photo-1626785774573-4b799315345d?w=1200') center/cover;padding:100px 30px;text-align:center;position:relative;overflow:hidden}
+.cta-section::before{display:none}
+.cta-section h2{font-size:clamp(32px,4vw,48px);font-weight:800;margin-bottom:20px;letter-spacing:-0.5px;position:relative;color:#fff;z-index:1;text-shadow:3px 3px 6px rgba(0,0,0,0.8)}
+.cta-section p{font-size:18px;margin-bottom:36px;max-width:600px;margin-left:auto;margin-right:auto;position:relative;color:#fff;z-index:1;text-shadow:2px 2px 4px rgba(0,0,0,0.8)}
+.btn-white{background:#FFBF00;color:#020032;padding:16px 40px;border-radius:8px;text-decoration:none;font-weight:700;font-size:16px;display:inline-block;transition:all 0.3s;box-shadow:0 4px 14px rgba(255,191,0,0.4);position:relative;border:2px solid #FFBF00;z-index:1}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,191,0,0.6);background:#fff;color:#020032;border-color:#fff}
 
 /* Contact Section */
-.contact{padding:80px 30px;max-width:1000px;margin:0 auto}
-.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;margin-top:50px}
+.contact{padding:80px 30px;max-width:1400px;margin:0 auto}
+.contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:50px;max-width:1300px;margin-left:auto;margin-right:auto}
 .contact-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,191,0,0.15);border-radius:12px;padding:32px;text-align:center;transition:all 0.3s;opacity:0;transform:scale(0.9)}.contact-card.visible{opacity:1;transform:scale(1)}
 .contact-card:hover{background:rgba(255,191,0,0.08);box-shadow:0 6px 25px rgba(255,191,0,0.3);border-color:#FFBF00;transform:scale(1.05)}
 .contact-icon{font-size:36px;margin-bottom:16px;display:inline-block;transition:transform 0.3s}.contact-card:hover .contact-icon{transform:scale(1.2) rotate(10deg)}
@@ -135,28 +141,34 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 .close-menu{position:absolute;top:24px;right:30px;font-size:32px;background:none;border:none;cursor:pointer;color:#e8eaf6}
 
 /* Responsive */
+@media(max-width:1200px){
+.services-grid,.contact-grid{grid-template-columns:repeat(2,1fr)}
+}
 @media(max-width:768px){
 .nav-menu{display:none}
-.menu-toggle{display:block}
+.menu-toggle{display:block;z-index:1002}
 .nav-container{padding:12px 20px}
 .logo-img{width:40px;height:40px}
 .logo-name{font-size:18px}
 .logo-tagline{font-size:9px}
-.hero{padding:100px 20px 50px}
+.hero{padding:120px 20px 60px;min-height:70vh}
 .hero h1{font-size:32px}
 .hero p{font-size:16px}
 .stats{padding:40px 20px;margin:40px 0}
 .stats-grid{grid-template-columns:repeat(2,1fr);gap:20px}
 .stat-item h3{font-size:32px}
 .services,.portfolio-inner,.testimonials,.contact{padding:60px 20px}
-.services-grid,.portfolio-grid,.testimonial-grid,.contact-grid{grid-template-columns:1fr;gap:20px}
-.service-card,.portfolio-item,.testimonial-card,.contact-card{padding:24px}
+.services-grid,.contact-grid{grid-template-columns:1fr;gap:20px}
+.portfolio-grid{grid-template-columns:1fr;gap:20px}
+.service-card,.portfolio-item,.contact-card{padding:24px}
 .portfolio-img{height:220px}
 .hero-cta{flex-direction:column;align-items:center;gap:12px}
 .btn-primary,.btn-secondary{width:100%;max-width:280px;justify-content:center;padding:14px 28px}
 .cta-section{padding:60px 20px}
 .section-title{font-size:28px}
 .section-desc{font-size:15px}
+.testimonial-wrapper{grid-template-columns:1fr}
+.testimonial-carousel{min-height:auto}
 footer{padding:40px 20px 20px}
 .footer-top{grid-template-columns:1fr;gap:30px;text-align:center}
 .footer-col ul{text-align:center}
@@ -199,6 +211,7 @@ footer{padding:40px 20px 20px}
 
 <!-- Hero Section -->
 <section class="hero" id="home">
+<div class="hero-content">
 <div class="hero-badge">🇳🇬 Nigeria's Trusted Design Studio</div>
 <h1>Transform Your Brand with <span class="highlight">Professional Design</span></h1>
 <p>We help Nigerian businesses stand out with stunning brand identities, social media graphics, and marketing materials that drive real results.</p>
@@ -206,21 +219,22 @@ footer{padding:40px 20px 20px}
 <a href="#contact" class="btn-primary">Start Your Project →</a>
 <a href="#portfolio" class="btn-secondary">View Our Work</a>
 </div>
+</div>
 </section>
 
 <!-- Stats Section -->
 <section class="stats">
 <div class="stats-grid">
 <div class="stat-item">
-<h3>150+</h3>
+<h3><span class="stat-number" data-target="150">0</span>+</h3>
 <p>Projects Completed</p>
 </div>
 <div class="stat-item">
-<h3>80+</h3>
+<h3><span class="stat-number" data-target="80">0</span>+</h3>
 <p>Happy Clients</p>
 </div>
 <div class="stat-item">
-<h3>5 Years</h3>
+<h3><span class="stat-number" data-target="5">0</span> Years</h3>
 <p>Experience</p>
 </div>
 <div class="stat-item">
@@ -275,7 +289,7 @@ footer{padding:40px 20px 20px}
 </div>
 <div class="portfolio-grid">
 <div class="portfolio-item">
-<div class="portfolio-img"></div>
+<div class="portfolio-img"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600" alt="Brand Identity"></div>
 <div class="portfolio-content">
 <div class="portfolio-category">Brand Identity</div>
 <h3>TechStart Lagos</h3>
@@ -283,7 +297,7 @@ footer{padding:40px 20px 20px}
 </div>
 </div>
 <div class="portfolio-item">
-<div class="portfolio-img"></div>
+<div class="portfolio-img"><img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600" alt="Social Media"></div>
 <div class="portfolio-content">
 <div class="portfolio-category">Social Media</div>
 <h3>Fashion Forward NG</h3>
@@ -291,7 +305,7 @@ footer{padding:40px 20px 20px}
 </div>
 </div>
 <div class="portfolio-item">
-<div class="portfolio-img"></div>
+<div class="portfolio-img"><img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=600" alt="Marketing"></div>
 <div class="portfolio-content">
 <div class="portfolio-category">Marketing</div>
 <h3>FoodHub Abuja</h3>
@@ -299,7 +313,7 @@ footer{padding:40px 20px 20px}
 </div>
 </div>
 <div class="portfolio-item">
-<div class="portfolio-img"></div>
+<div class="portfolio-img"><img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=600" alt="Digital Branding"></div>
 <div class="portfolio-content">
 <div class="portfolio-category">Digital Branding</div>
 <h3>EduLearn Platform</h3>
@@ -307,7 +321,7 @@ footer{padding:40px 20px 20px}
 </div>
 </div>
 <div class="portfolio-item">
-<div class="portfolio-img"></div>
+<div class="portfolio-img"><img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600" alt="Logo Design"></div>
 <div class="portfolio-content">
 <div class="portfolio-category">Logo Design</div>
 <h3>GreenLife Organics</h3>
@@ -315,7 +329,7 @@ footer{padding:40px 20px 20px}
 </div>
 </div>
 <div class="portfolio-item">
-<div class="portfolio-img"></div>
+<div class="portfolio-img"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600" alt="Event Graphics"></div>
 <div class="portfolio-content">
 <div class="portfolio-category">Event Graphics</div>
 <h3>Lagos Business Summit</h3>
@@ -333,7 +347,9 @@ footer{padding:40px 20px 20px}
 <h2 class="section-title">What Our Clients Say</h2>
 <p class="section-desc">Don't just take our word for it - hear from businesses we've helped grow</p>
 </div>
-<div class="testimonial-grid">
+<div class="testimonial-carousel">
+<div class="testimonial-wrapper" id="testimonialWrapper">
+<div class="testimonial-slide">
 <div class="testimonial-card">
 <div class="quote-icon">"</div>
 <p class="testimonial-text">Praise Graphics transformed our brand completely. The new logo and social media designs have helped us attract premium clients. Highly professional!</p>
@@ -345,6 +361,8 @@ footer{padding:40px 20px 20px}
 </div>
 </div>
 </div>
+</div>
+<div class="testimonial-slide">
 <div class="testimonial-card">
 <div class="quote-icon">"</div>
 <p class="testimonial-text">Working with Praise Graphics was seamless. They understood our vision and delivered designs that exceeded expectations. Our sales increased by 40%!</p>
@@ -356,6 +374,8 @@ footer{padding:40px 20px 20px}
 </div>
 </div>
 </div>
+</div>
+<div class="testimonial-slide">
 <div class="testimonial-card">
 <div class="quote-icon">"</div>
 <p class="testimonial-text">Fast turnaround, creative designs, and excellent communication. Praise Graphics is now our go-to design partner for all marketing materials.</p>
@@ -364,6 +384,8 @@ footer{padding:40px 20px 20px}
 <div class="author-info">
 <h4>Emmanuel Eze</h4>
 <p>Marketing Director, FoodHub</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -482,6 +504,31 @@ entry.target.classList.add('visible');
 document.querySelectorAll('.service-card,.portfolio-item,.testimonial-card,.contact-card,.stat-item').forEach(el=>{
 observer.observe(el);
 });
+const counterObserver=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+const counters=document.querySelectorAll('.stat-number');
+counters.forEach(counter=>{
+const target=+counter.getAttribute('data-target');
+const increment=target/100;
+let count=0;
+const updateCount=()=>{
+if(count<target){
+count+=increment;
+counter.textContent=Math.ceil(count);
+setTimeout(updateCount,20);
+}else{
+counter.textContent=target;
+}
+};
+updateCount();
+});
+counterObserver.unobserve(entry.target);
+}
+});
+},{threshold:0.5});
+const statsSection=document.querySelector('.stats');
+if(statsSection)counterObserver.observe(statsSection);
 </script>
 </body>
 </html>

@@ -9,22 +9,48 @@
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#020032;color:#e8eaf6;line-height:1.6}
 nav{position:fixed;top:0;width:100%;background:rgba(2,0,50,0.95);backdrop-filter:blur(10px);box-shadow:0 2px 20px rgba(0,0,0,0.3);border-bottom:1px solid rgba(255,191,0,0.1);z-index:1000}
 .nav-container{max-width:1200px;margin:0 auto;padding:18px 30px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:24px;font-weight:800;color:#FFBF00;text-decoration:none}
+.logo-wrapper{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-img{width:50px;height:50px;border-radius:8px;object-fit:cover;border:2px solid #FFBF00}
+.logo-text{display:flex;flex-direction:column}
+.logo-name{font-size:22px;font-weight:800;color:#FFBF00;line-height:1;letter-spacing:-0.5px}
+.logo-tagline{font-size:11px;color:#b8c5d6;font-weight:500;margin-top:2px;letter-spacing:0.5px}
 .nav-menu{display:flex;gap:35px;list-style:none;align-items:center}
 .nav-menu a{text-decoration:none;color:#b8c5d6;font-weight:500;font-size:15px;transition:color 0.3s}
 .nav-menu a:hover,.nav-menu a.active{color:#FFBF00}
 .cta-nav{background:#FFBF00;color:#020032!important;padding:10px 24px;border-radius:6px;font-weight:600}
 .menu-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:#e8eaf6}
-.hero{padding:140px 30px 80px;text-align:center}
-.hero h1{font-size:clamp(36px,5vw,52px);font-weight:800;color:#fff;margin-bottom:20px}
-.hero h1 span{color:#FFBF00}
-.hero p{font-size:18px;color:#b8c5d6;max-width:700px;margin:0 auto}
+.hero{padding:140px 30px 80px;text-align:center;position:relative;background:linear-gradient(rgba(2,0,50,0.5),rgba(2,0,50,0.55)),url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1600') center/cover;min-height:50vh;background-attachment:fixed}
+.hero h1,.hero p{text-shadow:3px 3px 6px rgba(0,0,0,0.8)}
+.hero h1{font-size:clamp(36px,5vw,52px);font-weight:800;color:#fff;margin-bottom:20px;animation:fadeInUp 0.8s ease}
+.hero h1 span{color:#FFBF00;text-shadow:3px 3px 6px rgba(0,0,0,0.8)}
+.hero p{font-size:18px;color:#e8eaf6;max-width:700px;margin:0 auto;animation:fadeInUp 0.8s ease 0.2s backwards}
+.founder{padding:80px 30px;background:rgba(255,191,0,0.02)}
+.founder-content{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:400px 1fr;gap:80px;align-items:center}
+.founder-image{border-radius:15px;overflow:hidden;box-shadow:0 10px 40px rgba(255,191,0,0.3);width:400px;height:500px;opacity:0;transform:translateX(-50px);animation:slideInLeft 0.8s ease forwards}
+.founder-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s}
+.founder-image:hover img{transform:scale(1.05)}
+.founder-text{opacity:0;transform:translateX(50px);animation:slideInRight 0.8s ease 0.2s forwards}
+.founder-text h2{font-size:clamp(32px,4vw,44px);font-weight:800;color:#FFBF00;margin-bottom:20px}
+.founder-text p{color:#e8eaf6;font-size:17px;line-height:1.8}
+@keyframes slideInLeft{to{opacity:1;transform:translateX(0)}}
+@keyframes slideInRight{to{opacity:1;transform:translateX(0)}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:768px){.founder{padding:60px 20px}.founder-content{grid-template-columns:1fr;gap:30px}.founder-image{width:100%;height:400px}}
 .about{padding:80px 30px;max-width:1200px;margin:0 auto}
-.about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;margin-top:50px}
-.about-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,191,0,0.15);border-radius:12px;padding:40px;transition:all 0.3s}
-.about-card:hover{border-color:#FFBF00;box-shadow:0 8px 30px rgba(255,191,0,0.3);transform:translateY(-5px)}
-.about-card h3{font-size:24px;color:#FFBF00;margin-bottom:16px}
-.about-card p{color:#b8c5d6;line-height:1.8}
+.about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:50px}
+.about-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,191,0,0.15);border-radius:12px;padding:40px;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden;opacity:0;transform:translateY(30px)}
+.about-card.visible{animation:fadeInUp 0.6s ease forwards}
+.about-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background-size:cover;background-position:center;opacity:0.25;z-index:0}
+.about-card:nth-child(1)::before{background-image:url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600')}
+.about-card:nth-child(2)::before{background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=600')}
+.about-card:nth-child(3)::before{background-image:url('https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600')}
+.about-card:nth-child(4)::before{background-image:url('https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600')}
+.about-card:nth-child(5)::before{background-image:url('https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600')}
+.about-card:nth-child(6)::before{background-image:url('https://images.unsplash.com/photo-1579389083078-4e7018379f7e?w=600')}
+.about-card h3,.about-card p{position:relative;z-index:1}
+.about-card:hover{border-color:#FFBF00;box-shadow:0 15px 40px rgba(255,191,0,0.4);transform:translateY(-8px) scale(1.02)}
+.about-card h3{font-size:24px;color:#FFBF00;margin-bottom:16px;text-shadow:2px 2px 4px rgba(0,0,0,0.6)}
+.about-card p{color:#e8eaf6;line-height:1.8;text-shadow:1px 1px 3px rgba(0,0,0,0.5)}
 footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid rgba(255,191,0,0.1)}
 .footer-content{max-width:1200px;margin:0 auto}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
@@ -33,7 +59,9 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 .footer-col ul li{margin-bottom:12px}
 .footer-col ul li a{color:#8a96a8;text-decoration:none;transition:color 0.3s;font-size:14px}
 .footer-col ul li a:hover{color:#FFBF00}
-.footer-logo{font-size:28px;font-weight:800;color:#FFBF00;margin-bottom:16px}
+.footer-logo-wrapper{display:flex;align-items:center;gap:12px;margin-bottom:16px;justify-content:flex-start}
+.footer-logo-img{width:45px;height:45px;border-radius:8px;object-fit:cover;border:2px solid #FFBF00}
+.footer-logo{font-size:24px;font-weight:800;color:#FFBF00}
 .footer-desc{color:#8a96a8;font-size:15px;line-height:1.7;margin-bottom:20px}
 .social-links{display:flex;gap:16px;justify-content:center;margin-bottom:32px}
 .social-link{width:44px;height:44px;border-radius:50%;background:rgba(255,191,0,0.1);border:1px solid rgba(255,191,0,0.2);display:flex;align-items:center;justify-content:center;text-decoration:none;color:#FFBF00;font-size:18px;transition:all 0.3s}
@@ -43,13 +71,19 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 .mobile-menu.active{right:0}
 .mobile-menu a{font-size:24px;font-weight:600;color:#e8eaf6;text-decoration:none}
 .close-menu{position:absolute;top:24px;right:30px;font-size:32px;background:none;border:none;cursor:pointer;color:#e8eaf6}
-@media(max-width:768px){.nav-menu{display:none}.menu-toggle{display:block}.hero{padding:100px 20px 60px}.about{padding:60px 20px}.about-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr;gap:30px;text-align:center}.footer-col ul{text-align:center}}
+@media(max-width:768px){.nav-menu{display:none}.menu-toggle{display:block}.logo-img{width:40px;height:40px}.logo-name{font-size:18px}.logo-tagline{font-size:9px}.hero{padding:100px 20px 60px}.about{padding:60px 20px}.about-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr;gap:30px;text-align:center}.footer-col ul{text-align:center}.footer-logo-wrapper{justify-content:center}}
 </style>
 </head>
 <body>
 <nav>
 <div class="nav-container">
-<a href="index.html" class="logo">Praise Graphics</a>
+<a href="index.html" class="logo-wrapper">
+<img src="gallery/1714665825236.png" alt="Praise Graphics Logo" class="logo-img">
+<div class="logo-text">
+<span class="logo-name">Praise Graphics</span>
+<span class="logo-tagline">Creative Design Studio</span>
+</div>
+</a>
 <ul class="nav-menu">
 <li><a href="index.html">Home</a></li>
 <li><a href="about.html" class="active">About</a></li>
@@ -70,21 +104,44 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 </div>
 <section class="hero">
 <h1>About <span>Praise Graphics</span></h1>
-<p>We are a passionate team of creative designers dedicated to helping Nigerian businesses build powerful brands and stand out in the digital world.</p>
+<p>Nigeria's leading graphic design studio, transforming businesses through creative excellence and strategic design solutions since 2019.</p>
+</section>
+<section class="founder">
+<div class="founder-content">
+<div class="founder-image">
+<img src="gallery\founder.jpg.jpeg" alt="Founder">
+</div>
+<div class="founder-text">
+<h2>Meet Our Founder</h2>
+<p>Driven by passion and creativity, our founder established Praise Graphics with a vision to transform how Nigerian businesses present themselves to the world. With years of experience in graphic design and a deep understanding of the Nigerian market, we've helped countless businesses create memorable brand identities that drive real results.</p>
+</div>
+</div>
 </section>
 <section class="about">
 <div class="about-grid">
 <div class="about-card">
+<h3>📖 Our Story</h3>
+<p>Founded in Lagos, Praise Graphics started with a mission to help Nigerian businesses compete globally through world-class design. Today, we've worked with 80+ clients, delivering designs that drive real results.</p>
+</div>
+<div class="about-card">
 <h3>🎯 Our Mission</h3>
-<p>To empower Nigerian businesses with world-class design solutions that drive growth, build trust, and create lasting impressions in their markets.</p>
+<p>Empowering Nigerian businesses with professional design solutions that build trust, increase visibility, and create lasting impressions in competitive markets.</p>
 </div>
 <div class="about-card">
 <h3>👁️ Our Vision</h3>
-<p>To become Nigeria's most trusted design partner, known for creativity, professionalism, and delivering results that exceed expectations.</p>
+<p>To become Africa's most trusted design partner, known for transforming brands and creating visual identities that resonate with audiences and drive business growth.</p>
 </div>
 <div class="about-card">
-<h3>💎 Our Values</h3>
-<p>Creativity, Excellence, Integrity, Client Success, and Innovation. We believe in building long-term relationships through exceptional work.</p>
+<h3>💎 Core Values</h3>
+<p>Excellence, Creativity, Integrity, Client Success, and Innovation. We build long-term partnerships through exceptional work and dedicated service.</p>
+</div>
+<div class="about-card">
+<h3>⚡ Fast Delivery</h3>
+<p>Quick turnaround without compromising quality. Most projects completed within 3-5 business days with unlimited revisions.</p>
+</div>
+<div class="about-card">
+<h3>🏆 Proven Results</h3>
+<p>150+ successful projects, 80+ happy clients, and 5 years of experience helping Nigerian businesses grow through design.</p>
 </div>
 </div>
 </section>
@@ -92,7 +149,10 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 <div class="footer-content">
 <div class="footer-top">
 <div class="footer-col">
+<div class="footer-logo-wrapper">
+<img src="gallery/1714665825236.png" alt="Praise Graphics" class="footer-logo-img">
 <div class="footer-logo">Praise Graphics</div>
+</div>
 <p class="footer-desc">Professional graphic design studio helping Nigerian businesses create powerful brand identities and marketing materials that drive results.</p>
 </div>
 <div class="footer-col">
@@ -127,6 +187,8 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 </footer>
 <script>
 function toggleMenu(){const m=document.getElementById('mobileMenu');m.classList.toggle('active');document.body.style.overflow=m.classList.contains('active')?'hidden':'';}
+const observer=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*100)}})},{threshold:0.1});
+document.querySelectorAll('.about-card').forEach(el=>observer.observe(el));
 </script>
 </body>
 </html>
