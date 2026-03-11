@@ -19,11 +19,11 @@ nav{position:fixed;top:0;width:100%;background:rgba(2,0,50,0.95);backdrop-filter
 .logo-name{font-size:22px;font-weight:800;color:#FFBF00;line-height:1;letter-spacing:-0.5px}
 .logo-tagline{font-size:11px;color:#b8c5d6;font-weight:500;margin-top:2px;letter-spacing:0.5px}
 .nav-menu{display:flex;gap:40px;list-style:none;align-items:center}
-.nav-menu a{text-decoration:none;color:#b8c5d6;font-weight:600;font-size:15px;transition:all 0.3s;position:relative;padding:8px 0}
-.nav-menu a::before{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:#FFBF00;transition:width 0.3s}
+.nav-menu a{text-decoration:none;color:#b8c5d6;font-weight:600;font-size:15px;transition:all 0.3s;position:relative}
+.nav-menu a::before{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:#FFBF00;transition:width 0.3s}
 .nav-menu a:hover,.nav-menu a.active{color:#FFBF00}
 .nav-menu a:hover::before,.nav-menu a.active::before{width:100%}
-.cta-nav{background:linear-gradient(135deg,#FFBF00,#ffd700);color:#020032!important;padding:10px 24px;border-radius:8px;font-weight:700;box-shadow:0 4px 15px rgba(255,191,0,0.3);transition:all 0.3s}
+.cta-nav{background:#FFBF00;color:#020032!important;padding:10px 24px;border-radius:6px;font-weight:600;box-shadow:0 4px 15px rgba(255,191,0,0.3);transition:all 0.3s}
 .cta-nav:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,191,0,0.5)}
 .cta-nav::before{display:none}
 .menu-toggle{display:none;background:none;border:none;font-size:28px;cursor:pointer;color:#FFBF00;padding:8px;z-index:1001;position:relative}
@@ -45,7 +45,7 @@ nav{position:fixed;top:0;width:100%;background:rgba(2,0,50,0.95);backdrop-filter
 /* Stats Section */
 .stats{background:rgba(255,191,0,0.03);padding:60px 30px;margin:60px 0;border-top:1px solid rgba(255,191,0,0.1);border-bottom:1px solid rgba(255,191,0,0.1)}
 .stats-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;text-align:center}
-.stat-item{opacity:0;transform:translateY(20px);transition:all 0.6s}.stat-item.visible{opacity:1;transform:translateY(0)}.stat-item h3{font-size:42px;font-weight:800;color:#FFBF00;margin-bottom:8px}.stat-number{display:inline-block}
+.stat-item{opacity:1;transform:translateY(0);transition:all 0.6s}.stat-item h3{font-size:42px;font-weight:800;color:#FFBF00;margin-bottom:8px}.stat-number{display:inline-block}
 .stat-item p{color:#b8c5d6;font-size:15px;font-weight:500}
 
 /* Services Section */
@@ -55,7 +55,7 @@ nav{position:fixed;top:0;width:100%;background:rgba(2,0,50,0.95);backdrop-filter
 .section-title{font-size:clamp(32px,4vw,44px);font-weight:800;color:#fff;margin-bottom:16px;letter-spacing:-0.5px;text-shadow:3px 3px 6px rgba(0,0,0,0.8)}
 .section-desc{color:#e8eaf6;font-size:17px;max-width:600px;margin:0 auto;text-shadow:2px 2px 4px rgba(0,0,0,0.6)}
 .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1300px;margin:0 auto}
-.service-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,191,0,0.2);border-radius:12px;padding:30px;transition:all 0.4s;cursor:pointer;opacity:0;transform:translateY(30px);position:relative;backdrop-filter:blur(10px)}.service-card.visible{opacity:1;transform:translateY(0)}
+.service-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,191,0,0.2);border-radius:12px;padding:30px;transition:all 0.4s;cursor:pointer;opacity:1;transform:translateY(0);position:relative;backdrop-filter:blur(10px)}
 .service-card::before{display:none}
 .service-card:hover{border-color:#FFBF00;box-shadow:0 8px 30px rgba(255,191,0,0.3);transform:translateY(-8px) scale(1.02);background:rgba(255,191,0,0.1)}
 .service-icon{font-size:48px;margin-bottom:20px;display:inline-block;transition:transform 0.3s}.service-card:hover .service-icon{transform:scale(1.1) rotate(5deg)}
@@ -64,21 +64,56 @@ nav{position:fixed;top:0;width:100%;background:rgba(2,0,50,0.95);backdrop-filter
 .service-card .learn-more{color:#020032;background:#FFBF00;font-weight:600;font-size:14px;margin-top:20px;display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:6px;transition:all 0.3s;box-shadow:0 4px 12px rgba(255,191,0,0.3)}.service-card .learn-more:hover{transform:translateX(5px);box-shadow:0 6px 16px rgba(255,191,0,0.5)}
 
 /* Portfolio Section */
-.portfolio{padding:80px 30px;background:rgba(255,191,0,0.02)}
-.portfolio-inner{max-width:1200px;margin:0 auto}
-.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-top:50px}
-.portfolio-item{background:rgba(255,255,255,0.03);border:1px solid rgba(255,191,0,0.1);border-radius:12px;overflow:hidden;transition:all 0.4s;cursor:pointer;opacity:0;transform:scale(0.95)}.portfolio-item.visible{opacity:1;transform:scale(1)}
+.portfolio{padding:80px 30px;background:rgba(255,191,0,0.02);overflow:hidden}
+.portfolio-inner{max-width:1400px;margin:0 auto;position:relative}
+.portfolio-carousel-wrapper{position:relative;margin-top:50px;padding:0 70px}
+.portfolio-carousel{overflow:hidden;border-radius:12px}
+.portfolio-track{display:flex;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);gap:24px}
+.portfolio-item{background:rgba(255,255,255,0.03);border:1px solid rgba(255,191,0,0.1);border-radius:12px;overflow:hidden;transition:all 0.4s;cursor:pointer;min-width:calc(25% - 18px);flex-shrink:0}
 .portfolio-item:hover{transform:translateY(-10px) scale(1.03);box-shadow:0 15px 50px rgba(255,191,0,0.4);border-color:#FFBF00}
-.portfolio-img{width:100%;height:280px;background:#1a1a3e;position:relative;overflow:hidden;transition:transform 0.4s;display:flex;align-items:center;justify-content:center}.portfolio-img img{width:100%;height:100%;object-fit:cover}.portfolio-item:hover .portfolio-img img{transform:scale(1.1)}
-.portfolio-img::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.1)}
-.portfolio-item:nth-child(2) .portfolio-img{background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%)}
-.portfolio-item:nth-child(3) .portfolio-img{background:linear-gradient(135deg,#4facfe 0%,#00f2fe 100%)}
-.portfolio-item:nth-child(4) .portfolio-img{background:linear-gradient(135deg,#43e97b 0%,#38f9d7 100%)}
-.portfolio-item:nth-child(5) .portfolio-img{background:linear-gradient(135deg,#fa709a 0%,#fee140 100%)}
-.portfolio-item:nth-child(6) .portfolio-img{background:linear-gradient(135deg,#30cfd0 0%,#330867 100%)}
-.portfolio-content{padding:24px}
-.portfolio-category{color:#FFBF00;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px}
-.portfolio-item h3{font-size:20px;font-weight:700;color:#fff;margin-bottom:8px}
+.carousel-nav{position:absolute;top:50%;transform:translateY(-50%);width:56px;height:56px;background:rgba(2,0,50,0.95);border:2px solid #FFBF00;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;transition:all 0.3s;color:#FFBF00;font-size:22px;font-weight:bold;box-shadow:0 4px 20px rgba(255,191,0,0.3);user-select:none}
+.carousel-nav:hover{background:#FFBF00;color:#020032;transform:translateY(-50%) scale(1.1)}
+.carousel-prev{left:0}
+.carousel-next{right:0}
+.carousel-dots{display:flex;justify-content:center;gap:12px;margin-top:28px}
+.carousel-dot{width:12px;height:12px;border-radius:50%;background:rgba(255,191,0,0.3);cursor:pointer;transition:all 0.3s}
+.carousel-dot.active{background:#FFBF00;width:30px;border-radius:6px}
+
+/* Lightbox */
+.lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(2,0,50,0.97);backdrop-filter:blur(10px);z-index:9999;align-items:center;justify-content:center}
+.lightbox.active{display:flex}
+.lightbox-content{position:relative;max-width:90%;max-height:90%;animation:zoomIn 0.3s ease}
+@keyframes zoomIn{from{transform:scale(0.8);opacity:0}to{transform:scale(1);opacity:1}}
+.lightbox-img{max-width:100%;max-height:75vh;border-radius:12px;display:block;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+.lightbox-close{position:absolute;top:-50px;right:0;font-size:36px;color:#FFBF00;cursor:pointer;background:rgba(2,0,50,0.9);width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #FFBF00;transition:all 0.3s}
+.lightbox-close:hover{background:#FFBF00;color:#020032;transform:rotate(90deg)}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:30px;color:#FFBF00;cursor:pointer;background:rgba(2,0,50,0.9);width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #FFBF00;transition:all 0.3s;font-weight:bold}
+.lightbox-nav:hover{background:#FFBF00;color:#020032;transform:translateY(-50%) scale(1.15)}
+.lightbox-prev{left:20px}
+.lightbox-next{right:20px}
+.lightbox-info{text-align:center;margin-top:20px;background:rgba(2,0,50,0.8);padding:20px;border-radius:10px;border:1px solid rgba(255,191,0,0.2)}
+.lightbox-info .portfolio-category{color:#FFBF00;font-size:14px;font-weight:600;text-transform:uppercase;margin-bottom:8px}
+.lightbox-info h3{color:#fff;font-size:24px;margin-bottom:10px}
+.lightbox-info p{color:#b8c5d6;font-size:15px}
+.lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(2,0,50,0.95);z-index:9999;align-items:center;justify-content:center}
+.lightbox.active{display:flex}
+.lightbox-content{position:relative;max-width:90%;max-height:90%;background:rgba(255,255,255,0.05);border-radius:15px;padding:20px;border:2px solid rgba(255,191,0,0.3)}
+.lightbox-img{max-width:100%;max-height:70vh;border-radius:10px;display:block}
+.lightbox-close{position:absolute;top:20px;right:20px;font-size:40px;color:#FFBF00;cursor:pointer;background:rgba(2,0,50,0.8);width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #FFBF00;transition:all 0.3s}
+.lightbox-close:hover{background:#FFBF00;color:#020032;transform:rotate(90deg)}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:40px;color:#FFBF00;cursor:pointer;background:rgba(2,0,50,0.8);width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #FFBF00;transition:all 0.3s}
+.lightbox-nav:hover{background:#FFBF00;color:#020032;transform:translateY(-50%) scale(1.1)}
+.lightbox-prev{left:20px}
+.lightbox-next{right:20px}
+.lightbox-info{text-align:center;margin-top:20px}
+.lightbox-info h3{color:#FFBF00;font-size:24px;margin-bottom:8px}
+.lightbox-info p{color:#e8eaf6;font-size:16px}
+.portfolio-img{width:100%;height:240px;overflow:hidden}
+.portfolio-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+.portfolio-item:hover .portfolio-img img{transform:scale(1.08)}
+.portfolio-content{padding:22px}
+.portfolio-category{color:#FFBF00;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px}
+.portfolio-item h3{font-size:18px;font-weight:700;color:#fff;margin-bottom:6px}
 .portfolio-item p{color:#b8c5d6;font-size:14px;line-height:1.6}
 
 /* Testimonials */
@@ -107,7 +142,7 @@ nav{position:fixed;top:0;width:100%;background:rgba(2,0,50,0.95);backdrop-filter
 /* Contact Section */
 .contact{padding:80px 30px;max-width:1400px;margin:0 auto}
 .contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:50px;max-width:1300px;margin-left:auto;margin-right:auto}
-.contact-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,191,0,0.15);border-radius:12px;padding:32px;text-align:center;transition:all 0.3s;opacity:0;transform:scale(0.9)}.contact-card.visible{opacity:1;transform:scale(1)}
+.contact-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,191,0,0.15);border-radius:12px;padding:32px;text-align:center;transition:all 0.3s;opacity:1;transform:scale(1)}
 .contact-card:hover{background:rgba(255,191,0,0.08);box-shadow:0 6px 25px rgba(255,191,0,0.3);border-color:#FFBF00;transform:scale(1.05)}
 .contact-icon{font-size:36px;margin-bottom:16px;display:inline-block;transition:transform 0.3s}.contact-card:hover .contact-icon{transform:scale(1.2) rotate(10deg)}
 .contact-card h3{font-size:18px;font-weight:700;margin-bottom:12px;color:#fff}
@@ -144,10 +179,12 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 @media(max-width:1200px){
 .services-grid,.contact-grid{grid-template-columns:repeat(2,1fr)}
 }
+@media(max-width:1024px){.portfolio-item{min-width:calc(33.333% - 16px)}}
 @media(max-width:768px){
 .nav-menu{display:none}
 .menu-toggle{display:block;z-index:1002}
 .nav-container{padding:12px 20px}
+.logo-wrapper{display:flex}
 .logo-img{width:40px;height:40px}
 .logo-name{font-size:18px}
 .logo-tagline{font-size:9px}
@@ -159,9 +196,10 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 .stat-item h3{font-size:32px}
 .services,.portfolio-inner,.testimonials,.contact{padding:60px 20px}
 .services-grid,.contact-grid{grid-template-columns:1fr;gap:20px}
-.portfolio-grid{grid-template-columns:1fr;gap:20px}
+.portfolio-carousel-wrapper{padding:0 50px}
+.portfolio-item{min-width:calc(50% - 12px)}
+.carousel-nav{width:44px;height:44px;font-size:18px}
 .service-card,.portfolio-item,.contact-card{padding:24px}
-.portfolio-img{height:220px}
 .hero-cta{flex-direction:column;align-items:center;gap:12px}
 .btn-primary,.btn-secondary{width:100%;max-width:280px;justify-content:center;padding:14px 28px}
 .cta-section{padding:60px 20px}
@@ -169,6 +207,11 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 .section-desc{font-size:15px}
 .testimonial-wrapper{grid-template-columns:1fr}
 .testimonial-carousel{min-height:auto}
+.lightbox-nav{width:50px;height:50px;font-size:24px}
+.lightbox-prev{left:10px}
+.lightbox-next{right:10px}
+.lightbox-close{top:-40px;width:45px;height:45px;font-size:30px}
+.portfolio-item{min-width:100%}
 footer{padding:40px 20px 20px}
 .footer-top{grid-template-columns:1fr;gap:30px;text-align:center}
 .footer-col ul{text-align:center}
@@ -217,7 +260,7 @@ footer{padding:40px 20px 20px}
 <p>We help Nigerian businesses stand out with stunning brand identities, social media graphics, and marketing materials that drive real results.</p>
 <div class="hero-cta">
 <a href="#contact" class="btn-primary">Start Your Project →</a>
-<a href="#portfolio" class="btn-secondary">View Our Work</a>
+<a href="#portfolio" class="btn-secondary">View Our Projects</a>
 </div>
 </div>
 </section>
@@ -284,11 +327,15 @@ footer{padding:40px 20px 20px}
 <div class="portfolio-inner">
 <div class="section-header">
 <div class="section-tag">Our Work</div>
-<h2 class="section-title">Projects We're Proud Of</h2>
+<h2 class="section-title">Our <span style="color:#FFBF00;text-shadow:0 0 40px rgba(255,191,0,0.8)">Projects</span></h2>
 <p class="section-desc">Real results for real businesses across Nigeria</p>
 </div>
-<div class="portfolio-grid">
-<div class="portfolio-item">
+<div class="portfolio-carousel-wrapper">
+<div class="carousel-nav carousel-prev" onclick="moveCarousel(-1)">&#10094;</div>
+<div class="carousel-nav carousel-next" onclick="moveCarousel(1)">&#10095;</div>
+<div class="portfolio-carousel">
+<div class="portfolio-track" id="portfolioTrack">
+<div class="portfolio-item" onclick="openLightbox(0)">
 <div class="portfolio-img"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600" alt="Brand Identity"></div>
 <div class="portfolio-content">
 <div class="portfolio-category">Brand Identity</div>
@@ -296,7 +343,7 @@ footer{padding:40px 20px 20px}
 <p>Complete brand identity for innovative tech startup including logo, colors, and brand guidelines.</p>
 </div>
 </div>
-<div class="portfolio-item">
+<div class="portfolio-item" onclick="openLightbox(1)">
 <div class="portfolio-img"><img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600" alt="Social Media"></div>
 <div class="portfolio-content">
 <div class="portfolio-category">Social Media</div>
@@ -304,7 +351,7 @@ footer{padding:40px 20px 20px}
 <p>30-day social media campaign that increased engagement by 250% and drove sales.</p>
 </div>
 </div>
-<div class="portfolio-item">
+<div class="portfolio-item" onclick="openLightbox(2)">
 <div class="portfolio-img"><img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=600" alt="Marketing"></div>
 <div class="portfolio-content">
 <div class="portfolio-category">Marketing</div>
@@ -312,7 +359,7 @@ footer{padding:40px 20px 20px}
 <p>Print and digital marketing materials for restaurant chain expansion across 5 cities.</p>
 </div>
 </div>
-<div class="portfolio-item">
+<div class="portfolio-item" onclick="openLightbox(3)">
 <div class="portfolio-img"><img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=600" alt="Digital Branding"></div>
 <div class="portfolio-content">
 <div class="portfolio-category">Digital Branding</div>
@@ -320,7 +367,7 @@ footer{padding:40px 20px 20px}
 <p>Complete digital branding package including website graphics and course materials.</p>
 </div>
 </div>
-<div class="portfolio-item">
+<div class="portfolio-item" onclick="openLightbox(4)">
 <div class="portfolio-img"><img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600" alt="Logo Design"></div>
 <div class="portfolio-content">
 <div class="portfolio-category">Logo Design</div>
@@ -328,7 +375,7 @@ footer{padding:40px 20px 20px}
 <p>Modern, eco-friendly logo design for organic food delivery service.</p>
 </div>
 </div>
-<div class="portfolio-item">
+<div class="portfolio-item" onclick="openLightbox(5)">
 <div class="portfolio-img"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600" alt="Event Graphics"></div>
 <div class="portfolio-content">
 <div class="portfolio-category">Event Graphics</div>
@@ -336,6 +383,12 @@ footer{padding:40px 20px 20px}
 <p>Complete event branding including banners, badges, and promotional materials.</p>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="carousel-dots" id="carouselDots"></div>
+<div style="text-align:center;margin-top:40px">
+<a href="portfolio.html" style="background:#FFBF00;color:#020032;padding:14px 36px;border-radius:8px;text-decoration:none;font-weight:700;font-size:16px;display:inline-block;box-shadow:0 4px 14px rgba(255,191,0,0.4);transition:all 0.3s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(255,191,0,0.6)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 14px rgba(255,191,0,0.4)'">View Full Portfolio →</a>
 </div>
 </div>
 </section>
@@ -392,6 +445,21 @@ footer{padding:40px 20px 20px}
 </div>
 </section>
 
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+<div class="lightbox-content">
+<span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+<span class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">&#10094;</span>
+<img src="" alt="Portfolio Image" class="lightbox-img" id="lightboxImg">
+<span class="lightbox-nav lightbox-next" onclick="changeImage(1)">&#10095;</span>
+<div class="lightbox-info">
+<div class="portfolio-category" id="lightboxCategory"></div>
+<h3 id="lightboxTitle"></h3>
+<p id="lightboxDesc"></p>
+</div>
+</div>
+</div>
+
 <!-- CTA Section -->
 <section class="cta-section">
 <h2>Ready to Elevate Your Brand?</h2>
@@ -410,7 +478,7 @@ footer{padding:40px 20px 20px}
 <div class="contact-card">
 <div class="contact-icon">📧</div>
 <h3>Email Us</h3>
-<a href="mailto:hello@praisegraphics.ng">hello@praisegraphics.ng</a>
+<a href="/cdn-cgi/l/email-protection#1078757c7c7f5060627179637577627160787973633e7e77"><span class="__cf_email__" data-cfemail="5b333e3737341b2b293a32283e3c293a2b3332382875353c">[email&#160;protected]</span></a>
 </div>
 <div class="contact-card">
 <div class="contact-icon">📱</div>
@@ -453,7 +521,7 @@ footer{padding:40px 20px 20px}
 <div class="footer-col">
 <h4>Contact Info</h4>
 <ul>
-<li><a href="mailto:hello@praisegraphics.ng">hello@praisegraphics.ng</a></li>
+<li><a href="/cdn-cgi/l/email-protection#563e333a3a39162624373f2533312437263e3f3525783831"><span class="__cf_email__" data-cfemail="a3cbc6cfcfcce3d3d1c2cad0c6c4d1c2d3cbcac0d08dcdc4">[email&#160;protected]</span></a></li>
 <li><a href="tel:+2348012345678">+234 801 234 5678</a></li>
 <li><a href="https://wa.me/2348012345678">WhatsApp Us</a></li>
 <li>Lagos, Nigeria</li>
@@ -472,7 +540,7 @@ footer{padding:40px 20px 20px}
 </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function toggleMenu(){
 const menu=document.getElementById('mobileMenu');
 menu.classList.toggle('active');
@@ -500,9 +568,119 @@ entry.target.classList.add('visible');
 },index*100);
 }
 });
-},{threshold:0.1});
-document.querySelectorAll('.service-card,.portfolio-item,.testimonial-card,.contact-card,.stat-item').forEach(el=>{
+},{threshold:0,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.service-card,.testimonial-card,.contact-card,.stat-item').forEach(el=>{
 observer.observe(el);
+});
+
+// Portfolio Carousel
+let currentSlide=0;
+let autoSlideTimer=null;
+
+function getVisibleCards(){
+return window.innerWidth<=768?1:window.innerWidth<=1200?2:4;
+}
+
+function getMaxSlide(){
+return Math.max(0,6-getVisibleCards());
+}
+
+function moveCarousel(direction){
+const max=getMaxSlide();
+currentSlide+=direction;
+if(currentSlide<0)currentSlide=max;
+if(currentSlide>max)currentSlide=0;
+updateCarousel();
+resetAutoSlide();
+}
+
+function updateCarousel(){
+const track=document.getElementById('portfolioTrack');
+if(!track||!track.children[0])return;
+const cardWidth=track.children[0].offsetWidth;
+const gap=24;
+const offset=-(currentSlide*(cardWidth+gap));
+track.style.transform=`translateX(${offset}px)`;
+updateDots();
+}
+
+function updateDots(){
+const dotsContainer=document.getElementById('carouselDots');
+if(!dotsContainer)return;
+const max=getMaxSlide();
+dotsContainer.innerHTML='';
+for(let i=0;i<=max;i++){
+const dot=document.createElement('div');
+dot.className='carousel-dot'+(i===currentSlide?' active':'');
+dot.onclick=()=>{currentSlide=i;updateCarousel();resetAutoSlide();};
+dotsContainer.appendChild(dot);
+}
+}
+
+function resetAutoSlide(){
+if(autoSlideTimer)clearInterval(autoSlideTimer);
+autoSlideTimer=setInterval(()=>moveCarousel(1),5000);
+}
+
+window.addEventListener('resize',()=>{
+if(currentSlide>getMaxSlide())currentSlide=getMaxSlide();
+updateCarousel();
+});
+
+setTimeout(()=>{
+updateCarousel();
+resetAutoSlide();
+// Fallback: force all cards visible
+document.querySelectorAll('.service-card,.portfolio-item,.contact-card,.stat-item,.testimonial-card').forEach(el=>el.classList.add('visible'));
+},800);
+
+// Lightbox functionality
+let currentImageIndex=0;
+const portfolioData=[
+{img:'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800',category:'Brand Identity',title:'TechStart Lagos',desc:'Complete brand identity for innovative tech startup including logo, colors, and brand guidelines.'},
+{img:'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800',category:'Social Media',title:'Fashion Forward NG',desc:'30-day social media campaign that increased engagement by 250% and drove sales.'},
+{img:'https://images.unsplash.com/photo-1542744094-3a31f272c490?w=800',category:'Marketing',title:'FoodHub Abuja',desc:'Print and digital marketing materials for restaurant chain expansion across 5 cities.'},
+{img:'https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800',category:'Digital Branding',title:'EduLearn Platform',desc:'Complete digital branding package including website graphics and course materials.'},
+{img:'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800',category:'Logo Design',title:'GreenLife Organics',desc:'Modern, eco-friendly logo design for organic food delivery service.'},
+{img:'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800',category:'Event Graphics',title:'Lagos Business Summit',desc:'Complete event branding including banners, badges, and promotional materials.'}
+];
+
+function openLightbox(index){
+currentImageIndex=index;
+document.getElementById('lightbox').classList.add('active');
+updateLightboxContent();
+document.body.style.overflow='hidden';
+}
+
+function closeLightbox(){
+document.getElementById('lightbox').classList.remove('active');
+document.body.style.overflow='';
+}
+
+function changeImage(direction){
+currentImageIndex+=direction;
+if(currentImageIndex<0)currentImageIndex=portfolioData.length-1;
+if(currentImageIndex>=portfolioData.length)currentImageIndex=0;
+updateLightboxContent();
+}
+
+function updateLightboxContent(){
+const data=portfolioData[currentImageIndex];
+document.getElementById('lightboxImg').src=data.img;
+document.getElementById('lightboxCategory').textContent=data.category;
+document.getElementById('lightboxTitle').textContent=data.title;
+document.getElementById('lightboxDesc').textContent=data.desc;
+}
+
+document.getElementById('lightbox').addEventListener('click',(e)=>{
+if(e.target.id==='lightbox')closeLightbox();
+});
+
+document.addEventListener('keydown',(e)=>{
+if(!document.getElementById('lightbox').classList.contains('active'))return;
+if(e.key==='Escape')closeLightbox();
+if(e.key==='ArrowLeft')changeImage(-1);
+if(e.key==='ArrowRight')changeImage(1);
 });
 const counterObserver=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
@@ -510,25 +688,17 @@ if(entry.isIntersecting){
 const counters=document.querySelectorAll('.stat-number');
 counters.forEach(counter=>{
 const target=+counter.getAttribute('data-target');
-const increment=target/100;
+const increment=Math.ceil(target/60);
 let count=0;
-const updateCount=()=>{
-if(count<target){
-count+=increment;
-counter.textContent=Math.ceil(count);
-setTimeout(updateCount,20);
-}else{
-counter.textContent=target;
-}
-};
-updateCount();
+const updateCount=()=>{count+=increment;if(count>=target){counter.textContent=target;}else{counter.textContent=count;requestAnimationFrame(updateCount);}};
+requestAnimationFrame(updateCount);
 });
-counterObserver.unobserve(entry.target);
+counterObserver.disconnect();
 }
 });
 },{threshold:0.5});
-const statsSection=document.querySelector('.stats');
-if(statsSection)counterObserver.observe(statsSection);
+const statsEl=document.querySelector('.stats');
+if(statsEl)counterObserver.observe(statsEl);
 </script>
 </body>
 </html>

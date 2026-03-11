@@ -20,25 +20,26 @@ nav{position:fixed;top:0;width:100%;background:rgba(2,0,50,0.95);backdrop-filter
 .nav-menu a::before{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:#FFBF00;transition:width 0.3s}
 .nav-menu a:hover,.nav-menu a.active{color:#FFBF00}
 .nav-menu a:hover::before,.nav-menu a.active::before{width:100%}
-.cta-nav{background:linear-gradient(135deg,#FFBF00,#ffd700);color:#020032!important;padding:10px 24px;border-radius:6px;font-weight:600;box-shadow:0 4px 15px rgba(255,191,0,0.3);transition:all 0.3s}
+.cta-nav{background:#FFBF00;color:#020032!important;padding:10px 24px;border-radius:6px;font-weight:600;box-shadow:0 4px 15px rgba(255,191,0,0.3);transition:all 0.3s}
 .cta-nav:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,191,0,0.5)}
 .cta-nav::before{display:none}
 .menu-toggle{display:none;background:none;border:none;font-size:28px;cursor:pointer;color:#FFBF00;z-index:1002;position:relative}
 .hero{padding:140px 30px 80px;text-align:center;position:relative;background:linear-gradient(rgba(2,0,50,0.45),rgba(2,0,50,0.5)),url('https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=1600') center/cover;min-height:50vh;background-attachment:fixed}
 .hero h1,.hero p{text-shadow:3px 3px 6px rgba(0,0,0,0.8)}
 .hero h1{font-size:clamp(36px,5vw,52px);font-weight:800;color:#fff;margin-bottom:20px;animation:fadeInUp 0.8s ease}
-.hero h1 span{color:#FFBF00;text-shadow:3px 3px 6px rgba(0,0,0,0.8)}
+.hero h1 span{color:#FFBF00;text-shadow:0 0 40px rgba(255,191,0,0.8);display:inline-block;animation:pulse 2s ease-in-out infinite}
 .hero p{font-size:18px;color:#e8eaf6;max-width:700px;margin:0 auto;animation:fadeInUp 0.8s ease 0.2s backwards}
 @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 .services{padding:80px 30px;max-width:1200px;margin:0 auto}
 .section-header{text-align:center;margin-bottom:60px}
 .section-title{font-size:clamp(32px,4vw,44px);font-weight:800;color:#fff;margin-bottom:16px}
 .section-desc{color:#e8eaf6;font-size:17px;max-width:600px;margin:0 auto}
 .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
-.service-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,191,0,0.15);border-radius:12px;padding:40px;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden;opacity:0;transform:translateY(30px)}
+.service-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,191,0,0.15);border-radius:12px;padding:40px;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden;opacity:1;transform:translateY(0)}
 .service-card:nth-child(n+4){display:none}
 .service-card.show-all:nth-child(n+4){display:block}
-.service-card.visible{animation:fadeInUp 0.6s ease forwards}
+.service-card.visible{opacity:1;transform:translateY(0)}
 .service-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;opacity:0.18;z-index:0;background-size:cover;background-position:center}
 .service-card:nth-child(1)::before{background-image:url('https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600')}
 .service-card:nth-child(2)::before{background-image:url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600')}
@@ -70,6 +71,32 @@ nav{position:fixed;top:0;width:100%;background:rgba(2,0,50,0.95);backdrop-filter
 .btn::before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;border-radius:50%;background:rgba(255,255,255,0.3);transform:translate(-50%,-50%);transition:width 0.6s,height 0.6s}
 .btn:hover::before{width:300px;height:300px}
 .btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,191,0,0.6);background:#fff;color:#020032}
+
+.our-work{padding:80px 30px;background:rgba(255,191,0,0.02);overflow:hidden}
+.our-work-inner{max-width:1400px;margin:0 auto}
+.work-carousel-wrapper{position:relative;margin-top:50px;padding:0 70px}
+.work-carousel{overflow:hidden;border-radius:12px}
+.work-track{display:flex;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);gap:24px}
+.work-item{background:rgba(255,255,255,0.03);border:1px solid rgba(255,191,0,0.1);border-radius:12px;overflow:hidden;transition:all 0.4s;cursor:pointer;min-width:calc(25% - 18px);flex-shrink:0}
+.work-item:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 15px 50px rgba(255,191,0,0.4);border-color:#FFBF00}
+.work-img{width:100%;height:240px;overflow:hidden}
+.work-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+.work-item:hover .work-img img{transform:scale(1.08)}
+.work-content{padding:22px}
+.work-cat{color:#FFBF00;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px}
+.work-content h3{font-size:18px;font-weight:700;color:#fff;margin-bottom:6px}
+.work-content p{color:#b8c5d6;font-size:14px;line-height:1.6}
+.work-nav{position:absolute;top:50%;transform:translateY(-50%);width:56px;height:56px;background:rgba(2,0,50,0.95);border:2px solid #FFBF00;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;transition:all 0.3s;color:#FFBF00;font-size:22px;font-weight:bold;box-shadow:0 4px 20px rgba(255,191,0,0.3);user-select:none}
+.work-nav:hover{background:#FFBF00;color:#020032;transform:translateY(-50%) scale(1.1)}
+.work-prev{left:0}
+.work-next{right:0}
+.work-dots{display:flex;justify-content:center;gap:12px;margin-top:28px}
+.work-dot{width:12px;height:12px;border-radius:50%;background:rgba(255,191,0,0.3);cursor:pointer;transition:all 0.3s}
+.work-dot.active{background:#FFBF00;width:30px;border-radius:6px}
+@media(max-width:1024px){.work-item{min-width:calc(33.333% - 16px)}}
+@media(max-width:768px){.work-carousel-wrapper{padding:0 50px}.work-item{min-width:calc(50% - 12px)}.our-work{padding:60px 20px}}
+@media(max-width:480px){.work-item{min-width:100%}}
+
 footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid rgba(255,191,0,0.1)}
 .footer-content{max-width:1200px;margin:0 auto}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
@@ -127,7 +154,7 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 </section>
 <section class="services">
 <div class="section-header">
-<h2 class="section-title">Our Services</h2>
+<h2 class="section-title">Our <span style="color:#FFBF00;text-shadow:0 0 40px rgba(255,191,0,0.8);display:inline-block;animation:pulse 2s ease-in-out infinite">Services</span></h2>
 <p class="section-desc">Comprehensive design solutions for your business needs</p>
 </div>
 <div class="services-grid">
@@ -214,6 +241,53 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 <button id="viewMoreBtn" onclick="showAllServices()">View More Services →</button>
 </div>
 </section>
+<!-- Our Work Section -->
+<section class="our-work">
+<div class="our-work-inner">
+<div style="text-align:center;margin-bottom:50px">
+<div style="color:#FFBF00;font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">Our Work</div>
+<h2 style="font-size:clamp(32px,4vw,44px);font-weight:800;color:#fff;margin-bottom:16px">Our <span style="color:#FFBF00;text-shadow:0 0 40px rgba(255,191,0,0.8);display:inline-block;animation:pulse 2s ease-in-out infinite">Projects</span></h2>
+<p style="color:#b8c5d6;font-size:17px;max-width:600px;margin:0 auto">Real results for real businesses across Nigeria</p>
+</div>
+<div class="work-carousel-wrapper">
+<div class="work-nav work-prev" onclick="moveWork(-1)">&#10094;</div>
+<div class="work-nav work-next" onclick="moveWork(1)">&#10095;</div>
+<div class="work-carousel">
+<div class="work-track" id="workTrack">
+<div class="work-item">
+<div class="work-img"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600" alt="Brand Identity"></div>
+<div class="work-content"><div class="work-cat">Brand Identity</div><h3>TechStart Lagos</h3><p>Complete brand identity for innovative tech startup including logo, colors, and brand guidelines.</p></div>
+</div>
+<div class="work-item">
+<div class="work-img"><img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600" alt="Social Media"></div>
+<div class="work-content"><div class="work-cat">Social Media</div><h3>Fashion Forward NG</h3><p>30-day social media campaign that increased engagement by 250% and drove sales.</p></div>
+</div>
+<div class="work-item">
+<div class="work-img"><img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=600" alt="Marketing"></div>
+<div class="work-content"><div class="work-cat">Marketing</div><h3>FoodHub Abuja</h3><p>Print and digital materials for restaurant chain expansion across 5 cities.</p></div>
+</div>
+<div class="work-item">
+<div class="work-img"><img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=600" alt="Digital Branding"></div>
+<div class="work-content"><div class="work-cat">Digital Branding</div><h3>EduLearn Platform</h3><p>Complete digital branding package including website graphics and course materials.</p></div>
+</div>
+<div class="work-item">
+<div class="work-img"><img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600" alt="Logo Design"></div>
+<div class="work-content"><div class="work-cat">Logo Design</div><h3>GreenLife Organics</h3><p>Modern eco-friendly logo design for organic food delivery service.</p></div>
+</div>
+<div class="work-item">
+<div class="work-img"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600" alt="Event Graphics"></div>
+<div class="work-content"><div class="work-cat">Event Graphics</div><h3>Lagos Business Summit</h3><p>Complete event branding including banners, badges, and promotional materials.</p></div>
+</div>
+</div>
+</div>
+</div>
+<div class="work-dots" id="workDots"></div>
+<div style="text-align:center;margin-top:40px">
+<a href="portfolio.html" style="background:#FFBF00;color:#020032;padding:14px 36px;border-radius:8px;text-decoration:none;font-weight:700;font-size:16px;display:inline-block;box-shadow:0 4px 14px rgba(255,191,0,0.4);transition:all 0.3s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(255,191,0,0.6)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 14px rgba(255,191,0,0.4)'">View Full Portfolio →</a>
+</div>
+</div>
+</section>
+
 <section class="cta-section">
 <h2>Ready to Get Started?</h2>
 <p>Let's discuss your project and create something amazing together!</p>
@@ -241,7 +315,7 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 <div class="footer-col">
 <h4>Contact Info</h4>
 <ul>
-<li><a href="mailto:hello@praisegraphics.ng">hello@praisegraphics.ng</a></li>
+<li><a href="/cdn-cgi/l/email-protection#4b232e2727240b3b392a22382e2c392a3b2322283865252c"><span class="__cf_email__" data-cfemail="3159545d5d5e7141435058425456435041595852421f5f56">[email&#160;protected]</span></a></li>
 <li><a href="tel:+2348012345678">+234 801 234 5678</a></li>
 <li><a href="https://wa.me/2348012345678">WhatsApp Us</a></li>
 <li>Lagos, Nigeria</li>
@@ -259,11 +333,25 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 </div>
 </div>
 </footer>
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function toggleMenu(){const m=document.getElementById('mobileMenu');m.classList.toggle('active');document.body.style.overflow=m.classList.contains('active')?'hidden':'';}
 function showAllServices(){const cards=document.querySelectorAll('.service-card');cards.forEach(c=>c.classList.add('show-all'));document.getElementById('viewMoreBtn').classList.add('hidden');setTimeout(()=>{cards.forEach((c,i)=>{if(i>=3){c.classList.add('visible')}})},100);}
-const observer=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*100)}})},{threshold:0.1});
+const observer=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*100)}})},{threshold:0,rootMargin:'0px 0px -50px 0px'});
 document.querySelectorAll('.service-card').forEach(el=>observer.observe(el));
+// Work Carousel
+let workSlide=0;
+const workTotal=6;
+function getWorkVis(){var w=window.innerWidth;if(w<=480)return 1;if(w<=768)return 2;if(w<=1024)return 3;return 4;}
+let workMaxSlide=workTotal-getWorkVis();
+function moveWork(dir){workSlide+=dir;if(workSlide<0)workSlide=workMaxSlide;if(workSlide>workMaxSlide)workSlide=0;renderWork();resetWorkTimer();}
+function renderWork(){var track=document.getElementById('workTrack');if(!track||!track.children[0])return;var cw=track.children[0].offsetWidth;track.style.transform='translateX('+(-(workSlide*(cw+24)))+'px)';var dots=document.getElementById('workDots');if(!dots)return;dots.innerHTML='';for(var i=0;i<=workMaxSlide;i++){var d=document.createElement('div');d.className='work-dot'+(i===workSlide?' active':'');(function(idx){d.onclick=function(){workSlide=idx;renderWork();resetWorkTimer();};})(i);dots.appendChild(d);}}
+var workTimer=null;
+function resetWorkTimer(){if(workTimer)clearInterval(workTimer);workTimer=setInterval(function(){moveWork(1);},4000);}
+window.addEventListener('resize',function(){workMaxSlide=workTotal-getWorkVis();if(workSlide>workMaxSlide)workSlide=workMaxSlide;renderWork();});
+setTimeout(function(){renderWork();resetWorkTimer();},600);
+// Fallback: ensure all cards visible
+setTimeout(function(){document.querySelectorAll('.service-card,.about-card,.work-item,.portfolio-item,.contact-card,.stat-item,.testimonial-card').forEach(function(el){el.classList.add('visible');});},800);
+
 </script>
 </body>
 </html>
