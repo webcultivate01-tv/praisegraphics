@@ -39,26 +39,30 @@ nav{position:fixed;top:0;width:100%;background:rgba(2,0,50,0.95);backdrop-filter
 .portfolio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:30px;grid-auto-flow:dense}
 .portfolio-item{background:rgba(255,255,255,0.02);border:1px solid rgba(255,191,0,0.15);border-radius:16px;overflow:hidden;transition:all 0.4s;cursor:pointer;position:relative;opacity:0;transform:scale(0.9)}
 .portfolio-item.visible{animation:scaleIn 0.5s ease-out forwards}
-.portfolio-item::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(255,191,0,0.1),transparent);opacity:0;transition:opacity 0.4s;pointer-events:none;z-index:1}
-.portfolio-item:hover::before{opacity:1}
-.portfolio-item:hover{transform:translateY(-12px) scale(1.02);box-shadow:0 20px 60px rgba(255,191,0,0.3);border-color:#FFBF00}
-.portfolio-item.large{grid-column:span 1;grid-row:span 1}
+.portfolio-item:hover{transform:translateY(-16px);box-shadow:0 30px 80px rgba(255,191,0,0.45);border-color:#FFBF00}
 .portfolio-img{width:100%;height:280px;background:linear-gradient(135deg,#1a1a3e,#0a0a1e);overflow:hidden;position:relative}
-.portfolio-item.large .portfolio-img{height:280px}
 .portfolio-img::after{content:'🎨';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:80px;opacity:0.1}
 .portfolio-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;filter:brightness(0.9)}
-.portfolio-item:hover .portfolio-img img{transform:scale(1.2);filter:brightness(1)}
-.portfolio-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(to top,rgba(2,0,50,0.95),transparent);opacity:0;transition:opacity 0.4s;display:flex;align-items:flex-end;padding:24px;z-index:2}
+.portfolio-item:hover .portfolio-img img{transform:scale(1.15);filter:brightness(0.7)}
+.cat-badge{position:absolute;top:14px;left:14px;background:linear-gradient(135deg,#FFBF00,#ffd700);color:#020032;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;padding:6px 14px;border-radius:20px;z-index:3;box-shadow:0 4px 15px rgba(255,191,0,0.5)}
+.portfolio-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(to top,rgba(2,0,50,0.97) 40%,transparent);opacity:0;transition:opacity 0.4s;display:flex;align-items:flex-end;padding:24px;z-index:2}
 .portfolio-item:hover .portfolio-overlay{opacity:1}
-.overlay-content{transform:translateY(20px);transition:transform 0.4s}
-.portfolio-item:hover .overlay-content{transform:translateY(0)}
-.portfolio-content{padding:24px;position:relative;z-index:2}
-.portfolio-category{color:#FFBF00;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;display:inline-block;background:rgba(255,191,0,0.15);padding:4px 12px;border-radius:12px}
-.portfolio-item h3{font-size:22px;color:#fff;margin-bottom:10px;font-weight:700}
+.overlay-content{transform:translateY(25px);opacity:0;transition:transform 0.4s ease,opacity 0.4s ease}
+.portfolio-item:hover .overlay-content{transform:translateY(0);opacity:1}
+.overlay-content .portfolio-category{color:#FFBF00;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;display:block}
+.overlay-content h3{font-size:20px;color:#fff;font-weight:700;margin-bottom:6px}
+.overlay-content p{color:#b8c5d6;font-size:13px;line-height:1.5}
+.portfolio-content{padding:20px 24px;position:relative;z-index:2}
+.portfolio-category{color:#FFBF00;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;display:inline-block;background:rgba(255,191,0,0.15);padding:4px 12px;border-radius:12px}
+.portfolio-item h3{font-size:20px;color:#fff;margin-bottom:8px;font-weight:700}
 .portfolio-item p{color:#b8c5d6;font-size:14px;line-height:1.6}
-.portfolio-item.hidden{display:none}
-.see-more-container{text-align:center;padding:40px 0 20px}
-.see-more-btn{background:#FFBF00;color:#020032;padding:14px 40px;border:none;border-radius:30px;font-size:16px;font-weight:700;cursor:pointer;transition:all 0.3s;box-shadow:0 4px 15px rgba(255,191,0,0.3);animation:fadeInUp 0.6s ease-out 0.8s backwards}
+.pagination{display:flex;align-items:center;justify-content:center;gap:20px;padding:40px 0 20px}
+.page-btn{background:rgba(255,191,0,0.1);border:2px solid rgba(255,191,0,0.3);color:#FFBF00;width:50px;height:50px;border-radius:50%;font-size:22px;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;justify-content:center}
+.page-btn:hover:not(:disabled){background:#FFBF00;color:#020032;transform:scale(1.1);box-shadow:0 6px 20px rgba(255,191,0,0.4)}
+.page-btn:disabled{opacity:0.3;cursor:not-allowed}
+.page-info{color:#b8c5d6;font-size:15px;font-weight:600;min-width:80px;text-align:center}
+.see-more-wrap{text-align:center;padding:40px 0 20px}
+.see-more-btn{background:#FFBF00;color:#020032;padding:14px 40px;border:none;border-radius:30px;font-size:16px;font-weight:700;cursor:pointer;transition:all 0.3s;box-shadow:0 4px 15px rgba(255,191,0,0.3)}
 .see-more-btn:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(255,191,0,0.5)}
 .see-more-btn.hidden{display:none}
 .lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px}
@@ -67,6 +71,11 @@ nav{position:fixed;top:0;width:100%;background:rgba(2,0,50,0.95);backdrop-filter
 .lightbox-img{max-width:100%;max-height:90vh;object-fit:contain;border-radius:8px;box-shadow:0 0 50px rgba(255,191,0,0.3)}
 .lightbox-close{position:absolute;top:-40px;right:0;background:none;border:none;color:#fff;font-size:40px;cursor:pointer;transition:all 0.3s;z-index:10000}
 .lightbox-close:hover{color:#FFBF00;transform:rotate(90deg)}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,191,0,0.15);border:2px solid rgba(255,191,0,0.4);color:#FFBF00;font-size:28px;width:55px;height:55px;border-radius:50%;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px)}
+.lightbox-nav:hover{background:#FFBF00;color:#020032;transform:translateY(-50%) scale(1.1)}
+.lightbox-prev{left:-70px}
+.lightbox-next{right:-70px}
+.lightbox-counter{position:absolute;bottom:-35px;left:50%;transform:translateX(-50%);color:#b8c5d6;font-size:14px;font-weight:600}
 footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid rgba(255,191,0,0.1)}
 .footer-content{max-width:1200px;margin:0 auto}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
@@ -85,7 +94,7 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 .mobile-menu.active{right:0}
 .mobile-menu a{font-size:24px;font-weight:600;color:#e8eaf6;text-decoration:none}
 .close-menu{position:absolute;top:24px;right:30px;font-size:32px;background:none;border:none;cursor:pointer;color:#e8eaf6}
-@media(max-width:768px){.nav-menu{display:none}.menu-toggle{display:block}.logo-img{width:40px;height:40px}.logo-name{font-size:18px}.logo-tagline{font-size:9px}.hero{padding:120px 20px 80px;min-height:400px}.hero h1{font-size:36px}.hero p{font-size:17px}.filter-tabs{gap:10px}.filter-btn{padding:8px 16px;font-size:13px}.portfolio{padding:40px 20px 60px}.portfolio-grid{grid-template-columns:1fr;gap:20px}.portfolio-item.large{grid-column:span 1;grid-row:span 1}.portfolio-img{height:240px}.see-more-container{padding:30px 0 10px}.see-more-btn{padding:12px 32px;font-size:15px}.footer-top{grid-template-columns:1fr;gap:30px;text-align:center}.footer-col ul{text-align:center}}
+@media(max-width:768px){.nav-menu{display:none}.menu-toggle{display:block}.logo-img{width:40px;height:40px}.logo-name{font-size:18px}.logo-tagline{font-size:9px}.hero{padding:120px 20px 80px;min-height:400px}.hero h1{font-size:36px}.hero p{font-size:17px}.filter-tabs{gap:10px}.filter-btn{padding:8px 16px;font-size:13px}.portfolio{padding:40px 20px 60px}.portfolio-grid{grid-template-columns:1fr;gap:20px}.portfolio-img{height:240px}.lightbox-prev{left:-45px}.lightbox-next{right:-45px}.lightbox-nav{width:40px;height:40px;font-size:20px}.footer-top{grid-template-columns:1fr;gap:30px;text-align:center}.footer-col ul{text-align:center}}
 </style>
 </head>
 <body>
@@ -121,97 +130,73 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 <h1>Our <span>Portfolio</span></h1>
 <p>Explore our latest projects and see how we've helped Nigerian businesses transform their brands.</p>
 <div class="filter-tabs">
-<button class="filter-btn active" onclick="filterPortfolio('all')">All Projects</button>
-<button class="filter-btn" onclick="filterPortfolio('brand')">Brand Identity</button>
-<button class="filter-btn" onclick="filterPortfolio('social')">Social Media</button>
-<button class="filter-btn" onclick="filterPortfolio('marketing')">Marketing</button>
-<button class="filter-btn" onclick="filterPortfolio('digital')">Digital</button>
+<button class="filter-btn active" onclick="filterPortfolio('all',this)">All Projects</button>
+<button class="filter-btn" onclick="filterPortfolio('brand',this)">Brand Identity</button>
+<button class="filter-btn" onclick="filterPortfolio('social',this)">Social Media</button>
+<button class="filter-btn" onclick="filterPortfolio('marketing',this)">Marketing</button>
+<button class="filter-btn" onclick="filterPortfolio('digital',this)">Digital</button>
 </div>
 </div>
 </section>
 <section class="portfolio">
-<div class="portfolio-grid">
-<div class="portfolio-item large" data-category="brand">
-<div class="portfolio-img"><img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&h=600&fit=crop" alt="Brand Identity">
-<div class="portfolio-overlay"><div class="overlay-content"><div class="portfolio-category">Brand Identity</div><h3>TechStart Lagos</h3></div></div></div>
-<div class="portfolio-content">
-<div class="portfolio-category">Brand Identity</div>
-<h3>TechStart Lagos</h3>
-<p>Complete brand identity for innovative tech startup including logo, colors, and brand guidelines.</p>
-</div>
+<div class="portfolio-grid" id="portfolioGrid">
+<div class="portfolio-item" data-category="brand">
+<div class="portfolio-img"><span class="cat-badge">Brand Identity</span><img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&h=600&fit=crop" alt="Brand Identity">
+<div class="portfolio-overlay"><div class="overlay-content"><span class="portfolio-category">Brand Identity</span><h3>TechStart Lagos</h3><p>Complete brand identity for innovative tech startup including logo, colors, and brand guidelines.</p></div></div></div>
+<div class="portfolio-content"><div class="portfolio-category">Brand Identity</div><h3>TechStart Lagos</h3><p>Complete brand identity for innovative tech startup including logo, colors, and brand guidelines.</p></div>
 </div>
 <div class="portfolio-item" data-category="social">
-<div class="portfolio-img"><img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop" alt="Social Media">
-<div class="portfolio-overlay"><div class="overlay-content"><div class="portfolio-category">Social Media</div><h3>Fashion Forward NG</h3></div></div></div>
-<div class="portfolio-content">
-<div class="portfolio-category">Social Media</div>
-<h3>Fashion Forward NG</h3>
-<p>30-day social media campaign that increased engagement by 250%.</p>
-</div>
+<div class="portfolio-img"><span class="cat-badge">Social Media</span><img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop" alt="Social Media">
+<div class="portfolio-overlay"><div class="overlay-content"><span class="portfolio-category">Social Media</span><h3>Fashion Forward NG</h3><p>30-day social media campaign that increased engagement by 250%.</p></div></div></div>
+<div class="portfolio-content"><div class="portfolio-category">Social Media</div><h3>Fashion Forward NG</h3><p>30-day social media campaign that increased engagement by 250%.</p></div>
 </div>
 <div class="portfolio-item" data-category="marketing">
-<div class="portfolio-img"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=400&fit=crop" alt="Marketing">
-<div class="portfolio-overlay"><div class="overlay-content"><div class="portfolio-category">Marketing</div><h3>FoodHub Abuja</h3></div></div></div>
-<div class="portfolio-content">
-<div class="portfolio-category">Marketing</div>
-<h3>FoodHub Abuja</h3>
-<p>Print and digital marketing materials for restaurant chain expansion.</p>
-</div>
+<div class="portfolio-img"><span class="cat-badge">Marketing</span><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=400&fit=crop" alt="Marketing">
+<div class="portfolio-overlay"><div class="overlay-content"><span class="portfolio-category">Marketing</span><h3>FoodHub Abuja</h3><p>Print and digital marketing materials for restaurant chain expansion.</p></div></div></div>
+<div class="portfolio-content"><div class="portfolio-category">Marketing</div><h3>FoodHub Abuja</h3><p>Print and digital marketing materials for restaurant chain expansion.</p></div>
 </div>
 <div class="portfolio-item" data-category="digital">
-<div class="portfolio-img"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop" alt="Digital Branding">
-<div class="portfolio-overlay"><div class="overlay-content"><div class="portfolio-category">Digital Branding</div><h3>EduLearn Platform</h3></div></div></div>
-<div class="portfolio-content">
-<div class="portfolio-category">Digital Branding</div>
-<h3>EduLearn Platform</h3>
-<p>Complete digital branding package including website graphics.</p>
-</div>
+<div class="portfolio-img"><span class="cat-badge">Digital Branding</span><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop" alt="Digital Branding">
+<div class="portfolio-overlay"><div class="overlay-content"><span class="portfolio-category">Digital Branding</span><h3>EduLearn Platform</h3><p>Complete digital branding package including website graphics.</p></div></div></div>
+<div class="portfolio-content"><div class="portfolio-category">Digital Branding</div><h3>EduLearn Platform</h3><p>Complete digital branding package including website graphics.</p></div>
 </div>
 <div class="portfolio-item" data-category="brand">
-<div class="portfolio-img"><img src="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=600&h=400&fit=crop" alt="Logo Design">
-<div class="portfolio-overlay"><div class="overlay-content"><div class="portfolio-category">Logo Design</div><h3>GreenLife Organics</h3></div></div></div>
-<div class="portfolio-content">
-<div class="portfolio-category">Logo Design</div>
-<h3>GreenLife Organics</h3>
-<p>Modern, eco-friendly logo design for organic food delivery service.</p>
-</div>
+<div class="portfolio-img"><span class="cat-badge">Logo Design</span><img src="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=600&h=400&fit=crop" alt="Logo Design">
+<div class="portfolio-overlay"><div class="overlay-content"><span class="portfolio-category">Logo Design</span><h3>GreenLife Organics</h3><p>Modern, eco-friendly logo design for organic food delivery service.</p></div></div></div>
+<div class="portfolio-content"><div class="portfolio-category">Logo Design</div><h3>GreenLife Organics</h3><p>Modern, eco-friendly logo design for organic food delivery service.</p></div>
 </div>
 <div class="portfolio-item" data-category="marketing">
-<div class="portfolio-img"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=400&fit=crop" alt="Event Graphics">
-<div class="portfolio-overlay"><div class="overlay-content"><div class="portfolio-category">Event Graphics</div><h3>Lagos Business Summit</h3></div></div></div>
-<div class="portfolio-content">
-<div class="portfolio-category">Event Graphics</div>
-<h3>Lagos Business Summit</h3>
-<p>Complete event branding including banners and promotional materials.</p>
-</div>
+<div class="portfolio-img"><span class="cat-badge">Event Graphics</span><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=400&fit=crop" alt="Event Graphics">
+<div class="portfolio-overlay"><div class="overlay-content"><span class="portfolio-category">Event Graphics</span><h3>Lagos Business Summit</h3><p>Complete event branding including banners and promotional materials.</p></div></div></div>
+<div class="portfolio-content"><div class="portfolio-category">Event Graphics</div><h3>Lagos Business Summit</h3><p>Complete event branding including banners and promotional materials.</p></div>
 </div>
 <div class="portfolio-item" data-category="social">
-<div class="portfolio-img"><img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=600&h=400&fit=crop" alt="Instagram Campaign">
-<div class="portfolio-overlay"><div class="overlay-content"><div class="portfolio-category">Social Media</div><h3>Beauty Glow NG</h3></div></div></div>
-<div class="portfolio-content">
-<div class="portfolio-category">Social Media</div>
-<h3>Beauty Glow NG</h3>
-<p>Instagram aesthetic redesign with cohesive feed and story templates.</p>
-</div>
+<div class="portfolio-img"><span class="cat-badge">Social Media</span><img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=600&h=400&fit=crop" alt="Instagram Campaign">
+<div class="portfolio-overlay"><div class="overlay-content"><span class="portfolio-category">Social Media</span><h3>Beauty Glow NG</h3><p>Instagram aesthetic redesign with cohesive feed and story templates.</p></div></div></div>
+<div class="portfolio-content"><div class="portfolio-category">Social Media</div><h3>Beauty Glow NG</h3><p>Instagram aesthetic redesign with cohesive feed and story templates.</p></div>
 </div>
 <div class="portfolio-item" data-category="digital">
-<div class="portfolio-img"><img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&h=400&fit=crop" alt="Web Graphics">
-<div class="portfolio-overlay"><div class="overlay-content"><div class="portfolio-category">Digital</div><h3>PropTech Nigeria</h3></div></div></div>
-<div class="portfolio-content">
-<div class="portfolio-category">Digital</div>
-<h3>PropTech Nigeria</h3>
-<p>Website graphics and UI elements for real estate platform.</p>
+<div class="portfolio-img"><span class="cat-badge">Digital</span><img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&h=400&fit=crop" alt="Web Graphics">
+<div class="portfolio-overlay"><div class="overlay-content"><span class="portfolio-category">Digital</span><h3>PropTech Nigeria</h3><p>Website graphics and UI elements for real estate platform.</p></div></div></div>
+<div class="portfolio-content"><div class="portfolio-category">Digital</div><h3>PropTech Nigeria</h3><p>Website graphics and UI elements for real estate platform.</p></div>
 </div>
 </div>
+<div class="pagination">
+<button class="page-btn" id="prevBtn" onclick="changePage(-1)" disabled>&#8592;</button>
+<span class="page-info" id="pageInfo">1 / 1</span>
+<button class="page-btn" id="nextBtn" onclick="changePage(1)">&#8594;</button>
 </div>
-<div class="see-more-container">
+<div class="see-more-wrap">
 <button class="see-more-btn" id="seeMoreBtn" onclick="showMore()">See More Projects</button>
 </div>
 </section>
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+<div class="lightbox" id="lightbox" onclick="handleLightboxClick(event)">
 <div class="lightbox-content">
 <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+<button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">&#8592;</button>
 <img src="" alt="Portfolio Image" class="lightbox-img" id="lightboxImg">
+<button class="lightbox-nav lightbox-next" onclick="changeImage(1)">&#8594;</button>
+<div class="lightbox-counter" id="lightboxCounter"></div>
 </div>
 </div>
 <footer>
@@ -256,12 +241,80 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 </footer>
 <script>
 function toggleMenu(){const m=document.getElementById('mobileMenu');m.classList.toggle('active');document.body.style.overflow=m.classList.contains('active')?'hidden':'';}
-let showAll=false;function initPortfolio(){const items=document.querySelectorAll('.portfolio-item');items.forEach((item,i)=>{if(i>=6)item.classList.add('hidden');setTimeout(()=>item.classList.add('visible'),i*100);item.querySelector('.portfolio-img').addEventListener('click',()=>openLightbox(item.querySelector('img').src))})}
-function openLightbox(src){document.getElementById('lightboxImg').src=src;document.getElementById('lightbox').classList.add('active');document.body.style.overflow='hidden'}
-function closeLightbox(){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow=''}
-function showMore(){showAll=true;const hidden=document.querySelectorAll('.portfolio-item.hidden');hidden.forEach((item,i)=>{setTimeout(()=>{item.classList.remove('hidden');item.classList.add('visible')},i*80)});document.getElementById('seeMoreBtn').classList.add('hidden')}
-function filterPortfolio(cat){const items=document.querySelectorAll('.portfolio-item');const btns=document.querySelectorAll('.filter-btn');const btn=document.getElementById('seeMoreBtn');btns.forEach(b=>b.classList.remove('active'));event.target.classList.add('active');let count=0;items.forEach((item,i)=>{if(cat==='all'||item.dataset.category===cat){item.style.display='block';setTimeout(()=>{item.style.opacity='1';item.classList.add('visible')},i*50);if(!showAll&&count>=6)item.classList.add('hidden');else item.classList.remove('hidden');count++}else{item.style.opacity='0';item.classList.remove('visible');setTimeout(()=>item.style.display='none',300)}});btn.classList.toggle('hidden',showAll||count<=6)}
-initPortfolio();
+
+var PER=3,pg=1,fil=[],allItems=[],exp=false,lbI=[],lbX=0;
+
+document.addEventListener('DOMContentLoaded',function(){
+  allItems=Array.from(document.querySelectorAll('.portfolio-item'));
+  fil=allItems.slice();
+  draw();
+  allItems.forEach(function(item){
+    item.querySelector('.portfolio-img').addEventListener('click',function(){
+      lbI=fil.filter(function(i){return i.style.display==='block';}).map(function(i){return i.querySelector('img').src;});
+      lbX=lbI.indexOf(item.querySelector('img').src);
+      if(lbX===-1)lbX=0;
+      openLb();
+    });
+  });
+});
+
+function draw(){
+  var tot=Math.ceil(fil.length/PER);
+  if(tot<1)tot=1;
+  if(pg<1)pg=1;
+  if(pg>tot)pg=tot;
+  var s=(pg-1)*PER;
+  var e=s+PER;
+  allItems.forEach(function(item){
+    item.style.display='none';
+    item.classList.remove('visible');
+  });
+  fil.forEach(function(item,i){
+    if(exp===true||(i>=s&&i<e)){
+      item.style.display='block';
+      setTimeout(function(){item.classList.add('visible');},i*80);
+    }
+  });
+  document.getElementById('pageInfo').textContent=exp?'':pg+' / '+tot;
+  document.getElementById('prevBtn').disabled=(exp===true||pg<=1);
+  document.getElementById('nextBtn').disabled=(exp===true||pg>=tot);
+  document.getElementById('seeMoreBtn').classList.toggle('hidden',(exp===true||fil.length<=PER));
+}
+
+function changePage(d){
+  pg=pg+d;
+  draw();
+  window.scrollTo({top:document.querySelector('.portfolio').offsetTop-100,behavior:'smooth'});
+}
+
+function showMore(){
+  exp=true;
+  draw();
+}
+
+function filterPortfolio(cat,btn){
+  Array.from(document.querySelectorAll('.filter-btn')).forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  if(cat==='all'){
+    fil=allItems.slice();
+  } else {
+    fil=allItems.filter(function(i){return i.dataset.category===cat;});
+  }
+  pg=1;
+  exp=false;
+  draw();
+}
+
+function openLb(){document.getElementById('lightboxImg').src=lbI[lbX];document.getElementById('lightbox').classList.add('active');document.getElementById('lightboxCounter').textContent=(lbX+1)+' / '+lbI.length;document.body.style.overflow='hidden';}
+function changeImage(d){lbX=(lbX+d+lbI.length)%lbI.length;document.getElementById('lightboxImg').src=lbI[lbX];document.getElementById('lightboxCounter').textContent=(lbX+1)+' / '+lbI.length;}
+function handleLightboxClick(e){if(e.target===document.getElementById('lightbox'))closeLightbox();}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow='';}
+document.addEventListener('keydown',function(e){
+  if(!document.getElementById('lightbox').classList.contains('active'))return;
+  if(e.key==='ArrowLeft')changeImage(-1);
+  if(e.key==='ArrowRight')changeImage(1);
+  if(e.key==='Escape')closeLightbox();
+});
 </script>
 </body>
 </html>

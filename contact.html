@@ -34,23 +34,30 @@ nav{position:fixed;top:0;width:100%;background:rgba(2,0,50,0.95);backdrop-filter
 .hero h1{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:clamp(40px,6vw,64px);font-weight:800;color:#fff;margin-bottom:24px;animation:fadeInUp 0.8s ease-out;text-shadow:0 4px 20px rgba(0,0,0,0.5);position:relative}
 .hero h1 span{color:#FFBF00;text-shadow:0 0 40px rgba(255,191,0,0.8);display:inline-block;animation:pulse 2s ease-in-out infinite;position:relative}
 .hero p{font-size:20px;color:#e8eaf6;max-width:650px;margin:0 auto;animation:fadeInUp 1s ease-out 0.2s backwards;text-shadow:0 2px 10px rgba(0,0,0,0.5);line-height:1.7;position:relative;padding:20px 0}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:fadeInUp 1s ease-out 0.4s backwards;position:relative;z-index:2}
+.hero-btn-primary{background:#FFBF00;color:#020032;padding:14px 32px;border-radius:30px;text-decoration:none;font-weight:700;font-size:16px;transition:all 0.3s;box-shadow:0 6px 25px rgba(255,191,0,0.5);display:inline-flex;align-items:center;gap:8px}
+.hero-btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 35px rgba(255,191,0,0.7)}
+.hero-btn-secondary{background:rgba(255,255,255,0.1);color:#fff;padding:14px 32px;border-radius:30px;text-decoration:none;font-weight:700;font-size:16px;transition:all 0.3s;border:2px solid rgba(255,255,255,0.4);backdrop-filter:blur(10px);display:inline-flex;align-items:center;gap:8px}
+.hero-btn-secondary:hover{background:rgba(255,255,255,0.2);transform:translateY(-3px);border-color:#fff}
 .contact{padding:80px 30px;max-width:1200px;margin:0 auto}
 .contact-wrapper{display:grid;grid-template-columns:1fr 1.5fr;gap:50px;align-items:start}
-.contact-grid{display:flex;flex-direction:column;gap:20px}
-.contact-card{background:linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));border:1px solid rgba(255,191,0,0.2);border-radius:16px;padding:28px 20px;text-align:center;transition:all 0.4s;position:relative;overflow:hidden;animation:fadeInUp 0.6s ease-out backwards}
+.contact-left{display:flex;flex-direction:column;gap:16px}
+.contact-img{width:100%;height:200px;border-radius:16px;overflow:hidden;margin-bottom:4px;border:1px solid rgba(255,191,0,0.2)}
+.contact-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.85)}
+.contact-grid{display:flex;flex-direction:column;gap:12px}
+.contact-card{background:linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));border:1px solid rgba(255,191,0,0.2);border-radius:12px;padding:14px 18px;display:flex;align-items:center;gap:14px;transition:all 0.4s;position:relative;overflow:hidden;animation:fadeInUp 0.6s ease-out backwards}
 .contact-card:nth-child(1){animation-delay:0.1s}
 .contact-card:nth-child(2){animation-delay:0.2s}
 .contact-card:nth-child(3){animation-delay:0.3s}
 .contact-card:nth-child(4){animation-delay:0.4s}
 .contact-card::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(255,191,0,0.1),transparent);opacity:0;transition:opacity 0.4s}
 .contact-card:hover::before{opacity:1}
-.contact-card:hover{background:linear-gradient(135deg,rgba(255,191,0,0.1),rgba(255,191,0,0.05));box-shadow:0 10px 40px rgba(255,191,0,0.4);border-color:#FFBF00;transform:translateY(-8px) scale(1.05)}
-.contact-icon{font-size:40px;margin-bottom:14px;filter:drop-shadow(0 0 10px rgba(255,191,0,0.3));transition:transform 0.4s}
+.contact-card:hover{box-shadow:0 8px 30px rgba(255,191,0,0.3);border-color:#FFBF00;transform:translateX(6px)}
+.contact-icon{font-size:28px;filter:drop-shadow(0 0 8px rgba(255,191,0,0.3));transition:transform 0.4s;flex-shrink:0}
 .contact-card:hover .contact-icon{transform:scale(1.2) rotate(5deg)}
-.contact-card h3{font-size:16px;color:#fff;margin-bottom:10px;font-weight:700}
-.contact-card a{color:#FFBF00;text-decoration:none;font-weight:600;font-size:14px;transition:color 0.3s}
-.contact-card a:hover{color:#fff}
-.contact-card p{color:#b8c5d6;font-size:14px}
+.contact-card-text h3{font-size:13px;color:#b8c5d6;margin-bottom:3px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+.contact-card-text a,.contact-card-text p{color:#fff;text-decoration:none;font-weight:700;font-size:14px;margin:0}
+.contact-card-text a:hover{color:#FFBF00}
 .contact-form{background:linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));border:1px solid rgba(255,191,0,0.2);border-radius:20px;padding:50px 45px;box-shadow:0 10px 50px rgba(0,0,0,0.3);position:relative;overflow:hidden;animation:fadeInUp 0.8s ease-out 0.5s backwards}
 .contact-form::before{content:'✉️';position:absolute;top:20px;right:20px;font-size:100px;opacity:0.05;pointer-events:none;animation:float 8s ease-in-out infinite}
 .contact-form::after{content:'💬';position:absolute;bottom:30px;left:30px;font-size:80px;opacity:0.04;pointer-events:none;animation:float 7s ease-in-out infinite reverse}
@@ -69,6 +76,19 @@ nav{position:fixed;top:0;width:100%;background:rgba(2,0,50,0.95);backdrop-filter
 .submit-btn::before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;border-radius:50%;background:rgba(255,255,255,0.3);transform:translate(-50%,-50%);transition:width 0.6s,height 0.6s}
 .submit-btn:hover::before{width:300px;height:300px}
 .submit-btn:hover{transform:translateY(-3px);box-shadow:0 10px 35px rgba(255,191,0,0.6)}
+.faqs{padding:60px 30px 80px;max-width:800px;margin:0 auto}
+.faqs h2{font-size:32px;font-weight:800;color:#fff;text-align:center;margin-bottom:10px}
+.faqs h2 span{color:#FFBF00}
+.faqs-sub{text-align:center;color:#b8c5d6;margin-bottom:40px;font-size:16px}
+.faq-item{background:linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));border:1px solid rgba(255,191,0,0.15);border-radius:12px;margin-bottom:14px;overflow:hidden;transition:all 0.3s}
+.faq-item.open{border-color:#FFBF00;box-shadow:0 6px 25px rgba(255,191,0,0.2)}
+.faq-q{width:100%;background:none;border:none;color:#fff;font-size:16px;font-weight:600;padding:20px 24px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:inherit}
+.faq-q:hover{color:#FFBF00}
+.faq-icon{color:#FFBF00;font-size:20px;font-weight:700;transition:transform 0.3s;flex-shrink:0}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s}
+.faq-item.open .faq-a{max-height:200px}
+.faq-a p{padding:0 24px 20px;color:#b8c5d6;font-size:15px;line-height:1.7}
 footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid rgba(255,191,0,0.1)}
 .footer-content{max-width:1200px;margin:0 auto}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
@@ -87,7 +107,7 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 .mobile-menu.active{right:0}
 .mobile-menu a{font-size:24px;font-weight:600;color:#e8eaf6;text-decoration:none}
 .close-menu{position:absolute;top:24px;right:30px;font-size:32px;background:none;border:none;cursor:pointer;color:#e8eaf6}
-@media(max-width:768px){.nav-menu{display:none}.menu-toggle{display:block}.logo-img{width:40px;height:40px}.logo-name{font-size:18px}.logo-tagline{font-size:9px}.hero{padding:120px 20px 80px;min-height:400px}.hero h1{font-size:36px}.hero p{font-size:17px}.contact{padding:60px 20px}.contact-wrapper{grid-template-columns:1fr;gap:30px}.contact-grid{flex-direction:column}.contact-card{max-width:100%;width:100%}.contact-form{padding:35px 25px}.footer-top{grid-template-columns:1fr;gap:30px;text-align:center}.footer-col ul{text-align:center}}
+@media(max-width:768px){.nav-menu{display:none}.menu-toggle{display:block}.logo-img{width:40px;height:40px}.logo-name{font-size:18px}.logo-tagline{font-size:9px}.hero{padding:120px 20px 80px;min-height:400px}.hero h1{font-size:36px}.hero p{font-size:17px}.hero-btns{flex-direction:column;align-items:center}.contact{padding:60px 20px}.contact-wrapper{grid-template-columns:1fr;gap:30px}.contact-card{max-width:100%;width:100%}.contact-form{padding:35px 25px}.footer-top{grid-template-columns:1fr;gap:30px;text-align:center}.footer-col ul{text-align:center}}
 </style>
 </head>
 <body>
@@ -122,30 +142,47 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 <div class="hero-content">
 <h1>Get In <span>Touch</span></h1>
 <p>Ready to elevate your brand? Let's discuss your project and create something amazing together!</p>
+<div class="hero-btns">
+<a href="https://wa.me/2348012345678" target="_blank" class="hero-btn-primary">💬 Chat on WhatsApp</a>
+<a href="mailto:hello@praisegraphics.ng" class="hero-btn-secondary">📧 Send an Email</a>
+</div>
 </div>
 </section>
 <section class="contact">
 <div class="contact-wrapper">
+<div class="contact-left">
+<div class="contact-img">
+<img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=300&fit=crop" alt="Contact">
+</div>
 <div class="contact-grid">
 <div class="contact-card">
 <div class="contact-icon">📧</div>
+<div class="contact-card-text">
 <h3>Email Us</h3>
 <a href="mailto:hello@praisegraphics.ng">hello@praisegraphics.ng</a>
 </div>
+</div>
 <div class="contact-card">
 <div class="contact-icon">📱</div>
+<div class="contact-card-text">
 <h3>Call Us</h3>
 <a href="tel:+2348012345678">+234 801 234 5678</a>
 </div>
+</div>
 <div class="contact-card">
 <div class="contact-icon">💬</div>
+<div class="contact-card-text">
 <h3>WhatsApp</h3>
 <a href="https://wa.me/2348012345678" target="_blank">Chat with us</a>
 </div>
+</div>
 <div class="contact-card">
 <div class="contact-icon">📍</div>
+<div class="contact-card-text">
 <h3>Visit Us</h3>
 <p>Lagos, Nigeria</p>
+</div>
+</div>
 </div>
 </div>
 <div class="contact-form">
@@ -172,7 +209,30 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 </div>
 </div>
 </section>
-<footer>
+<section class="faqs">
+<h2>Frequently Asked <span>Questions</span></h2>
+<p class="faqs-sub">Common sawaal jo clients poochte hain</p>
+<div class="faq-item">
+<button class="faq-q" onclick="toggleFaq(this)">How long does a project take? <span class="faq-icon">+</span></button>
+<div class="faq-a"><p>Project ki complexity pe depend karta hai. Logo design 3-5 days, brand identity 7-14 days, aur social media packages 5-7 days mein complete hote hain.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" onclick="toggleFaq(this)">What is your pricing? <span class="faq-icon">+</span></button>
+<div class="faq-a"><p>Pricing project ke scope pe depend karti hai. Logo design ₦15,000 se start hota hai. Exact quote ke liye humse contact karein.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" onclick="toggleFaq(this)">Do you offer revisions? <span class="faq-icon">+</span></button>
+<div class="faq-a"><p>Haan! Hum 3 free revisions offer karte hain har project pe. Aapki satisfaction hamari priority hai.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" onclick="toggleFaq(this)">What files will I receive? <span class="faq-icon">+</span></button>
+<div class="faq-a"><p>Aapko PNG, JPG, PDF, aur editable source files (AI/PSD) milenge. Social media ke liye optimized sizes bhi provide kiye jaate hain.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" onclick="toggleFaq(this)">How do I get started? <span class="faq-icon">+</span></button>
+<div class="faq-a"><p>Bahut simple! Upar form fill karein ya WhatsApp pe message karein. Hum 24 hours ke andar respond karte hain.</p></div>
+</div>
+</section>
 <div class="footer-content">
 <div class="footer-top">
 <div class="footer-col">
@@ -214,6 +274,7 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 </footer>
 <script>
 function toggleMenu(){const m=document.getElementById('mobileMenu');m.classList.toggle('active');document.body.style.overflow=m.classList.contains('active')?'hidden':'';}
+function toggleFaq(btn){const item=btn.parentElement;const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!isOpen)item.classList.add('open');}
 </script>
 </body>
 </html>
