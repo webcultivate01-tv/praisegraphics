@@ -45,37 +45,34 @@ nav{position:fixed;top:0;width:100%;background:rgba(2,0,50,0.95);backdrop-filter
 .portfolio-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;filter:brightness(0.9)}
 .portfolio-item:hover .portfolio-img img{transform:scale(1.15);filter:brightness(0.7)}
 .cat-badge{position:absolute;top:14px;left:14px;background:linear-gradient(135deg,#FFBF00,#ffd700);color:#020032;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;padding:6px 14px;border-radius:20px;z-index:3;box-shadow:0 4px 15px rgba(255,191,0,0.5)}
-.portfolio-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(to top,rgba(2,0,50,0.97) 40%,transparent);opacity:0;transition:opacity 0.4s;display:flex;align-items:flex-end;padding:24px;z-index:2}
-.portfolio-item:hover .portfolio-overlay{opacity:1}
-.overlay-content{transform:translateY(25px);opacity:0;transition:transform 0.4s ease,opacity 0.4s ease}
-.portfolio-item:hover .overlay-content{transform:translateY(0);opacity:1}
-.overlay-content .portfolio-category{color:#FFBF00;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;display:block}
-.overlay-content h3{font-size:20px;color:#fff;font-weight:700;margin-bottom:6px}
-.overlay-content p{color:#b8c5d6;font-size:13px;line-height:1.5}
+.portfolio-overlay{display:none}
 .portfolio-content{padding:20px 24px;position:relative;z-index:2}
 .portfolio-category{color:#FFBF00;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;display:inline-block;background:rgba(255,191,0,0.15);padding:4px 12px;border-radius:12px}
 .portfolio-item h3{font-size:20px;color:#fff;margin-bottom:8px;font-weight:700}
 .portfolio-item p{color:#b8c5d6;font-size:14px;line-height:1.6}
-.pagination{display:flex;align-items:center;justify-content:center;gap:20px;padding:40px 0 20px}
-.page-btn{background:rgba(255,191,0,0.1);border:2px solid rgba(255,191,0,0.3);color:#FFBF00;width:50px;height:50px;border-radius:50%;font-size:22px;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;justify-content:center}
-.page-btn:hover:not(:disabled){background:#FFBF00;color:#020032;transform:scale(1.1);box-shadow:0 6px 20px rgba(255,191,0,0.4)}
+.portfolio-wrapper{position:relative;padding:0 70px}
+.pagination{display:none}
+.page-btn{background:rgba(2,0,50,0.95);border:2px solid #FFBF00;color:#FFBF00;width:56px;height:56px;border-radius:50%;font-size:22px;font-weight:bold;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(255,191,0,0.3);user-select:none;position:absolute;top:50%;transform:translateY(-50%);z-index:10}
+.page-btn:hover:not(:disabled){background:#FFBF00;color:#020032;transform:translateY(-50%) scale(1.1)}
 .page-btn:disabled{opacity:0.3;cursor:not-allowed}
-.page-info{color:#b8c5d6;font-size:15px;font-weight:600;min-width:80px;text-align:center}
+.page-info{display:none}
+#prevBtn{left:0}
+#nextBtn{right:0}
 .see-more-wrap{text-align:center;padding:40px 0 20px}
 .see-more-btn{background:#FFBF00;color:#020032;padding:14px 40px;border:none;border-radius:30px;font-size:16px;font-weight:700;cursor:pointer;transition:all 0.3s;box-shadow:0 4px 15px rgba(255,191,0,0.3)}
 .see-more-btn:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(255,191,0,0.5)}
 .see-more-btn.hidden{display:none}
-.lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px}
+.lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(2,0,50,0.97);backdrop-filter:blur(10px);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px}
 .lightbox.active{display:flex}
-.lightbox-content{max-width:90%;max-height:90%;position:relative;animation:zoomIn 0.3s ease-out}@keyframes zoomIn{from{transform:scale(0.8);opacity:0}to{transform:scale(1);opacity:1}}
-.lightbox-img{max-width:100%;max-height:90vh;object-fit:contain;border-radius:8px;box-shadow:0 0 50px rgba(255,191,0,0.3)}
-.lightbox-close{position:absolute;top:-40px;right:0;background:none;border:none;color:#fff;font-size:40px;cursor:pointer;transition:all 0.3s;z-index:10000}
-.lightbox-close:hover{color:#FFBF00;transform:rotate(90deg)}
-.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,191,0,0.15);border:2px solid rgba(255,191,0,0.4);color:#FFBF00;font-size:28px;width:55px;height:55px;border-radius:50%;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px)}
-.lightbox-nav:hover{background:#FFBF00;color:#020032;transform:translateY(-50%) scale(1.1)}
-.lightbox-prev{left:-70px}
-.lightbox-next{right:-70px}
-.lightbox-counter{position:absolute;bottom:-35px;left:50%;transform:translateX(-50%);color:#b8c5d6;font-size:14px;font-weight:600}
+.lightbox-content{position:relative;max-width:85%;max-height:90%;animation:zoomIn 0.3s ease}@keyframes zoomIn{from{transform:scale(0.8);opacity:0}to{transform:scale(1);opacity:1}}
+.lightbox-img{max-width:100%;max-height:75vh;border-radius:12px;display:block;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+.lightbox-close{position:absolute;top:-55px;right:0;font-size:28px;color:#FFBF00;cursor:pointer;background:rgba(2,0,50,0.9);width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #FFBF00;transition:all 0.3s}
+.lightbox-close:hover{background:#FFBF00;color:#020032;transform:rotate(90deg)}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:22px;color:#FFBF00;cursor:pointer;background:rgba(2,0,50,0.9);width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #FFBF00;transition:all 0.3s;font-weight:bold;box-shadow:0 4px 20px rgba(255,191,0,0.3)}
+.lightbox-nav:hover{background:#FFBF00;color:#020032;transform:translateY(-50%) scale(1.15)}
+.lightbox-prev{left:-80px}
+.lightbox-next{right:-80px}
+.lightbox-counter{position:absolute;bottom:-40px;left:50%;transform:translateX(-50%);color:#b8c5d6;font-size:14px;font-weight:600;background:rgba(2,0,50,0.8);padding:6px 16px;border-radius:20px;border:1px solid rgba(255,191,0,0.2)}
 footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid rgba(255,191,0,0.1)}
 .footer-content{max-width:1200px;margin:0 auto}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
@@ -139,10 +136,12 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 </div>
 </section>
 <section class="portfolio">
+<div class="portfolio-wrapper">
+<button class="page-btn" id="prevBtn" onclick="changePage(-1)" disabled>&#10094;</button>
 <div class="portfolio-grid" id="portfolioGrid">
 <div class="portfolio-item" data-category="brand">
 <div class="portfolio-img"><span class="cat-badge">Brand Identity</span><img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&h=600&fit=crop" alt="Brand Identity">
-<div class="portfolio-overlay"><div class="overlay-content"><span class="portfolio-category">Brand Identity</span><h3>TechStart Lagos</h3><p>Complete brand identity for innovative tech startup including logo, colors, and brand guidelines.</p></div></div></div>
+<div class="portfolio-overlay"><div class="overlay-content"><span class="portfolio-category">Brand Identity</span><h3>TechStart Lagos</h3><p>Complete brand identity for innovative tech startup.</p></div></div></div>
 <div class="portfolio-content"><div class="portfolio-category">Brand Identity</div><h3>TechStart Lagos</h3><p>Complete brand identity for innovative tech startup including logo, colors, and brand guidelines.</p></div>
 </div>
 <div class="portfolio-item" data-category="social">
@@ -180,11 +179,49 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 <div class="portfolio-overlay"><div class="overlay-content"><span class="portfolio-category">Digital</span><h3>PropTech Nigeria</h3><p>Website graphics and UI elements for real estate platform.</p></div></div></div>
 <div class="portfolio-content"><div class="portfolio-category">Digital</div><h3>PropTech Nigeria</h3><p>Website graphics and UI elements for real estate platform.</p></div>
 </div>
+<div class="portfolio-item" data-category="brand">
+<div class="portfolio-img"><span class="cat-badge">Brand Identity</span><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=400&fit=crop" alt="Brand">
+<div class="portfolio-overlay"><div class="overlay-content"><span class="portfolio-category">Brand Identity</span><h3>Naija Foods Co.</h3><p>Bold brand identity for a fast-growing Nigerian food brand.</p></div></div></div>
+<div class="portfolio-content"><div class="portfolio-category">Brand Identity</div><h3>Naija Foods Co.</h3><p>Bold brand identity for a fast-growing Nigerian food brand.</p></div>
 </div>
-<div class="pagination">
-<button class="page-btn" id="prevBtn" onclick="changePage(-1)" disabled>&#8592;</button>
+<div class="portfolio-item" data-category="brand">
+<div class="portfolio-img"><span class="cat-badge">Brand Identity</span><img src="https://images.unsplash.com/photo-1634942537034-2531766767d1?w=600&h=400&fit=crop" alt="Brand">
+<div class="portfolio-overlay"><div class="overlay-content"><span class="portfolio-category">Brand Identity</span><h3>Abuja Luxury Spa</h3><p>Elegant brand identity for a premium spa and wellness center.</p></div></div></div>
+<div class="portfolio-content"><div class="portfolio-category">Brand Identity</div><h3>Abuja Luxury Spa</h3><p>Elegant brand identity for a premium spa and wellness center.</p></div>
+</div>
+<div class="portfolio-item" data-category="social">
+<div class="portfolio-img"><span class="cat-badge">Social Media</span><img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=600&h=400&fit=crop" alt="Social">
+<div class="portfolio-overlay"><div class="overlay-content"><span class="portfolio-category">Social Media</span><h3>Lagos Fitness Hub</h3><p>Monthly social media content pack with reels and post designs.</p></div></div></div>
+<div class="portfolio-content"><div class="portfolio-category">Social Media</div><h3>Lagos Fitness Hub</h3><p>Monthly social media content pack with reels and post designs.</p></div>
+</div>
+<div class="portfolio-item" data-category="social">
+<div class="portfolio-img"><span class="cat-badge">Social Media</span><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=400&fit=crop" alt="Social">
+<div class="portfolio-overlay"><div class="overlay-content"><span class="portfolio-category">Social Media</span><h3>Kano Spice Market</h3><p>Vibrant social media graphics for a traditional spice brand.</p></div></div></div>
+<div class="portfolio-content"><div class="portfolio-category">Social Media</div><h3>Kano Spice Market</h3><p>Vibrant social media graphics for a traditional spice brand.</p></div>
+</div>
+<div class="portfolio-item" data-category="marketing">
+<div class="portfolio-img"><span class="cat-badge">Marketing</span><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&h=400&fit=crop" alt="Marketing">
+<div class="portfolio-overlay"><div class="overlay-content"><span class="portfolio-category">Marketing</span><h3>Abuja Real Estate</h3><p>Full marketing campaign including flyers, banners and digital ads.</p></div></div></div>
+<div class="portfolio-content"><div class="portfolio-category">Marketing</div><h3>Abuja Real Estate</h3><p>Full marketing campaign including flyers, banners and digital ads.</p></div>
+</div>
+<div class="portfolio-item" data-category="marketing">
+<div class="portfolio-img"><span class="cat-badge">Marketing</span><img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop" alt="Marketing">
+<div class="portfolio-overlay"><div class="overlay-content"><span class="portfolio-category">Marketing</span><h3>Lagos Fashion Week</h3><p>Complete marketing collateral for annual fashion event.</p></div></div></div>
+<div class="portfolio-content"><div class="portfolio-category">Marketing</div><h3>Lagos Fashion Week</h3><p>Complete marketing collateral for annual fashion event.</p></div>
+</div>
+<div class="portfolio-item" data-category="digital">
+<div class="portfolio-img"><span class="cat-badge">Digital</span><img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&h=400&fit=crop" alt="Digital">
+<div class="portfolio-overlay"><div class="overlay-content"><span class="portfolio-category">Digital</span><h3>HealthCare NG</h3><p>Complete digital branding for a healthcare startup in Lagos.</p></div></div></div>
+<div class="portfolio-content"><div class="portfolio-category">Digital</div><h3>HealthCare NG</h3><p>Complete digital branding for a healthcare startup in Lagos.</p></div>
+</div>
+<div class="portfolio-item" data-category="digital">
+<div class="portfolio-img"><span class="cat-badge">Digital</span><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="Digital">
+<div class="portfolio-overlay"><div class="overlay-content"><span class="portfolio-category">Digital</span><h3>FinTech Naija</h3><p>UI graphics and digital assets for a fintech mobile app.</p></div></div></div>
+<div class="portfolio-content"><div class="portfolio-category">Digital</div><h3>FinTech Naija</h3><p>UI graphics and digital assets for a fintech mobile app.</p></div>
+</div>
+</div>
+<button class="page-btn" id="nextBtn" onclick="changePage(1)">&#10095;</button>
 <span class="page-info" id="pageInfo">1 / 1</span>
-<button class="page-btn" id="nextBtn" onclick="changePage(1)">&#8594;</button>
 </div>
 <div class="see-more-wrap">
 <button class="see-more-btn" id="seeMoreBtn" onclick="showMore()">See More Projects</button>
