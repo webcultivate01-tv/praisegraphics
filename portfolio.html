@@ -24,8 +24,8 @@ nav{position:fixed;top:0;width:100%;background:rgba(2,0,50,0.95);backdrop-filter
 .cta-nav{background:#FFBF00;color:#020032!important;padding:10px 24px;border-radius:6px;font-weight:600}
 .menu-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:#e8eaf6}
 .hero{padding:180px 30px 100px;text-align:center;position:relative;overflow:hidden;min-height:500px;display:flex;align-items:center;justify-content:center}
-.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1600&h=800&fit=crop') center/cover;opacity:0.20;z-index:0}
-.hero::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(2,0,50,0.75),rgba(255,191,0,0.08));z-index:1}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1600&h=800&fit=crop') center/cover;opacity:0.35;z-index:0}
+.hero::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(2,0,50,0.72),rgba(255,191,0,0.08));z-index:1}
 .hero-content{position:relative;z-index:2;max-width:900px}
 .hero-content::before{content:'';position:absolute;top:-50px;left:-50px;width:200px;height:200px;background:radial-gradient(circle,rgba(255,191,0,0.15),transparent 70%);border-radius:50%;animation:float 6s ease-in-out infinite;z-index:-1}
 .hero-content::after{content:'';position:absolute;bottom:-30px;right:-30px;width:150px;height:150px;background:radial-gradient(circle,rgba(255,191,0,0.1),transparent 70%);border-radius:50%;animation:float 8s ease-in-out infinite reverse;z-index:-1}
@@ -218,7 +218,10 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 <div class="footer-content">
 <div class="footer-top">
 <div class="footer-col">
-<div class="footer-logo">Praise Graphics</div>
+<div class="footer-logo-wrapper" style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+<img src="gallery/1714665825236.png" alt="Praise Graphics" style="width:40px;height:40px;border-radius:8px;object-fit:cover;border:2px solid #FFBF00">
+<div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:#FFBF00">Praise Graphics</div>
+</div>
 <p class="footer-desc">Professional graphic design studio helping Nigerian businesses create powerful brand identities and marketing materials that drive results.</p>
 </div>
 <div class="footer-col">

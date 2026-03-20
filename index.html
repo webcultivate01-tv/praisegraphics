@@ -8,697 +8,734 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;background:#020032;color:#e8eaf6;line-height:1.6;overflow-x:hidden}body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 20% 50%,rgba(255,191,0,0.08),transparent 50%),radial-gradient(circle at 80% 80%,rgba(255,191,0,0.05),transparent 50%);pointer-events:none;z-index:-1}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#020032;color:#e8eaf6;line-height:1.6;overflow-x:hidden}
+body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 20% 50%,rgba(255,191,0,0.06),transparent 50%),radial-gradient(circle at 80% 80%,rgba(255,191,0,0.04),transparent 50%);pointer-events:none;z-index:-1}
 
-/* Navigation */
-nav{position:fixed;top:0;width:100%;background:rgba(2,0,50,0.95);backdrop-filter:blur(10px);box-shadow:0 4px 30px rgba(0,0,0,0.4);border-bottom:1px solid rgba(255,191,0,0.2);z-index:1000;transition:all 0.3s}
-.nav-container{max-width:1200px;margin:0 auto;padding:15px 30px;display:flex;justify-content:space-between;align-items:center}
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.65s ease,transform 0.65s ease}.reveal.visible,.no-js .reveal{opacity:1;transform:none}
+.reveal.from-left{transform:translateX(-56px)}
+.reveal.from-right{transform:translateX(56px)}
+.reveal.visible{opacity:1;transform:none}
+.reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}.reveal-d3{transition-delay:.3s}
+.reveal-d4{transition-delay:.4s}.reveal-d5{transition-delay:.5s}.reveal-d6{transition-delay:.6s}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;width:100%;background:rgba(2,0,50,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,191,0,0.12);z-index:1000;transition:box-shadow 0.3s}
+nav.scrolled{box-shadow:0 4px 30px rgba(0,0,0,0.5)}
+.nav-container{max-width:1200px;margin:0 auto;padding:16px 30px;display:flex;justify-content:space-between;align-items:center}
 .logo-wrapper{display:flex;align-items:center;gap:12px;text-decoration:none}
-.logo-img{width:50px;height:50px;border-radius:8px;object-fit:cover;border:2px solid #FFBF00}
+.logo-img{width:48px;height:48px;border-radius:8px;object-fit:cover;border:2px solid #FFBF00}
 .logo-text{display:flex;flex-direction:column}
-.logo-name{font-size:22px;font-weight:800;color:#FFBF00;line-height:1;letter-spacing:-0.5px}
-.logo-tagline{font-size:11px;color:#b8c5d6;font-weight:500;margin-top:2px;letter-spacing:0.5px}
-.nav-menu{display:flex;gap:40px;list-style:none;align-items:center}
-.nav-menu a{text-decoration:none;color:#b8c5d6;font-weight:600;font-size:15px;transition:all 0.3s;position:relative}
-.nav-menu a::before{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:#FFBF00;transition:width 0.3s}
+.logo-name{font-family:'Syne',sans-serif;font-size:21px;font-weight:800;color:#FFBF00;line-height:1}
+.logo-tagline{font-size:10px;color:#8a96a8;letter-spacing:1px;margin-top:3px;text-transform:uppercase}
+.nav-menu{display:flex;gap:36px;list-style:none;align-items:center}
+.nav-menu a{text-decoration:none;color:#b8c5d6;font-weight:500;font-size:14px;transition:color 0.3s;position:relative}
+.nav-menu a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:#FFBF00;transition:width 0.3s}
 .nav-menu a:hover,.nav-menu a.active{color:#FFBF00}
-.nav-menu a:hover::before,.nav-menu a.active::before{width:100%}
-.cta-nav{background:#FFBF00;color:#020032!important;padding:10px 24px;border-radius:6px;font-weight:600;box-shadow:0 4px 15px rgba(255,191,0,0.3);transition:all 0.3s}
-.cta-nav:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,191,0,0.5)}
-.cta-nav::before{display:none}
-.menu-toggle{display:none;background:none;border:none;font-size:28px;cursor:pointer;color:#FFBF00;padding:8px;z-index:1001;position:relative}
+.nav-menu a:hover::after,.nav-menu a.active::after{width:100%}
+.cta-nav{background:#FFBF00!important;color:#020032!important;padding:10px 22px;border-radius:6px;font-weight:700!important}
+.cta-nav::after{display:none!important}
+.cta-nav:hover{opacity:0.88;transform:translateY(-1px)}
+.menu-toggle{display:none;background:none;border:none;font-size:26px;cursor:pointer;color:#FFBF00}
+.mobile-menu{position:fixed;top:0;right:-100%;width:100%;height:100vh;background:rgba(2,0,50,0.99);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;transition:right 0.35s cubic-bezier(.4,0,.2,1)}
+.mobile-menu.active{right:0}
+.mobile-menu a{font-family:'Syne',sans-serif;font-size:26px;font-weight:700;color:#e8eaf6;text-decoration:none;transition:color 0.3s}
+.mobile-menu a:hover{color:#FFBF00}
+.close-menu{position:absolute;top:24px;right:30px;font-size:32px;background:none;border:none;cursor:pointer;color:#e8eaf6}
 
-/* Hero Section */
-.hero{padding:180px 30px 100px;max-width:100%;margin:0;text-align:center;position:relative;background:linear-gradient(rgba(2,0,50,0.85),rgba(2,0,50,0.9)),url('gallery/1714665825236.png') center/cover;min-height:90vh;display:flex;align-items:center;justify-content:center}
-.hero::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(255,191,0,0.15),transparent);border-radius:50%;z-index:1;animation:pulse 4s ease-in-out infinite}@keyframes pulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:0.5}50%{transform:translate(-50%,-50%) scale(1.1);opacity:0.3}}
-.hero-content{position:relative;z-index:2;max-width:1200px;margin:0 auto}
-.hero-badge{display:inline-block;background:rgba(255,191,0,0.1);color:#FFBF00;padding:8px 20px;border-radius:30px;font-size:13px;font-weight:600;margin-bottom:24px;border:1px solid rgba(255,191,0,0.3);animation:fadeInDown 0.6s ease-out}@keyframes fadeInDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
-.hero h1{font-size:clamp(36px,5vw,58px);font-weight:800;line-height:1.1;margin-bottom:20px;color:#fff;letter-spacing:-1px;animation:fadeInUp 0.8s ease-out 0.2s backwards}@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-.hero h1 .highlight{color:#FFBF00}
-.hero p{font-size:clamp(16px,2vw,20px);color:#b8c5d6;max-width:680px;margin:0 auto 40px;line-height:1.7;animation:fadeInUp 0.8s ease-out 0.4s backwards}
-.hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:fadeInUp 0.8s ease-out 0.6s backwards}
-.btn-primary{background:#FFBF00;color:#020032;padding:16px 36px;border-radius:8px;text-decoration:none;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:8px;transition:all 0.3s;box-shadow:0 4px 14px rgba(255,191,0,0.4);position:relative;overflow:hidden}.btn-primary::before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;border-radius:50%;background:rgba(255,255,255,0.3);transform:translate(-50%,-50%);transition:width 0.6s,height 0.6s}.btn-primary:hover::before{width:300px;height:300px}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,191,0,0.6)}
-.btn-secondary{background:transparent;color:#e8eaf6;padding:16px 36px;border-radius:8px;text-decoration:none;font-weight:600;font-size:16px;border:2px solid rgba(255,191,0,0.3);transition:all 0.3s}
+/* ── HERO ── */
+.hero{position:relative;min-height:92vh;display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center}
+.hero-bg{position:absolute;inset:0;background:url('gallery/1714665825236.png') center/contain no-repeat;opacity:0.22}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(2,0,50,0.92) 0%,rgba(2,0,50,0.80) 60%,rgba(255,191,0,0.06) 100%)}
+.hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(255,191,0,0.12),transparent 65%);border-radius:50%;animation:glow 5s ease-in-out infinite}
+@keyframes glow{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.6}50%{transform:translate(-50%,-50%) scale(1.1);opacity:.3}}
+.hero-content{position:relative;z-index:2;max-width:860px;margin:0 auto;padding:160px 30px 100px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,191,0,0.1);border:1px solid rgba(255,191,0,0.3);color:#FFBF00;padding:8px 22px;border-radius:30px;font-size:12px;font-weight:700;margin-bottom:28px;letter-spacing:1.5px;text-transform:uppercase;animation:fadeDown 0.7s ease}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)}}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(38px,6vw,68px);font-weight:800;color:#fff;line-height:1.05;margin-bottom:22px;letter-spacing:-2px;animation:fadeUp 0.8s ease 0.15s backwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+.hero h1 .highlight{color:#FFBF00;text-shadow:0 0 60px rgba(255,191,0,0.5)}
+.hero p{font-size:18px;color:#b8c5d6;max-width:620px;margin:0 auto 42px;line-height:1.75;animation:fadeUp 0.8s ease 0.3s backwards}
+.hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:fadeUp 0.8s ease 0.45s backwards}
+.btn-primary{background:linear-gradient(135deg,#FFBF00,#FFD700);color:#020032;padding:16px 36px;border-radius:8px;text-decoration:none;font-family:'Syne',sans-serif;font-weight:800;font-size:15px;display:inline-flex;align-items:center;gap:8px;transition:all 0.35s;box-shadow:0 6px 25px rgba(255,191,0,0.35)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(255,191,0,0.55)}
+.btn-secondary{background:transparent;color:#e8eaf6;padding:16px 36px;border-radius:8px;text-decoration:none;font-family:'Syne',sans-serif;font-weight:600;font-size:15px;border:2px solid rgba(255,255,255,0.18);transition:all 0.35s}
 .btn-secondary:hover{border-color:#FFBF00;color:#FFBF00;background:rgba(255,191,0,0.05)}
 
-/* Stats Section */
-.stats{background:rgba(255,191,0,0.03);padding:60px 30px;margin:60px 0;border-top:1px solid rgba(255,191,0,0.1);border-bottom:1px solid rgba(255,191,0,0.1)}
-.stats-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;text-align:center}
-.stat-item{opacity:1;transform:translateY(0);transition:all 0.6s}.stat-item h3{font-size:42px;font-weight:800;color:#FFBF00;margin-bottom:8px}.stat-number{display:inline-block}
-.stat-item p{color:#b8c5d6;font-size:15px;font-weight:500}
+/* ── STATS ── */
+.stats{padding:70px 30px;background:rgba(255,191,0,0.02)}
+.stats-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:rgba(255,255,255,0.025);border:1px solid rgba(255,191,0,0.12);border-radius:20px;overflow:hidden}
+.stat-item{padding:36px 20px;text-align:center;border-right:1px solid rgba(255,191,0,0.1);position:relative;transition:background 0.35s}
+.stat-item:last-child{border-right:none}
+.stat-item:hover{background:rgba(255,191,0,0.05)}
+.stat-item::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#FFBF00,rgba(255,191,0,0.2));transform:scaleX(0);transform-origin:left;transition:transform 0.4s}
+.stat-item:hover::before{transform:scaleX(1)}
+.stat-num-wrap{font-family:'Syne',sans-serif;font-size:46px;font-weight:800;color:#FFBF00;line-height:1;margin-bottom:10px;display:flex;align-items:baseline;justify-content:center;gap:2px}
+.stat-suffix{font-size:26px;font-weight:700}
+.stat-item p{color:#8a96a8;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px}
 
-/* Services Section */
-.services{padding:80px 30px;max-width:1400px;margin:0 auto;background:linear-gradient(rgba(2,0,50,0.5),rgba(2,0,50,0.45)),url('https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=1600') center/cover;border-radius:20px}
+/* ── SECTION HEADER ── */
 .section-header{text-align:center;margin-bottom:60px}
-.section-tag{color:#FFBF00;font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;text-shadow:2px 2px 4px rgba(0,0,0,0.6)}
-.section-title{font-size:clamp(32px,4vw,44px);font-weight:800;color:#fff;margin-bottom:16px;letter-spacing:-0.5px;text-shadow:3px 3px 6px rgba(0,0,0,0.8)}
-.section-desc{color:#e8eaf6;font-size:17px;max-width:600px;margin:0 auto;text-shadow:2px 2px 4px rgba(0,0,0,0.6)}
-.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1300px;margin:0 auto}
-.service-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,191,0,0.2);border-radius:12px;padding:30px;transition:all 0.4s;cursor:pointer;opacity:1;transform:translateY(0);position:relative;backdrop-filter:blur(10px)}
-.service-card::before{display:none}
-.service-card:hover{border-color:#FFBF00;box-shadow:0 8px 30px rgba(255,191,0,0.3);transform:translateY(-8px) scale(1.02);background:rgba(255,191,0,0.1)}
-.service-icon{font-size:48px;margin-bottom:20px;display:inline-block;transition:transform 0.3s}.service-card:hover .service-icon{transform:scale(1.1) rotate(5deg)}
-.service-card h3{font-size:22px;font-weight:700;margin-bottom:12px;color:#fff}
-.service-card p{color:#b8c5d6;font-size:15px;line-height:1.7}
-.service-card .learn-more{color:#020032;background:#FFBF00;font-weight:600;font-size:14px;margin-top:20px;display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:6px;transition:all 0.3s;box-shadow:0 4px 12px rgba(255,191,0,0.3)}.service-card .learn-more:hover{transform:translateX(5px);box-shadow:0 6px 16px rgba(255,191,0,0.5)}
+.section-tag{font-family:'Syne',sans-serif;color:#FFBF00;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:3px;margin-bottom:14px;display:block}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(30px,4vw,46px);font-weight:800;color:#fff;margin-bottom:0;letter-spacing:-1px;line-height:1.1}
+.section-title span{color:#FFBF00}
+.section-line{width:50px;height:3px;background:linear-gradient(90deg,#FFBF00,rgba(255,191,0,0.3));border-radius:2px;margin:18px auto 0}
+.section-desc{color:#8a96a8;font-size:16px;max-width:560px;margin:16px auto 0;line-height:1.7}
 
-/* Portfolio Section */
-.portfolio{padding:80px 30px;background:rgba(255,191,0,0.02);overflow:hidden}
-.portfolio-inner{max-width:1400px;margin:0 auto;position:relative}
-.portfolio-carousel-wrapper{position:relative;margin-top:50px;padding:0 70px}
+/* ── WHAT WE DO (Services) ── */
+.services{padding:100px 30px;max-width:1300px;margin:0 auto}
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+/* Card: top = image (half), bottom = info */
+.service-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,191,0,0.1);border-radius:16px;overflow:hidden;transition:all 0.45s cubic-bezier(.4,0,.2,1);cursor:pointer;display:flex;flex-direction:column}
+.service-card:hover{border-color:rgba(255,191,0,0.3);transform:translateY(-8px);box-shadow:0 24px 60px rgba(0,0,0,0.4),0 0 0 1px rgba(255,191,0,0.08)}
+.service-card-img{height:180px;overflow:hidden;flex-shrink:0}
+.service-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;filter:brightness(0.75)}
+.service-card:hover .service-card-img img{transform:scale(1.08);filter:brightness(0.9)}
+.service-card-body{padding:24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.service-icon{font-size:32px;filter:drop-shadow(0 0 8px rgba(255,191,0,0.3));transition:transform 0.35s;display:inline-block}
+.service-card:hover .service-icon{transform:scale(1.15) rotate(-5deg)}
+.service-card h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:#fff;line-height:1.25}
+.service-card p{color:#8a96a8;font-size:14px;line-height:1.7;flex:1}
+.service-card .learn-more{display:inline-flex;align-items:center;gap:6px;color:#FFBF00;font-size:13px;font-weight:700;margin-top:4px;transition:gap 0.3s}
+.service-card:hover .learn-more{gap:10px}
+
+/* ── PORTFOLIO ── */
+.portfolio{padding:100px 30px;background:rgba(255,191,0,0.015);overflow:hidden}
+.portfolio-inner{max-width:1400px;margin:0 auto}
+/* Wrapper has overflow:visible so nav buttons sit outside */
+.portfolio-carousel-wrapper{position:relative;margin-top:50px}
 .portfolio-carousel{overflow:hidden;border-radius:12px}
-.portfolio-track{display:flex;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);gap:24px}
-.portfolio-item{background:rgba(255,255,255,0.03);border:1px solid rgba(255,191,0,0.1);border-radius:12px;overflow:hidden;transition:all 0.4s;cursor:pointer;min-width:calc(25% - 18px);flex-shrink:0}
-.portfolio-item:hover{transform:translateY(-10px) scale(1.03);box-shadow:0 15px 50px rgba(255,191,0,0.4);border-color:#FFBF00}
-.carousel-nav{position:absolute;top:50%;transform:translateY(-50%);width:56px;height:56px;background:rgba(2,0,50,0.95);border:2px solid #FFBF00;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;transition:all 0.3s;color:#FFBF00;font-size:22px;font-weight:bold;box-shadow:0 4px 20px rgba(255,191,0,0.3);user-select:none}
-.carousel-nav:hover{background:#FFBF00;color:#020032;transform:translateY(-50%) scale(1.1)}
-.carousel-prev{left:0}
-.carousel-next{right:0}
-.carousel-dots{display:flex;justify-content:center;gap:12px;margin-top:28px}
-.carousel-dot{width:12px;height:12px;border-radius:50%;background:rgba(255,191,0,0.3);cursor:pointer;transition:all 0.3s}
-.carousel-dot.active{background:#FFBF00;width:30px;border-radius:6px}
+.portfolio-track{display:flex;transition:transform 0.5s cubic-bezier(.4,0,.2,1);gap:24px;will-change:transform}
+.portfolio-item{background:rgba(255,255,255,0.03);border:1px solid rgba(255,191,0,0.08);border-radius:14px;overflow:hidden;transition:all 0.4s;cursor:pointer;flex-shrink:0;min-width:calc(25% - 18px)}
+.portfolio-item:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 20px 55px rgba(255,191,0,0.25);border-color:rgba(255,191,0,0.3)}
+.portfolio-img{width:100%;height:220px;overflow:hidden}
+.portfolio-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.45s}
+.portfolio-item:hover .portfolio-img img{transform:scale(1.07)}
+.portfolio-content{padding:20px}
+.portfolio-category{color:#FFBF00;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:7px}
+.portfolio-item h3{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:#fff;margin-bottom:6px}
+.portfolio-item p{color:#8a96a8;font-size:13px;line-height:1.6}
+/* Carousel Nav — OUTSIDE the content box */
+.carousel-nav{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;background:rgba(255,255,255,0.08);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:20;color:#fff;font-size:20px;font-weight:bold;transition:all 0.3s;user-select:none}
+.carousel-nav:hover{background:rgba(255,255,255,0.18);transform:translateY(-50%) scale(1.08)}
+.carousel-prev{left:-70px}
+.carousel-next{right:-70px}
+.carousel-dots{display:flex;justify-content:center;gap:10px;margin-top:28px}
+.carousel-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,191,0,0.25);cursor:pointer;transition:all 0.3s}
+.carousel-dot.active{background:#FFBF00;width:28px;border-radius:5px}
 
-/* Lightbox */
-.lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(2,0,50,0.97);backdrop-filter:blur(10px);z-index:9999;align-items:center;justify-content:center}
-.lightbox.active{display:flex}
-.lightbox-content{position:relative;max-width:90%;max-height:90%;animation:zoomIn 0.3s ease}
-@keyframes zoomIn{from{transform:scale(0.8);opacity:0}to{transform:scale(1);opacity:1}}
-.lightbox-img{max-width:100%;max-height:75vh;border-radius:12px;display:block;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
-.lightbox-close{position:absolute;top:-50px;right:0;font-size:36px;color:#FFBF00;cursor:pointer;background:rgba(2,0,50,0.9);width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #FFBF00;transition:all 0.3s}
+/* ── LIGHTBOX ── */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(2,0,50,0.96);backdrop-filter:blur(12px);z-index:9999;align-items:center;justify-content:center}
+.lightbox.active{display:flex!important}
+/* Nav buttons OUTSIDE the content card, positioned relative to viewport center */
+.lightbox-inner{position:relative;display:flex;align-items:center;gap:0}
+.lightbox-nav{width:52px;height:52px;background:rgba(255,255,255,0.08);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;font-size:22px;font-weight:bold;transition:all 0.3s;flex-shrink:0;user-select:none}
+.lightbox-nav:hover{background:rgba(255,255,255,0.18);transform:scale(1.08)}
+.lightbox-content{width:680px;max-width:88vw;background:rgba(10,10,46,0.95);border-radius:16px;padding:22px;border:1px solid rgba(255,191,0,0.2);animation:zoomIn 0.3s ease;margin:0 20px;position:relative}
+@keyframes zoomIn{from{transform:scale(0.85);opacity:0}to{transform:scale(1);opacity:1}}
+.lightbox-close{position:absolute;top:-48px;right:0;font-size:28px;color:#FFBF00;cursor:pointer;background:rgba(2,0,50,0.9);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,191,0,0.3);transition:all 0.3s}
 .lightbox-close:hover{background:#FFBF00;color:#020032;transform:rotate(90deg)}
-.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:30px;color:#FFBF00;cursor:pointer;background:rgba(2,0,50,0.9);width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #FFBF00;transition:all 0.3s;font-weight:bold}
-.lightbox-nav:hover{background:#FFBF00;color:#020032;transform:translateY(-50%) scale(1.15)}
-.lightbox-prev{left:20px}
-.lightbox-next{right:20px}
-.lightbox-info{text-align:center;margin-top:20px;background:rgba(2,0,50,0.8);padding:20px;border-radius:10px;border:1px solid rgba(255,191,0,0.2)}
-.lightbox-info .portfolio-category{color:#FFBF00;font-size:14px;font-weight:600;text-transform:uppercase;margin-bottom:8px}
-.lightbox-info h3{color:#fff;font-size:24px;margin-bottom:10px}
-.lightbox-info p{color:#b8c5d6;font-size:15px}
-.lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(2,0,50,0.95);z-index:9999;align-items:center;justify-content:center}
-.lightbox.active{display:flex}
-.lightbox-content{position:relative;max-width:90%;max-height:90%;background:rgba(255,255,255,0.05);border-radius:15px;padding:20px;border:2px solid rgba(255,191,0,0.3)}
-.lightbox-img{max-width:100%;max-height:70vh;border-radius:10px;display:block}
-.lightbox-close{position:absolute;top:20px;right:20px;font-size:40px;color:#FFBF00;cursor:pointer;background:rgba(2,0,50,0.8);width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #FFBF00;transition:all 0.3s}
-.lightbox-close:hover{background:#FFBF00;color:#020032;transform:rotate(90deg)}
-.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:40px;color:#FFBF00;cursor:pointer;background:rgba(2,0,50,0.8);width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #FFBF00;transition:all 0.3s}
-.lightbox-nav:hover{background:#FFBF00;color:#020032;transform:translateY(-50%) scale(1.1)}
-.lightbox-prev{left:20px}
-.lightbox-next{right:20px}
-.lightbox-info{text-align:center;margin-top:20px}
-.lightbox-info h3{color:#FFBF00;font-size:24px;margin-bottom:8px}
-.lightbox-info p{color:#e8eaf6;font-size:16px}
-.portfolio-img{width:100%;height:240px;overflow:hidden}
-.portfolio-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
-.portfolio-item:hover .portfolio-img img{transform:scale(1.08)}
-.portfolio-content{padding:22px}
-.portfolio-category{color:#FFBF00;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px}
-.portfolio-item h3{font-size:18px;font-weight:700;color:#fff;margin-bottom:6px}
-.portfolio-item p{color:#b8c5d6;font-size:14px;line-height:1.6}
+.lightbox-img-wrap{width:100%;height:380px;border-radius:10px;overflow:hidden;background:#0a0a2e}
+.lightbox-img{width:100%;height:100%;object-fit:cover;display:block;border-radius:10px}
+.lightbox-info{text-align:center;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,191,0,0.1)}
+.lightbox-info .lcat{color:#FFBF00;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.lightbox-info h3{font-family:'Syne',sans-serif;color:#fff;font-size:19px;font-weight:700;margin-bottom:6px}
+.lightbox-info p{color:#8a96a8;font-size:14px}
 
-/* Testimonials */
-.testimonials{padding:80px 30px;max-width:1200px;margin:0 auto;overflow:hidden}
-.testimonial-carousel{position:relative;min-height:350px;overflow:visible}
-.testimonial-wrapper{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.testimonial-slide{min-width:auto}
-.testimonial-card{background:rgba(255,255,255,0.05);border:2px solid rgba(255,191,0,0.3);border-radius:15px;padding:30px;height:100%;box-shadow:0 8px 30px rgba(255,191,0,0.2);transition:all 0.3s}
-.testimonial-card:hover{transform:translateY(-5px);border-color:#FFBF00;box-shadow:0 12px 40px rgba(255,191,0,0.4)}
-.quote-icon{font-size:2.5rem;color:#FFBF00;margin-bottom:10px;line-height:1}
-.testimonial-text{color:#e8eaf6;font-size:15px;line-height:1.7;margin-bottom:20px;font-style:italic;min-height:120px}
-.testimonial-author{display:flex;align-items:center;gap:12px}
-.author-avatar{width:45px;height:45px;border-radius:50%;background:#FFBF00;display:flex;align-items:center;justify-content:center;color:#020032;font-weight:700;font-size:18px;flex-shrink:0}
-.author-info h4{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px}
-.author-info p{font-size:13px;color:#b8c5d6}
-.carousel-btn{display:none}
+/* ── TESTIMONIALS ── */
+.testimonials{padding:100px 30px;overflow:hidden}
+.testi-inner{max-width:1200px;margin:0 auto}
+.testi-slider-wrap{position:relative;margin-top:56px;overflow:hidden}
+.testi-track{display:flex;gap:24px;transition:transform 0.55s cubic-bezier(.4,0,.2,1);will-change:transform}
+.testi-card{flex-shrink:0;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:32px 28px;position:relative;transition:border-color 0.4s,box-shadow 0.4s}
+.testi-card:hover{border-color:rgba(255,191,0,0.25);box-shadow:0 16px 44px rgba(0,0,0,0.35)}
+.testi-quote{font-size:52px;color:#FFBF00;line-height:.8;opacity:0.35;font-family:Georgia,serif;margin-bottom:14px}
+.testi-stars{color:#FFBF00;font-size:15px;margin-bottom:12px;letter-spacing:2px}
+.testi-text{color:#b8c5d6;font-size:15px;line-height:1.8;font-style:italic;margin-bottom:24px}
+.testi-author{display:flex;align-items:center;gap:14px;border-top:1px solid rgba(255,255,255,0.06);padding-top:20px}
+.testi-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#FFBF00,rgba(255,191,0,0.5));display:flex;align-items:center;justify-content:center;font-weight:800;color:#020032;font-size:15px;flex-shrink:0}
+.testi-info strong{display:block;color:#fff;font-size:14px;font-weight:700}
+.testi-info span{color:#8a96a8;font-size:12px}
+.testi-dots{display:flex;justify-content:center;gap:10px;margin-top:28px}
+.testi-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,191,0,0.25);cursor:pointer;transition:all 0.3s}
+.testi-dot.active{background:#FFBF00;width:28px;border-radius:5px}
 
-/* CTA Section */
-.cta-section{background:linear-gradient(rgba(2,0,50,0.35),rgba(2,0,50,0.3)),url('https://images.unsplash.com/photo-1626785774573-4b799315345d?w=1200') center/cover;padding:100px 30px;text-align:center;position:relative;overflow:hidden}
-.cta-section::before{display:none}
-.cta-section h2{font-size:clamp(32px,4vw,48px);font-weight:800;margin-bottom:20px;letter-spacing:-0.5px;position:relative;color:#fff;z-index:1;text-shadow:3px 3px 6px rgba(0,0,0,0.8)}
-.cta-section p{font-size:18px;margin-bottom:36px;max-width:600px;margin-left:auto;margin-right:auto;position:relative;color:#fff;z-index:1;text-shadow:2px 2px 4px rgba(0,0,0,0.8)}
-.btn-white{background:#FFBF00;color:#020032;padding:16px 40px;border-radius:8px;text-decoration:none;font-weight:700;font-size:16px;display:inline-block;transition:all 0.3s;box-shadow:0 4px 14px rgba(255,191,0,0.4);position:relative;border:2px solid #FFBF00;z-index:1}
-.btn-white:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,191,0,0.6);background:#fff;color:#020032;border-color:#fff}
+/* ── CTA BANNER ── */
+.cta-banner{padding:100px 30px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(160deg,rgba(255,191,0,0.06) 0%,rgba(2,0,50,0) 50%);border-top:1px solid rgba(255,191,0,0.08)}
+.cta-banner::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(255,191,0,0.07),transparent 70%);pointer-events:none}
+.cta-banner-inner{position:relative;z-index:1;max-width:680px;margin:0 auto}
+.cta-banner-inner .section-tag{justify-content:center;margin-bottom:16px}
+.cta-banner-inner h2{font-family:'Syne',sans-serif;font-size:clamp(30px,4vw,50px);font-weight:800;color:#fff;line-height:1.1;margin-bottom:18px;letter-spacing:-1.5px}
+.cta-banner-inner h2 span{color:#FFBF00}
+.cta-banner-inner p{color:#8a96a8;font-size:17px;line-height:1.75;margin-bottom:36px;max-width:520px;margin-left:auto;margin-right:auto}
+.cta-banner-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.btn-wa{display:inline-flex;align-items:center;gap:8px;background:rgba(37,211,102,0.08);border:2px solid rgba(37,211,102,0.28);color:#25D366;padding:15px 28px;border-radius:8px;font-family:'Syne',sans-serif;font-size:15px;font-weight:700;text-decoration:none;transition:all 0.35s}
+.btn-wa:hover{background:rgba(37,211,102,0.18);border-color:#25D366;transform:translateY(-2px)}
+.cta-trust-row{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;padding-top:24px;border-top:1px solid rgba(255,191,0,0.08)}
+.cta-trust-row span{color:#6b7a8f;font-size:13px;font-weight:500}
 
-/* Contact Section */
-.contact{padding:80px 30px;max-width:1400px;margin:0 auto}
-.contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:50px;max-width:1300px;margin-left:auto;margin-right:auto}
-.contact-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,191,0,0.15);border-radius:12px;padding:32px;text-align:center;transition:all 0.3s;opacity:1;transform:scale(1)}
-.contact-card:hover{background:rgba(255,191,0,0.08);box-shadow:0 6px 25px rgba(255,191,0,0.3);border-color:#FFBF00;transform:scale(1.05)}
-.contact-icon{font-size:36px;margin-bottom:16px;display:inline-block;transition:transform 0.3s}.contact-card:hover .contact-icon{transform:scale(1.2) rotate(10deg)}
-.contact-card h3{font-size:18px;font-weight:700;margin-bottom:12px;color:#fff}
-.contact-card a{color:#FFBF00;text-decoration:none;font-weight:600;font-size:15px;transition:opacity 0.3s}
-.contact-card a:hover{opacity:0.8}
-.contact-card p{color:#b8c5d6;font-size:15px}
-
-/* Footer */
+/* ── FOOTER ── */
 footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid rgba(255,191,0,0.1)}
 .footer-content{max-width:1200px;margin:0 auto}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
-.footer-col h4{color:#FFBF00;font-size:18px;margin-bottom:20px;font-weight:700}
-.footer-col ul{list-style:none;padding:0}
-.footer-col ul li{margin-bottom:12px}
+.footer-col h4{font-family:'Syne',sans-serif;color:#FFBF00;font-size:17px;margin-bottom:20px;font-weight:700}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:11px}
 .footer-col ul li a{color:#8a96a8;text-decoration:none;transition:color 0.3s;font-size:14px}
 .footer-col ul li a:hover{color:#FFBF00}
-.footer-logo-wrapper{display:flex;align-items:center;gap:12px;margin-bottom:16px;justify-content:flex-start}
-.footer-logo-img{width:45px;height:45px;border-radius:8px;object-fit:cover;border:2px solid #FFBF00}
-.footer-logo{font-size:24px;font-weight:800;color:#FFBF00}
-.footer-desc{color:#8a96a8;font-size:15px;line-height:1.7;margin-bottom:20px}
-.social-links{display:flex;gap:16px;justify-content:center;margin-bottom:32px}
-.social-link{width:44px;height:44px;border-radius:50%;background:rgba(255,191,0,0.1);border:1px solid rgba(255,191,0,0.2);display:flex;align-items:center;justify-content:center;text-decoration:none;color:#FFBF00;font-size:18px;transition:all 0.3s}
-.social-link:hover{background:#FFBF00;color:#020032;transform:translateY(-3px);border-color:transparent}
-.footer-bottom{border-top:1px solid rgba(255,191,0,0.1);padding-top:24px;margin-top:32px;color:#6b7a8f;font-size:14px;text-align:center}
+.footer-logo-wrapper{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.footer-logo-img{width:42px;height:42px;border-radius:8px;object-fit:cover;border:2px solid #FFBF00}
+.footer-logo{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:#FFBF00}
+.footer-desc{color:#8a96a8;font-size:14px;line-height:1.7;margin-bottom:20px}
+.social-links{display:flex;gap:14px;justify-content:center;margin-bottom:32px}
+.social-link{width:42px;height:42px;border-radius:50%;background:rgba(255,191,0,0.08);border:1px solid rgba(255,191,0,0.18);display:flex;align-items:center;justify-content:center;text-decoration:none;color:#FFBF00;font-size:17px;transition:all 0.3s}
+.social-link:hover{background:#FFBF00;color:#020032;transform:translateY(-3px)}
+.footer-bottom{border-top:1px solid rgba(255,191,0,0.08);padding-top:24px;color:#6b7a8f;font-size:13px;text-align:center}
 
-/* Mobile Menu */
-.mobile-menu{position:fixed;top:0;right:-100%;width:100%;height:100vh;background:rgba(2,0,50,0.98);backdrop-filter:blur(10px);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;transition:right 0.3s}
-.mobile-menu.active{right:0}
-.mobile-menu a{font-size:24px;font-weight:600;color:#e8eaf6;text-decoration:none}
-.mobile-menu .cta-nav{font-size:20px}
-.close-menu{position:absolute;top:24px;right:30px;font-size:32px;background:none;border:none;cursor:pointer;color:#e8eaf6}
-
-/* Responsive */
-@media(max-width:1200px){
-.services-grid,.contact-grid{grid-template-columns:repeat(2,1fr)}
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .portfolio-item{min-width:calc(33.333% - 16px)}
 }
-@media(max-width:1024px){.portfolio-item{min-width:calc(33.333% - 16px)}}
+@media(max-width:900px){
+  .stats-grid{grid-template-columns:repeat(2,1fr);border-radius:16px}
+  .stat-item{border-right:none;border-bottom:1px solid rgba(255,191,0,0.1)}
+  .stat-item:nth-child(odd){border-right:1px solid rgba(255,191,0,0.1)}
+  .stat-item:nth-last-child(-n+2){border-bottom:none}
+  .footer-top{grid-template-columns:1fr;gap:30px;text-align:center}
+  .footer-logo-wrapper{justify-content:center}
+  .footer-col ul{text-align:center}
+}
 @media(max-width:768px){
-.nav-menu{display:none}
-.menu-toggle{display:block;z-index:1002}
-.nav-container{padding:12px 20px}
-.logo-wrapper{display:flex}
-.logo-img{width:40px;height:40px}
-.logo-name{font-size:18px}
-.logo-tagline{font-size:9px}
-.hero{padding:120px 20px 60px;min-height:70vh}
-.hero h1{font-size:32px}
-.hero p{font-size:16px}
-.stats{padding:40px 20px;margin:40px 0}
-.stats-grid{grid-template-columns:repeat(2,1fr);gap:20px}
-.stat-item h3{font-size:32px}
-.services,.portfolio-inner,.testimonials,.contact{padding:60px 20px}
-.services-grid,.contact-grid{grid-template-columns:1fr;gap:20px}
-.portfolio-carousel-wrapper{padding:0 50px}
-.portfolio-item{min-width:calc(50% - 12px)}
-.carousel-nav{width:44px;height:44px;font-size:18px}
-.service-card,.portfolio-item,.contact-card{padding:24px}
-.hero-cta{flex-direction:column;align-items:center;gap:12px}
-.btn-primary,.btn-secondary{width:100%;max-width:280px;justify-content:center;padding:14px 28px}
-.cta-section{padding:60px 20px}
-.section-title{font-size:28px}
-.section-desc{font-size:15px}
-.testimonial-wrapper{grid-template-columns:1fr}
-.testimonial-carousel{min-height:auto}
-.lightbox-nav{width:50px;height:50px;font-size:24px}
-.lightbox-prev{left:10px}
-.lightbox-next{right:10px}
-.lightbox-close{top:-40px;width:45px;height:45px;font-size:30px}
-.portfolio-item{min-width:100%}
-footer{padding:40px 20px 20px}
-.footer-top{grid-template-columns:1fr;gap:30px;text-align:center}
-.footer-col ul{text-align:center}
-.footer-logo-wrapper{justify-content:center}
+  .nav-menu{display:none}.menu-toggle{display:block}
+  .hero-content{padding:120px 20px 80px}
+  .services,.portfolio,.testimonials,.cta-banner{padding:60px 20px}
+  .services-grid{grid-template-columns:1fr}
+  .portfolio-carousel-wrapper{padding:0}
+  .carousel-prev,.carousel-next{display:none}
+  .portfolio-item{min-width:100%}
+  .cta-banner-btns{flex-direction:column;align-items:center}
+  .btn-primary,.btn-wa{width:100%;max-width:300px;justify-content:center}
+  .btn-primary,.btn-wa{justify-content:center;text-align:center;width:100%;max-width:320px}
+  .stats{padding:40px 20px}
+  .lightbox-inner{gap:0}
+  .lightbox-nav{display:none}
+  .lightbox-content{margin:0;max-width:95vw}
+  .lightbox-img-wrap{height:260px}
+}
+@media(max-width:500px){
+  .services-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
 <body>
 
-<!-- Navigation -->
-<nav>
-<div class="nav-container">
-<a href="index.html" class="logo-wrapper">
-<img src="gallery/1714665825236.png" alt="Praise Graphics Logo" class="logo-img">
-<div class="logo-text">
-<span class="logo-name">Praise Graphics</span>
-<span class="logo-tagline">Creative Design Studio</span>
-</div>
-</a>
-<ul class="nav-menu">
-<li><a href="index.html" class="active">Home</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="services.html">Services</a></li>
-<li><a href="portfolio.html">Portfolio</a></li>
-<li><a href="contact.html" class="cta-nav">Contact Us</a></li>
-</ul>
-<button class="menu-toggle" onclick="toggleMenu()">☰</button>
-</div>
+<!-- ══ NAV ══ -->
+<nav id="mainNav">
+  <div class="nav-container">
+    <a href="index.html" class="logo-wrapper">
+      <img src="gallery/1714665825236.png" alt="Praise Graphics Logo" class="logo-img">
+      <div class="logo-text">
+        <span class="logo-name">Praise Graphics</span>
+        <span class="logo-tagline">Creative Design Studio</span>
+      </div>
+    </a>
+    <ul class="nav-menu">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="contact.html" class="cta-nav">Contact Us</a></li>
+    </ul>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  </div>
 </nav>
 
-<!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
-<button class="close-menu" onclick="toggleMenu()">×</button>
-<a href="index.html" onclick="toggleMenu()">Home</a>
-<a href="about.html" onclick="toggleMenu()">About</a>
-<a href="services.html" onclick="toggleMenu()">Services</a>
-<a href="portfolio.html" onclick="toggleMenu()">Portfolio</a>
-<a href="contact.html" class="cta-nav" onclick="toggleMenu()">Contact Us</a>
+  <button class="close-menu" onclick="toggleMenu()">×</button>
+  <a href="index.html" onclick="toggleMenu()">Home</a>
+  <a href="about.html" onclick="toggleMenu()">About</a>
+  <a href="services.html" onclick="toggleMenu()">Services</a>
+  <a href="portfolio.html" onclick="toggleMenu()">Portfolio</a>
+  <a href="contact.html" class="cta-nav" onclick="toggleMenu()">Contact Us</a>
 </div>
 
-<!-- Hero Section -->
+<!-- ══ HERO ══ -->
 <section class="hero" id="home">
-<div class="hero-content">
-<div class="hero-badge">🇳🇬 Nigeria's Trusted Design Studio</div>
-<h1>Transform Your Brand with <span class="highlight">Professional Design</span></h1>
-<p>We help Nigerian businesses stand out with stunning brand identities, social media graphics, and marketing materials that drive real results.</p>
-<div class="hero-cta">
-<a href="#contact" class="btn-primary">Start Your Project →</a>
-<a href="#portfolio" class="btn-secondary">View Our Projects</a>
-</div>
-</div>
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🇳🇬 Nigeria's Trusted Design Studio</div>
+    <h1>Transform Your Brand with<br><span class="highlight">Professional Design</span></h1>
+    <p>We help Nigerian businesses stand out with stunning brand identities, social media graphics, and marketing materials that drive real results.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Start Your Project →</a>
+      <a href="#portfolio" class="btn-secondary">View Our Projects</a>
+    </div>
+  </div>
 </section>
 
-<!-- Stats Section -->
-<section class="stats">
-<div class="stats-grid">
-<div class="stat-item">
-<h3><span class="stat-number" data-target="150">0</span>+</h3>
-<p>Projects Completed</p>
-</div>
-<div class="stat-item">
-<h3><span class="stat-number" data-target="80">0</span>+</h3>
-<p>Happy Clients</p>
-</div>
-<div class="stat-item">
-<h3><span class="stat-number" data-target="5">0</span> Years</h3>
-<p>Experience</p>
-</div>
-<div class="stat-item">
-<h3>24/7</h3>
-<p>Support Available</p>
-</div>
-</div>
+<!-- ══ STATS ── scroll-triggered counter ══ -->
+<section class="stats" id="statsSection">
+  <div class="stats-grid">
+    <div class="stat-item reveal reveal-d1">
+      <div class="stat-num-wrap"><span class="stat-number" data-target="150">0</span><span class="stat-suffix">+</span></div>
+      <p>Projects Completed</p>
+    </div>
+    <div class="stat-item reveal reveal-d2">
+      <div class="stat-num-wrap"><span class="stat-number" data-target="80">0</span><span class="stat-suffix">+</span></div>
+      <p>Happy Clients</p>
+    </div>
+    <div class="stat-item reveal reveal-d3">
+      <div class="stat-num-wrap"><span class="stat-number" data-target="5">0</span><span class="stat-suffix"> Yrs</span></div>
+      <p>Experience</p>
+    </div>
+    <div class="stat-item reveal reveal-d4">
+      <div class="stat-num-wrap"><span class="stat-number" data-target="24">0</span><span class="stat-suffix">/7</span></div>
+      <p>Support Available</p>
+    </div>
+  </div>
 </section>
 
-<!-- Services Section -->
+<!-- ══ WHAT WE DO (Services) ══ -->
 <section class="services" id="services">
-<div class="section-header">
-<div class="section-tag">What We Do</div>
-<h2 class="section-title">Services That Grow Your Business</h2>
-<p class="section-desc">Professional design solutions tailored for Nigerian businesses looking to make an impact</p>
-</div>
-<div class="services-grid">
-<div class="service-card">
-<div class="service-icon">🎨</div>
-<h3>Brand Identity Design</h3>
-<p>Create a memorable brand with custom logos, color palettes, and complete brand guidelines that set you apart.</p>
-<span class="learn-more">Learn more →</span>
-</div>
-<div class="service-card">
-<div class="service-icon">📱</div>
-<h3>Social Media Graphics</h3>
-<p>Engage your audience with scroll-stopping graphics for Instagram, Facebook, Twitter, and LinkedIn.</p>
-<span class="learn-more">Learn more →</span>
-</div>
-<div class="service-card">
-<div class="service-icon">🚀</div>
-<h3>Marketing Materials</h3>
-<p>Flyers, banners, brochures, and ads that capture attention and convert viewers into customers.</p>
-<span class="learn-more">Learn more →</span>
-</div>
-<div class="service-card">
-<div class="service-icon">💼</div>
-<h3>Digital Branding</h3>
-<p>Complete online presence with web graphics, email templates, and digital brand assets.</p>
-<span class="learn-more">Learn more →</span>
-</div>
-</div>
+  <div class="section-header reveal">
+    <span class="section-tag">What We Do</span>
+    <h2 class="section-title">Services That <span>Grow Your Business</span></h2>
+    <div class="section-line"></div>
+    <p class="section-desc">Professional design solutions tailored for Nigerian businesses looking to make an impact</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal reveal-d1">
+      <div class="service-card-img">
+        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600" alt="Brand Identity">
+      </div>
+      <div class="service-card-body">
+        <span class="service-icon">🎨</span>
+        <h3>Brand Identity Design</h3>
+        <p>Create a memorable brand with custom logos, color palettes, and complete brand guidelines that set you apart.</p>
+        <span class="learn-more">Learn more →</span>
+      </div>
+    </div>
+    <div class="service-card reveal reveal-d2">
+      <div class="service-card-img">
+        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600" alt="Social Media">
+      </div>
+      <div class="service-card-body">
+        <span class="service-icon">📱</span>
+        <h3>Social Media Graphics</h3>
+        <p>Engage your audience with scroll-stopping graphics for Instagram, Facebook, Twitter, and LinkedIn.</p>
+        <span class="learn-more">Learn more →</span>
+      </div>
+    </div>
+    <div class="service-card reveal reveal-d3">
+      <div class="service-card-img">
+        <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=600" alt="Marketing">
+      </div>
+      <div class="service-card-body">
+        <span class="service-icon">🚀</span>
+        <h3>Marketing Materials</h3>
+        <p>Flyers, banners, brochures, and ads that capture attention and convert viewers into customers.</p>
+        <span class="learn-more">Learn more →</span>
+      </div>
+    </div>
+    <div class="service-card reveal reveal-d4">
+      <div class="service-card-img">
+        <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=600" alt="Digital Branding">
+      </div>
+      <div class="service-card-body">
+        <span class="service-icon">💼</span>
+        <h3>Digital Branding</h3>
+        <p>Complete online presence with web graphics, email templates, and digital brand assets.</p>
+        <span class="learn-more">Learn more →</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Portfolio Section -->
+<!-- ══ PORTFOLIO ══ -->
 <section class="portfolio" id="portfolio">
-<div class="portfolio-inner">
-<div class="section-header">
-<div class="section-tag">Our Work</div>
-<h2 class="section-title">Our <span style="color:#FFBF00;text-shadow:0 0 40px rgba(255,191,0,0.8)">Projects</span></h2>
-<p class="section-desc">Real results for real businesses across Nigeria</p>
-</div>
-<div class="portfolio-carousel-wrapper">
-<div class="carousel-nav carousel-prev" onclick="moveCarousel(-1)">&#10094;</div>
-<div class="carousel-nav carousel-next" onclick="moveCarousel(1)">&#10095;</div>
-<div class="portfolio-carousel">
-<div class="portfolio-track" id="portfolioTrack">
-<div class="portfolio-item" onclick="openLightbox(0)">
-<div class="portfolio-img"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600" alt="Brand Identity"></div>
-<div class="portfolio-content">
-<div class="portfolio-category">Brand Identity</div>
-<h3>TechStart Lagos</h3>
-<p>Complete brand identity for innovative tech startup including logo, colors, and brand guidelines.</p>
-</div>
-</div>
-<div class="portfolio-item" onclick="openLightbox(1)">
-<div class="portfolio-img"><img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600" alt="Social Media"></div>
-<div class="portfolio-content">
-<div class="portfolio-category">Social Media</div>
-<h3>Fashion Forward NG</h3>
-<p>30-day social media campaign that increased engagement by 250% and drove sales.</p>
-</div>
-</div>
-<div class="portfolio-item" onclick="openLightbox(2)">
-<div class="portfolio-img"><img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=600" alt="Marketing"></div>
-<div class="portfolio-content">
-<div class="portfolio-category">Marketing</div>
-<h3>FoodHub Abuja</h3>
-<p>Print and digital marketing materials for restaurant chain expansion across 5 cities.</p>
-</div>
-</div>
-<div class="portfolio-item" onclick="openLightbox(3)">
-<div class="portfolio-img"><img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=600" alt="Digital Branding"></div>
-<div class="portfolio-content">
-<div class="portfolio-category">Digital Branding</div>
-<h3>EduLearn Platform</h3>
-<p>Complete digital branding package including website graphics and course materials.</p>
-</div>
-</div>
-<div class="portfolio-item" onclick="openLightbox(4)">
-<div class="portfolio-img"><img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600" alt="Logo Design"></div>
-<div class="portfolio-content">
-<div class="portfolio-category">Logo Design</div>
-<h3>GreenLife Organics</h3>
-<p>Modern, eco-friendly logo design for organic food delivery service.</p>
-</div>
-</div>
-<div class="portfolio-item" onclick="openLightbox(5)">
-<div class="portfolio-img"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600" alt="Event Graphics"></div>
-<div class="portfolio-content">
-<div class="portfolio-category">Event Graphics</div>
-<h3>Lagos Business Summit</h3>
-<p>Complete event branding including banners, badges, and promotional materials.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="carousel-dots" id="carouselDots"></div>
-<div style="text-align:center;margin-top:40px">
-<a href="portfolio.html" style="background:#FFBF00;color:#020032;padding:14px 36px;border-radius:8px;text-decoration:none;font-weight:700;font-size:16px;display:inline-block;box-shadow:0 4px 14px rgba(255,191,0,0.4);transition:all 0.3s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(255,191,0,0.6)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 14px rgba(255,191,0,0.4)'">View Full Portfolio →</a>
-</div>
-</div>
+  <div class="portfolio-inner">
+    <div class="section-header reveal">
+      <span class="section-tag">Our Work</span>
+      <h2 class="section-title">Our <span>Projects</span></h2>
+      <div class="section-line"></div>
+      <p class="section-desc">Real results for real businesses across Nigeria</p>
+    </div>
+    <div class="portfolio-carousel-wrapper">
+      <!-- Nav outside the overflow:hidden carousel -->
+      <div class="carousel-nav carousel-prev" onclick="moveCarousel(-1)">&#10094;</div>
+      <div class="carousel-nav carousel-next" onclick="moveCarousel(1)">&#10095;</div>
+      <div class="portfolio-carousel">
+        <div class="portfolio-track" id="portfolioTrack">
+          <div class="portfolio-item" onclick="openLightbox(0)">
+            <div class="portfolio-img"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600" alt="Brand Identity"></div>
+            <div class="portfolio-content">
+              <div class="portfolio-category">Brand Identity</div>
+              <h3>TechStart Lagos</h3>
+              <p>Complete brand identity for innovative tech startup including logo, colors, and brand guidelines.</p>
+            </div>
+          </div>
+          <div class="portfolio-item" onclick="openLightbox(1)">
+            <div class="portfolio-img"><img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600" alt="Social Media"></div>
+            <div class="portfolio-content">
+              <div class="portfolio-category">Social Media</div>
+              <h3>Fashion Forward NG</h3>
+              <p>30-day social media campaign that increased engagement by 250% and drove sales.</p>
+            </div>
+          </div>
+          <div class="portfolio-item" onclick="openLightbox(2)">
+            <div class="portfolio-img"><img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=600" alt="Marketing"></div>
+            <div class="portfolio-content">
+              <div class="portfolio-category">Marketing</div>
+              <h3>FoodHub Abuja</h3>
+              <p>Print and digital marketing materials for restaurant chain expansion across 5 cities.</p>
+            </div>
+          </div>
+          <div class="portfolio-item" onclick="openLightbox(3)">
+            <div class="portfolio-img"><img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=600" alt="Digital Branding"></div>
+            <div class="portfolio-content">
+              <div class="portfolio-category">Digital Branding</div>
+              <h3>EduLearn Platform</h3>
+              <p>Complete digital branding package including website graphics and course materials.</p>
+            </div>
+          </div>
+          <div class="portfolio-item" onclick="openLightbox(4)">
+            <div class="portfolio-img"><img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600" alt="Logo Design"></div>
+            <div class="portfolio-content">
+              <div class="portfolio-category">Logo Design</div>
+              <h3>GreenLife Organics</h3>
+              <p>Modern eco-friendly logo design for organic food delivery service.</p>
+            </div>
+          </div>
+          <div class="portfolio-item" onclick="openLightbox(5)">
+            <div class="portfolio-img"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600" alt="Event Graphics"></div>
+            <div class="portfolio-content">
+              <div class="portfolio-category">Event Graphics</div>
+              <h3>Lagos Business Summit</h3>
+              <p>Complete event branding including banners, badges, and promotional materials.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-dots" id="carouselDots"></div>
+    <div style="text-align:center;margin-top:44px">
+      <a href="portfolio.html" class="btn-primary">View Full Portfolio →</a>
+    </div>
+  </div>
 </section>
 
-<!-- Testimonials Section -->
+<!-- ══ TESTIMONIALS ══ -->
 <section class="testimonials" id="testimonials">
-<div class="section-header">
-<div class="section-tag">Client Success</div>
-<h2 class="section-title">What Our Clients Say</h2>
-<p class="section-desc">Don't just take our word for it - hear from businesses we've helped grow</p>
-</div>
-<div class="testimonial-carousel">
-<div class="testimonial-wrapper" id="testimonialWrapper">
-<div class="testimonial-slide">
-<div class="testimonial-card">
-<div class="quote-icon">"</div>
-<p class="testimonial-text">Praise Graphics transformed our brand completely. The new logo and social media designs have helped us attract premium clients. Highly professional!</p>
-<div class="testimonial-author">
-<div class="author-avatar">A</div>
-<div class="author-info">
-<h4>Adebayo Johnson</h4>
-<p>CEO, TechStart Lagos</p>
-</div>
-</div>
-</div>
-</div>
-<div class="testimonial-slide">
-<div class="testimonial-card">
-<div class="quote-icon">"</div>
-<p class="testimonial-text">Working with Praise Graphics was seamless. They understood our vision and delivered designs that exceeded expectations. Our sales increased by 40%!</p>
-<div class="testimonial-author">
-<div class="author-avatar">C</div>
-<div class="author-info">
-<h4>Chioma Okafor</h4>
-<p>Founder, Fashion Forward NG</p>
-</div>
-</div>
-</div>
-</div>
-<div class="testimonial-slide">
-<div class="testimonial-card">
-<div class="quote-icon">"</div>
-<p class="testimonial-text">Fast turnaround, creative designs, and excellent communication. Praise Graphics is now our go-to design partner for all marketing materials.</p>
-<div class="testimonial-author">
-<div class="author-avatar">E</div>
-<div class="author-info">
-<h4>Emmanuel Eze</h4>
-<p>Marketing Director, FoodHub</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+  <div class="testi-inner">
+    <div class="section-header reveal">
+      <span class="section-tag">Testimonials</span>
+      <h2 class="section-title">What Our <span>Clients Say</span></h2>
+      <div class="section-line"></div>
+      <p class="section-desc">Hear from businesses across Nigeria that we've helped grow</p>
+    </div>
+    <div class="testi-slider-wrap">
+      <div class="testi-track" id="testiTrack">
+        <div class="testi-card">
+          <div class="testi-quote">"</div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">Praise Graphics transformed our brand completely. The new logo and social media designs have helped us attract premium clients. Highly professional and fast!</p>
+          <div class="testi-author">
+            <div class="testi-avatar">AJ</div>
+            <div class="testi-info"><strong>Adebayo Johnson</strong><span>CEO, TechStart Lagos</span></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-quote">"</div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">Working with Praise Graphics was seamless. They understood our vision and delivered designs that exceeded expectations. Our sales increased by 40% afterwards!</p>
+          <div class="testi-author">
+            <div class="testi-avatar">CO</div>
+            <div class="testi-info"><strong>Chioma Okafor</strong><span>Founder, Fashion Forward NG</span></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-quote">"</div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">Fast turnaround, creative designs, and excellent communication. Praise Graphics is now our go-to design partner for all marketing materials. Best in Lagos!</p>
+          <div class="testi-author">
+            <div class="testi-avatar">EE</div>
+            <div class="testi-info"><strong>Emmanuel Eze</strong><span>Marketing Director, FoodHub</span></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-quote">"</div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">The packaging design they did for our product line was stunning. Sales doubled in the first month after the rebrand. These people know their craft!</p>
+          <div class="testi-author">
+            <div class="testi-avatar">TN</div>
+            <div class="testi-info"><strong>Tolu Nwosu</strong><span>Owner, GreenLife Organics</span></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-quote">"</div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">I was skeptical at first but Praise Graphics delivered beyond my expectations. My Instagram engagement went from 2% to 18% after they redesigned our content.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">KA</div>
+            <div class="testi-info"><strong>Kemi Adeyemi</strong><span>Founder, StyleHub Abuja</span></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-quote">"</div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">Professional, patient, and truly creative. They redesigned our entire company profile and the response from investors has been incredible. Money well spent!</p>
+          <div class="testi-author">
+            <div class="testi-avatar">BI</div>
+            <div class="testi-info"><strong>Babatunde Ibrahim</strong><span>CEO, EduLearn Platform</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-dots" id="testiDots"></div>
+  </div>
 </section>
 
-<!-- Lightbox -->
+<!-- ══ LIGHTBOX ══ -->
 <div class="lightbox" id="lightbox">
-<div class="lightbox-content">
-<span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-<span class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">&#10094;</span>
-<img src="" alt="Portfolio Image" class="lightbox-img" id="lightboxImg">
-<span class="lightbox-nav lightbox-next" onclick="changeImage(1)">&#10095;</span>
-<div class="lightbox-info">
-<div class="portfolio-category" id="lightboxCategory"></div>
-<h3 id="lightboxTitle"></h3>
-<p id="lightboxDesc"></p>
-</div>
-</div>
+  <div class="lightbox-inner">
+    <div class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">&#10094;</div>
+    <div class="lightbox-content">
+      <span class="lightbox-close" onclick="closeLightbox()">×</span>
+      <div class="lightbox-img-wrap">
+        <img src="" alt="Portfolio Image" class="lightbox-img" id="lightboxImg">
+      </div>
+      <div class="lightbox-info">
+        <div class="lcat" id="lightboxCategory"></div>
+        <h3 id="lightboxTitle"></h3>
+        <p id="lightboxDesc"></p>
+      </div>
+    </div>
+    <div class="lightbox-nav lightbox-next" onclick="changeImage(1)">&#10095;</div>
+  </div>
 </div>
 
-<!-- CTA Section -->
-<section class="cta-section">
-<h2>Ready to Elevate Your Brand?</h2>
-<p>Let's create something amazing together. Get in touch today and let's discuss how we can help your business stand out.</p>
-<a href="#contact" class="btn-white">Start Your Project Today</a>
+<!-- ══ CONTACT STRIP ══ -->
+<section class="cta-banner" id="contact">
+  <div class="cta-banner-inner reveal">
+    <span class="section-tag">Start Today</span>
+    <h2>Ready to Start <span>Your Project?</span></h2>
+    <p>Whether it's a logo, social media graphics, or a full brand identity — let's talk. Your dream brand is one click away.</p>
+    <div class="cta-banner-btns">
+      <a href="contact.html" class="btn-primary">Get In Touch →</a>
+      <a href="https://wa.me/2348012345678" target="_blank" class="btn-wa">💬 WhatsApp Us</a>
+    </div>
+    <div class="cta-trust-row">
+      <span>⚡ Fast Turnaround</span>
+      <span>🔄 Unlimited Revisions</span>
+      <span>🤝 Free Consultation</span>
+      <span>🇳🇬 Made for Nigeria</span>
+    </div>
+  </div>
 </section>
 
-<!-- Contact Section -->
-<section class="contact" id="contact">
-<div class="section-header">
-<div class="section-tag">Get In Touch</div>
-<h2 class="section-title">Let's Work Together</h2>
-<p class="section-desc">Choose your preferred way to reach us - we're here to help!</p>
-</div>
-<div class="contact-grid">
-<div class="contact-card">
-<div class="contact-icon">📧</div>
-<h3>Email Us</h3>
-<a href="/cdn-cgi/l/email-protection#1078757c7c7f5060627179637577627160787973633e7e77"><span class="__cf_email__" data-cfemail="5b333e3737341b2b293a32283e3c293a2b3332382875353c">[email&#160;protected]</span></a>
-</div>
-<div class="contact-card">
-<div class="contact-icon">📱</div>
-<h3>Call Us</h3>
-<a href="tel:+2348012345678">+234 801 234 5678</a>
-</div>
-<div class="contact-card">
-<div class="contact-icon">💬</div>
-<h3>WhatsApp</h3>
-<a href="https://wa.me/2348012345678" target="_blank">Chat with us</a>
-</div>
-<div class="contact-card">
-<div class="contact-icon">📍</div>
-<h3>Visit Us</h3>
-<p>Lagos, Nigeria</p>
-</div>
-</div>
-</section>
-
-<!-- Footer -->
+<!-- ══ FOOTER ══ -->
 <footer>
-<div class="footer-content">
-<div class="footer-top">
-<div class="footer-col">
-<div class="footer-logo-wrapper">
-<img src="gallery/1714665825236.png" alt="Praise Graphics" class="footer-logo-img">
-<div class="footer-logo">Praise Graphics</div>
-</div>
-<p class="footer-desc">Professional graphic design studio helping Nigerian businesses create powerful brand identities and marketing materials that drive results.</p>
-</div>
-<div class="footer-col">
-<h4>Quick Links</h4>
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="about.html">About Us</a></li>
-<li><a href="services.html">Services</a></li>
-<li><a href="portfolio.html">Portfolio</a></li>
-</ul>
-</div>
-<div class="footer-col">
-<h4>Contact Info</h4>
-<ul>
-<li><a href="/cdn-cgi/l/email-protection#563e333a3a39162624373f2533312437263e3f3525783831"><span class="__cf_email__" data-cfemail="a3cbc6cfcfcce3d3d1c2cad0c6c4d1c2d3cbcac0d08dcdc4">[email&#160;protected]</span></a></li>
-<li><a href="tel:+2348012345678">+234 801 234 5678</a></li>
-<li><a href="https://wa.me/2348012345678">WhatsApp Us</a></li>
-<li>Lagos, Nigeria</li>
-</ul>
-</div>
-</div>
-<div class="social-links">
-<a href="#" class="social-link">📘</a>
-<a href="#" class="social-link">📷</a>
-<a href="#" class="social-link">🐦</a>
-<a href="#" class="social-link">💼</a>
-</div>
-<div class="footer-bottom">
-<p>&copy; 2024 Praise Graphics. All rights reserved. Designed with ❤️ in Nigeria</p>
-</div>
-</div>
+  <div class="footer-content">
+    <div class="footer-top">
+      <div class="footer-col">
+        <div class="footer-logo-wrapper">
+          <img src="gallery/1714665825236.png" alt="Praise Graphics" class="footer-logo-img">
+          <div class="footer-logo">Praise Graphics</div>
+        </div>
+        <p class="footer-desc">Professional graphic design studio helping Nigerian businesses create powerful brand identities and marketing materials that drive results.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Info</h4>
+        <ul>
+          <li><a href="/cdn-cgi/l/email-protection#92faf7fefefdd2e2e0f3fbe1f7f5e0f3e2fafbf1e1bcfcf5"><span class="__cf_email__" data-cfemail="553d3039393a152527343c2630322734253d3c36267b3b32">[email&#160;protected]</span></a></li>
+          <li><a href="tel:+2348012345678">+234 801 234 5678</a></li>
+          <li><a href="https://wa.me/2348012345678">WhatsApp Us</a></li>
+          <li>Lagos, Nigeria</li>
+        </ul>
+      </div>
+    </div>
+    <div class="social-links">
+      <a href="#" class="social-link">📘</a>
+      <a href="#" class="social-link">📷</a>
+      <a href="#" class="social-link">🐦</a>
+      <a href="#" class="social-link">💼</a>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Praise Graphics. All rights reserved. Designed with ❤️ in Nigeria</p>
+    </div>
+  </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function toggleMenu(){
-const menu=document.getElementById('mobileMenu');
-menu.classList.toggle('active');
-document.body.style.overflow=menu.classList.contains('active')?'hidden':'';
-}
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-a.addEventListener('click',e=>{
-const target=document.querySelector(a.getAttribute('href'));
-if(target){
-e.preventDefault();
-target.scrollIntoView({behavior:'smooth'});
-const menu=document.getElementById('mobileMenu');
-if(menu.classList.contains('active')){
-menu.classList.remove('active');
-document.body.style.overflow='';
-}
-}
-});
-});
-const observer=new IntersectionObserver(entries=>{
-entries.forEach((entry,index)=>{
-if(entry.isIntersecting){
-setTimeout(()=>{
-entry.target.classList.add('visible');
-},index*100);
-}
-});
-},{threshold:0,rootMargin:'0px 0px -50px 0px'});
-document.querySelectorAll('.service-card,.testimonial-card,.contact-card,.stat-item').forEach(el=>{
-observer.observe(el);
-});
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ── NAV SCROLL ── */
+window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',scrollY>50));
 
-// Portfolio Carousel
-let currentSlide=0;
-let autoSlideTimer=null;
+/* ── MOBILE MENU ── */
+function toggleMenu(){const m=document.getElementById('mobileMenu');m.classList.toggle('active');document.body.style.overflow=m.classList.contains('active')?'hidden':'';}
 
-function getVisibleCards(){
-return window.innerWidth<=768?1:window.innerWidth<=1200?2:4;
+/* ── SCROLL REVEAL ── */
+function initReveal(){
+  var els=document.querySelectorAll('.reveal');
+  if(!els.length)return;
+  // Hard fallback: force visible after 600ms no matter what
+  setTimeout(function(){els.forEach(function(el){el.classList.add('visible');});},600);
+  if(!window.IntersectionObserver){els.forEach(function(el){el.classList.add('visible');});return;}
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+  },{threshold:0,rootMargin:'200px 0px 200px 0px'});
+  els.forEach(function(el){obs.observe(el);});
 }
+initReveal();
 
-function getMaxSlide(){
-return Math.max(0,6-getVisibleCards());
+/* ── SCROLL-TRIGGERED COUNTER ── */
+let counterDone=false;
+function runCounters(){
+  if(counterDone)return;
+  counterDone=true;
+  document.querySelectorAll('.stat-number').forEach(counter=>{
+    const target=+counter.getAttribute('data-target');
+    const steps=80;
+    let count=0;
+    const inc=target/steps;
+    const tick=()=>{
+      count+=inc;
+      if(count>=target){counter.textContent=target;}
+      else{counter.textContent=Math.floor(count);requestAnimationFrame(tick);}
+    };
+    requestAnimationFrame(tick);
+  });
 }
-
-function moveCarousel(direction){
-const max=getMaxSlide();
-currentSlide+=direction;
-if(currentSlide<0)currentSlide=max;
-if(currentSlide>max)currentSlide=0;
-updateCarousel();
-resetAutoSlide();
+const statsEl=document.getElementById('statsSection');
+if(statsEl){
+  const sObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){runCounters();sObs.disconnect();}});
+  },{threshold:0,rootMargin:'0px'});
+  sObs.observe(statsEl);
+  // Fallback if already in view
+  setTimeout(()=>{
+    const r=statsEl.getBoundingClientRect();
+    if(r.top<window.innerHeight)runCounters();
+  },500);
 }
 
+/* ── PORTFOLIO CAROUSEL ── */
+let pSlide=0,pTimer=null;
+function getVisible(){return window.innerWidth<=768?1:window.innerWidth<=1100?3:4;}
+function getMax(){return Math.max(0,6-getVisible());}
+
+function moveCarousel(dir){
+  pSlide+=dir;
+  if(pSlide<0)pSlide=getMax();
+  if(pSlide>getMax())pSlide=0;
+  updateCarousel();resetPTimer();
+}
 function updateCarousel(){
-const track=document.getElementById('portfolioTrack');
-if(!track||!track.children[0])return;
-const cardWidth=track.children[0].offsetWidth;
-const gap=24;
-const offset=-(currentSlide*(cardWidth+gap));
-track.style.transform=`translateX(${offset}px)`;
-updateDots();
+  const track=document.getElementById('portfolioTrack');
+  if(!track||!track.children[0])return;
+  const w=track.children[0].offsetWidth+24;
+  track.style.transform=`translateX(${-(pSlide*w)}px)`;
+  buildDots();
 }
-
-function updateDots(){
-const dotsContainer=document.getElementById('carouselDots');
-if(!dotsContainer)return;
-const max=getMaxSlide();
-dotsContainer.innerHTML='';
-for(let i=0;i<=max;i++){
-const dot=document.createElement('div');
-dot.className='carousel-dot'+(i===currentSlide?' active':'');
-dot.onclick=()=>{currentSlide=i;updateCarousel();resetAutoSlide();};
-dotsContainer.appendChild(dot);
+function buildDots(){
+  const dc=document.getElementById('carouselDots');if(!dc)return;
+  const max=getMax();dc.innerHTML='';
+  for(let i=0;i<=max;i++){
+    const d=document.createElement('div');
+    d.className='carousel-dot'+(i===pSlide?' active':'');
+    d.onclick=()=>{pSlide=i;updateCarousel();resetPTimer();};
+    dc.appendChild(d);
+  }
 }
-}
+function resetPTimer(){if(pTimer)clearInterval(pTimer);pTimer=setInterval(()=>moveCarousel(1),5000);}
+window.addEventListener('resize',()=>{if(pSlide>getMax())pSlide=getMax();updateCarousel();});
+setTimeout(()=>{updateCarousel();resetPTimer();},600);
 
-function resetAutoSlide(){
-if(autoSlideTimer)clearInterval(autoSlideTimer);
-autoSlideTimer=setInterval(()=>moveCarousel(1),5000);
-}
-
-window.addEventListener('resize',()=>{
-if(currentSlide>getMaxSlide())currentSlide=getMaxSlide();
-updateCarousel();
-});
-
-setTimeout(()=>{
-updateCarousel();
-resetAutoSlide();
-// Fallback: force all cards visible
-document.querySelectorAll('.service-card,.portfolio-item,.contact-card,.stat-item,.testimonial-card').forEach(el=>el.classList.add('visible'));
-},800);
-
-// Lightbox functionality
-let currentImageIndex=0;
-const portfolioData=[
-{img:'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800',category:'Brand Identity',title:'TechStart Lagos',desc:'Complete brand identity for innovative tech startup including logo, colors, and brand guidelines.'},
-{img:'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800',category:'Social Media',title:'Fashion Forward NG',desc:'30-day social media campaign that increased engagement by 250% and drove sales.'},
-{img:'https://images.unsplash.com/photo-1542744094-3a31f272c490?w=800',category:'Marketing',title:'FoodHub Abuja',desc:'Print and digital marketing materials for restaurant chain expansion across 5 cities.'},
-{img:'https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800',category:'Digital Branding',title:'EduLearn Platform',desc:'Complete digital branding package including website graphics and course materials.'},
-{img:'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800',category:'Logo Design',title:'GreenLife Organics',desc:'Modern, eco-friendly logo design for organic food delivery service.'},
-{img:'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800',category:'Event Graphics',title:'Lagos Business Summit',desc:'Complete event branding including banners, badges, and promotional materials.'}
+/* ── LIGHTBOX ── */
+let curImg=0;
+const pData=[
+  {img:'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=900',cat:'Brand Identity',title:'TechStart Lagos',desc:'Complete brand identity for innovative tech startup including logo, colors, and brand guidelines.'},
+  {img:'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=900',cat:'Social Media',title:'Fashion Forward NG',desc:'30-day social media campaign that increased engagement by 250% and drove sales.'},
+  {img:'https://images.unsplash.com/photo-1542744094-3a31f272c490?w=900',cat:'Marketing',title:'FoodHub Abuja',desc:'Print and digital marketing materials for restaurant chain expansion across 5 cities.'},
+  {img:'https://images.unsplash.com/photo-1559028012-481c04fa702d?w=900',cat:'Digital Branding',title:'EduLearn Platform',desc:'Complete digital branding package including website graphics and course materials.'},
+  {img:'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=900',cat:'Logo Design',title:'GreenLife Organics',desc:'Modern eco-friendly logo design for organic food delivery service.'},
+  {img:'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=900',cat:'Event Graphics',title:'Lagos Business Summit',desc:'Complete event branding including banners, badges, and promotional materials.'}
 ];
-
-function openLightbox(index){
-currentImageIndex=index;
-document.getElementById('lightbox').classList.add('active');
-updateLightboxContent();
-document.body.style.overflow='hidden';
+function openLightbox(i){curImg=i;document.getElementById('lightbox').classList.add('active');document.body.style.overflow='hidden';renderLightbox();}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow='';}
+function changeImage(d){curImg=(curImg+d+pData.length)%pData.length;renderLightbox();}
+function renderLightbox(){
+  const p=pData[curImg];
+  document.getElementById('lightboxImg').src=p.img;
+  document.getElementById('lightboxCategory').textContent=p.cat;
+  document.getElementById('lightboxTitle').textContent=p.title;
+  document.getElementById('lightboxDesc').textContent=p.desc;
 }
-
-function closeLightbox(){
-document.getElementById('lightbox').classList.remove('active');
-document.body.style.overflow='';
-}
-
-function changeImage(direction){
-currentImageIndex+=direction;
-if(currentImageIndex<0)currentImageIndex=portfolioData.length-1;
-if(currentImageIndex>=portfolioData.length)currentImageIndex=0;
-updateLightboxContent();
-}
-
-function updateLightboxContent(){
-const data=portfolioData[currentImageIndex];
-document.getElementById('lightboxImg').src=data.img;
-document.getElementById('lightboxCategory').textContent=data.category;
-document.getElementById('lightboxTitle').textContent=data.title;
-document.getElementById('lightboxDesc').textContent=data.desc;
-}
-
-document.getElementById('lightbox').addEventListener('click',(e)=>{
-if(e.target.id==='lightbox')closeLightbox();
+document.getElementById('lightbox').addEventListener('click',e=>{if(e.target===document.getElementById('lightbox'))closeLightbox();});
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('lightbox').classList.contains('active'))return;
+  if(e.key==='Escape')closeLightbox();
+  if(e.key==='ArrowLeft')changeImage(-1);
+  if(e.key==='ArrowRight')changeImage(1);
 });
 
-document.addEventListener('keydown',(e)=>{
-if(!document.getElementById('lightbox').classList.contains('active'))return;
-if(e.key==='Escape')closeLightbox();
-if(e.key==='ArrowLeft')changeImage(-1);
-if(e.key==='ArrowRight')changeImage(1);
-});
-const counterObserver=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-const counters=document.querySelectorAll('.stat-number');
-counters.forEach(counter=>{
-const target=+counter.getAttribute('data-target');
-const increment=Math.ceil(target/60);
-let count=0;
-const updateCount=()=>{count+=increment;if(count>=target){counter.textContent=target;}else{counter.textContent=count;requestAnimationFrame(updateCount);}};
-requestAnimationFrame(updateCount);
-});
-counterObserver.disconnect();
+/* ── TESTIMONIALS AUTO-SLIDER ── */
+let tSlide=0,tTimer=null;
+const tCards=document.querySelectorAll('.testi-card');
+const tTotal=tCards.length;
+
+function getTestiPV(){return window.innerWidth<=600?1:window.innerWidth<=900?2:3;}
+function getTestiMax(){return Math.max(0,tTotal-getTestiPV());}
+
+function setCardWidths(){
+  const pv=getTestiPV();
+  const track=document.getElementById('testiTrack');
+  const gap=pv===1?0:24;
+  track.style.gap=gap+'px';
+  const totalGap=gap*(pv-1);
+  const cw=`calc((100% - ${totalGap}px) / ${pv})`;
+  tCards.forEach(c=>{c.style.minWidth=cw;c.style.maxWidth=cw;c.style.flexShrink='0';});
 }
-});
-},{threshold:0.5});
-const statsEl=document.querySelector('.stats');
-if(statsEl)counterObserver.observe(statsEl);
+function moveTesti(dir){
+  tSlide+=dir;
+  const max=getTestiMax();
+  if(tSlide<0)tSlide=max;
+  if(tSlide>max)tSlide=0;
+  updateTesti();
+}
+function updateTesti(){
+  const track=document.getElementById('testiTrack');
+  if(!track||!tCards[0])return;
+  const gap=getTestiPV()===1?0:24;
+  const w=tCards[0].offsetWidth+gap;
+  track.style.transform=`translateX(${-(tSlide*w)}px)`;
+  buildTestiDots();
+}
+function buildTestiDots(){
+  const dc=document.getElementById('testiDots');if(!dc)return;
+  const max=getTestiMax();dc.innerHTML='';
+  for(let i=0;i<=max;i++){
+    const d=document.createElement('div');
+    d.className='testi-dot'+(i===tSlide?' active':'');
+    d.onclick=()=>{tSlide=i;updateTesti();resetTTimer();};
+    dc.appendChild(d);
+  }
+}
+function resetTTimer(){if(tTimer)clearInterval(tTimer);tTimer=setInterval(()=>moveTesti(1),3000);}
+window.addEventListener('resize',()=>{setCardWidths();if(tSlide>getTestiMax())tSlide=0;updateTesti();});
+setTimeout(()=>{setCardWidths();updateTesti();resetTTimer();},700);
 </script>
 </body>
 </html>
