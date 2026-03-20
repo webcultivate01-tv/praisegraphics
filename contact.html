@@ -76,6 +76,19 @@ nav{position:fixed;top:0;width:100%;background:rgba(2,0,50,0.95);backdrop-filter
 .submit-btn::before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;border-radius:50%;background:rgba(255,255,255,0.3);transform:translate(-50%,-50%);transition:width 0.6s,height 0.6s}
 .submit-btn:hover::before{width:300px;height:300px}
 .submit-btn:hover{transform:translateY(-3px);box-shadow:0 10px 35px rgba(255,191,0,0.6)}
+.faqs{padding:60px 30px 80px;max-width:800px;margin:0 auto}
+.faqs h2{font-size:32px;font-weight:800;color:#fff;text-align:center;margin-bottom:10px}
+.faqs h2 span{color:#FFBF00}
+.faqs-sub{text-align:center;color:#b8c5d6;margin-bottom:40px;font-size:16px}
+.faq-item{background:linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));border:1px solid rgba(255,191,0,0.15);border-radius:12px;margin-bottom:14px;overflow:hidden;transition:all 0.3s}
+.faq-item.open{border-color:#FFBF00;box-shadow:0 6px 25px rgba(255,191,0,0.2)}
+.faq-q{width:100%;background:none;border:none;color:#fff;font-size:16px;font-weight:600;padding:20px 24px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:inherit}
+.faq-q:hover{color:#FFBF00}
+.faq-icon{color:#FFBF00;font-size:20px;font-weight:700;transition:transform 0.3s;flex-shrink:0}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s}
+.faq-item.open .faq-a{max-height:200px}
+.faq-a p{padding:0 24px 20px;color:#b8c5d6;font-size:15px;line-height:1.7}
 footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid rgba(255,191,0,0.1)}
 .footer-content{max-width:1200px;margin:0 auto}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
@@ -196,7 +209,30 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 </div>
 </div>
 </section>
-<footer>
+<section class="faqs">
+<h2>Frequently Asked <span>Questions</span></h2>
+<p class="faqs-sub">Common sawaal jo clients poochte hain</p>
+<div class="faq-item">
+<button class="faq-q" onclick="toggleFaq(this)">How long does a project take? <span class="faq-icon">+</span></button>
+<div class="faq-a"><p>Project ki complexity pe depend karta hai. Logo design 3-5 days, brand identity 7-14 days, aur social media packages 5-7 days mein complete hote hain.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" onclick="toggleFaq(this)">What is your pricing? <span class="faq-icon">+</span></button>
+<div class="faq-a"><p>Pricing project ke scope pe depend karti hai. Logo design ₦15,000 se start hota hai. Exact quote ke liye humse contact karein.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" onclick="toggleFaq(this)">Do you offer revisions? <span class="faq-icon">+</span></button>
+<div class="faq-a"><p>Haan! Hum 3 free revisions offer karte hain har project pe. Aapki satisfaction hamari priority hai.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" onclick="toggleFaq(this)">What files will I receive? <span class="faq-icon">+</span></button>
+<div class="faq-a"><p>Aapko PNG, JPG, PDF, aur editable source files (AI/PSD) milenge. Social media ke liye optimized sizes bhi provide kiye jaate hain.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" onclick="toggleFaq(this)">How do I get started? <span class="faq-icon">+</span></button>
+<div class="faq-a"><p>Bahut simple! Upar form fill karein ya WhatsApp pe message karein. Hum 24 hours ke andar respond karte hain.</p></div>
+</div>
+</section>
 <div class="footer-content">
 <div class="footer-top">
 <div class="footer-col">
@@ -235,6 +271,7 @@ footer{background:#010020;color:#fff;padding:60px 30px 30px;border-top:1px solid
 </footer>
 <script>
 function toggleMenu(){const m=document.getElementById('mobileMenu');m.classList.toggle('active');document.body.style.overflow=m.classList.contains('active')?'hidden':'';}
+function toggleFaq(btn){const item=btn.parentElement;const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!isOpen)item.classList.add('open');}
 </script>
 </body>
 </html>
